@@ -7,11 +7,15 @@ import "./Clock.scss";
 
 export default class Canvas extends Component {
   render() {
-    const state = 6;
     const tickHours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     const ticks = tickHours.map((hour) => tick(hour, CLOCK_RADIUS));
-    const noteScaleDegrees = [0, 1, 2, 3, 4, 5, 6];
-    const notes = noteScaleDegrees.map((scaleDegree) => noteHourFromScaleDegree(scaleDegree, state)).map(note);
+    const solfeges = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
+    const notes = solfeges.map((solfege) => (
+      <Note
+        key={solfege}
+        solfege={solfege}
+      />
+    ));
     return (
       <svg
         viewBox="-150 -150 300 300"
@@ -22,13 +26,7 @@ export default class Canvas extends Component {
         <rect x="-150" y="-150" width="300" height="300" stroke="cadetblue" strokeWidth="0.5%" fill="none" />
         <circle cx="0" cy="0" r={CLOCK_RADIUS} fill="none" stroke="black" strokeWidth="1" />
         {ticks}
-        <Note solfege="do" />
-        <Note solfege="re" />
-        <Note solfege="mi" />
-        <Note solfege="fa" />
-        <Note solfege="sol" />
-        <Note solfege="la" />
-        <Note solfege="ti" />
+        {notes}
       </svg>
     );
   }

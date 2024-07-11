@@ -1,26 +1,26 @@
 /*
 Positions of notes around the clock face at various hours
 
-0:  (0, -120)                     do
-1:  (60, -103.92304845413263)     re early
-2:  (103.92304845413263, -60)     re late
-3:  (120, 0)                      mi early
-4:  (103.92304845413263, 60)      mi late
-5:  (60, 103.92304845413263)      fa early
-6:  (0, 120)                      fa late and sol early
-7:  (-60, 103.92304845413263)     sol late
-8:  (-103.92304845413263, 60)     la early
-9:  (-120, 0)                     la late
-10: (-103.92304845413263, -60)    ti early
-11: (-60, -103.92304845413263)    ti late
+0:  (0, -120)                     Do
+1:  (60, -103.92304845413263)     Re early
+2:  (103.92304845413263, -60)     Re late
+3:  (120, 0)                      Mi early
+4:  (103.92304845413263, 60)      Mi late
+5:  (60, 103.92304845413263)      Fa early
+6:  (0, 120)                      Fa late and Sol early
+7:  (-60, 103.92304845413263)     Sol late
+8:  (-103.92304845413263, 60)     La early
+9:  (-120, 0)                     La late
+10: (-103.92304845413263, -60)    Ti early
+11: (-60, -103.92304845413263)    Ti late
 */
 
 .note {
-  &.do {
+  &.Do {
     offset-path: path("M 0,-120");
   }
 
-  &.re {
+  &.Re {
     &.early {
       offset-path: path("M 60,-103.92304845413263");
     }
@@ -35,7 +35,7 @@ Positions of notes around the clock face at various hours
     }
   }
 
-  &.mi {
+  &.Mi {
     &.early {
       offset-path: path("M 120,0");
     }
@@ -50,7 +50,7 @@ Positions of notes around the clock face at various hours
     }
   }
 
-  &.fa {
+  &.Fa {
     &.early {
       offset-path: path("M 60,103.92304845413263");
     }
@@ -65,7 +65,7 @@ Positions of notes around the clock face at various hours
     }
   }
 
-  &.sol {
+  &.Sol {
     &.early {
       offset-path: path("M 0,120");
     }
@@ -80,7 +80,7 @@ Positions of notes around the clock face at various hours
     }
   }
 
-  &.la {
+  &.La {
     &.early {
       offset-path: path("M -103.92304845413263,60");
     }
@@ -95,7 +95,7 @@ Positions of notes around the clock face at various hours
     }
   }
 
-  &.ti {
+  &.Ti {
     &.early {
       offset-path: path("M -103.92304845413263,-60");
     }
