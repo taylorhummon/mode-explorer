@@ -4,30 +4,19 @@ import { Component } from "inferno";
 import "./Note.scss";
 
 export default class Note extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = { position: "early" };
-  // }
-
   clickHandler = (event) => {
     if (! this.props.isActive) {
       return;
     }
-    this.props.updateMode();
-
-    // if (this.state.position === "early") {
-    //   this.setState({ position: "late" });
-    // } else if (this.state.position === "late") {
-    //   this.setState({ position: "early" });
-    // }
+    if (this.props.position === "early") {
+      this.props.advance();
+    } else if (this.props.position === "late") {
+      this.props.retreat();
+    }
   }
 
   animationEndCallback = (animationOptions) => {
-    // if (animationOptions.animationName === "advance") {
-    //   this.setState({ position: "late" });
-    // } else if (animationOptions.animationName === "retreat") {
-    //   this.setState({ position: "early" });
-    // }
+    this.props.endNoteAnimation();
   }
 
   componentDidAppear(domNode) {
