@@ -1,8 +1,9 @@
 /* eslint no-unused-vars: 0 */
 
 import { Component } from "inferno";
-import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "./utilities/clock.js";
-import "./Canvas.scss";
+import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock.js";
+import Note from "./Note.js";
+import "./Clock.scss";
 
 export default class Canvas extends Component {
   render() {
@@ -21,7 +22,7 @@ export default class Canvas extends Component {
         <rect x="-150" y="-150" width="300" height="300" stroke="cadetblue" strokeWidth="0.5%" fill="none" />
         <circle cx="0" cy="0" r={CLOCK_RADIUS} fill="none" stroke="black" strokeWidth="1" />
         {ticks}
-        <circle className="note re advance" cx="0" cy="0" r="10" fill="green" />
+        <Note />
       </svg>
     );
   }
