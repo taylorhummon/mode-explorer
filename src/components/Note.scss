@@ -1,5 +1,5 @@
 /*
-clock hour positions:
+Positions of notes around the clock face at various hours
 
 0:  (0, -120)                     do
 1:  (60, -103.92304845413263)     re early
@@ -111,11 +111,11 @@ clock hour positions:
   }
 
   &.advance {
-    animation: advance 1000ms ease-in-out 1 forwards;
+    animation: advance 1000ms ease-in-out 1;
   }
 
   &.retreat {
-    animation: advance 1000ms ease-in-out 1 reverse;
+    animation: retreat 1000ms ease-in-out 1;
   }
 }
 
@@ -125,5 +125,14 @@ clock hour positions:
   }
   100% {
     offset-distance: 100%;
+  }
+}
+
+@keyframes retreat {
+  0% {
+    offset-distance: 100%;
+  }
+  100% {
+    offset-distance: 0%;
   }
 }

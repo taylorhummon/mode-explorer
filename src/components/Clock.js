@@ -22,7 +22,13 @@ export default class Canvas extends Component {
         <rect x="-150" y="-150" width="300" height="300" stroke="cadetblue" strokeWidth="0.5%" fill="none" />
         <circle cx="0" cy="0" r={CLOCK_RADIUS} fill="none" stroke="black" strokeWidth="1" />
         {ticks}
-        <Note />
+        <Note solfege="do" />
+        <Note solfege="re" />
+        <Note solfege="mi" />
+        <Note solfege="fa" />
+        <Note solfege="sol" />
+        <Note solfege="la" />
+        <Note solfege="ti" />
       </svg>
     );
   }
@@ -40,19 +46,6 @@ function tick(hour) {
       strokeWidth="1"
     />
   )
-}
-
-function note(hour) {
-  return (
-    <circle
-      key={hour}
-      cx={xOnClockAt(hour)}
-      cy={yOnClockAt(hour)}
-      r="10"
-      fill="black"
-      stroke="none"
-    />
-  );
 }
 
 function noteHourFromScaleDegree(scaleDegree, state) {
