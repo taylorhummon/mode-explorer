@@ -5,7 +5,26 @@ import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/
 import Note from "./Note.js";
 import "./Clock.scss";
 
-export default class Canvas extends Component {
+const MODE_NOTES = ["F", "C", "G", "D", "A", "E", "B"];
+const MODE_NAMES = ["Lydian", "Ionian", "Mixolydian", "Dorian", "Aeolian", "Phrygian", "Locrian"];
+
+export default class Clock extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modeInteger: 0
+    };
+  }
+
+  updateMode = (solfege) => {
+    const nextModeInteger = getNextModeInteger(solfege, this.state.modeInteger);
+    const nextModeNote = MODE_NOTES[nextModeInteger];
+    console.log("changing to mode", nextModeNote);
+    this.setState({
+      modeInteger: nextModeInteger
+    });
+  }
+
   render() {
     const tickHours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     const ticks = tickHours.map((hour) => tick(hour, CLOCK_RADIUS));
@@ -14,6 +33,9 @@ export default class Canvas extends Component {
       <Note
         key={solfege}
         solfege={solfege}
+        position={getPosition(solfege, this.state.modeInteger)}
+        isActive={getIsActive(solfege, this.state.modeInteger)}
+        updateMode={() => this.updateMode(solfege)}
       />
     ));
     return (
@@ -46,22 +68,70 @@ function tick(hour) {
   )
 }
 
-function noteHourFromScaleDegree(scaleDegree, state) {
-  if (scaleDegree === 0) {          // Do
-    return 0;
-  } else if (scaleDegree === 1) {   // Re
-    return state >= 5 ? 1 : 2;
-  } else if (scaleDegree === 2) {   // Mi
-    return state >= 3 ? 3 : 4;
-  } else if (scaleDegree === 3) {   // Fa
-    return state >= 1 ? 5 : 6;
-  } else if (scaleDegree === 4) {   // Sol
-    return state >= 6 ? 6 : 7;
-  } else if (scaleDegree === 5) {   // La
-    return state >= 4 ? 8 : 9;
-  } else if (scaleDegree === 6) {   // Ti
-    return state >= 2 ? 10 : 11;
+function getPosition(solfege, modeInteger) {
+  if (solfege === "Do") {
+    return null;
+  } else if (solfege === "Re") {
+    return modeInteger >= 5 ? "early" : "late";
+  } else if (solfege === "Mi") {
+    return modeInteger >= 3 ? "early" : "late";
+  } else if (solfege === "Fa") {
+    return modeInteger >= 1 ? "early" : "late";
+  } else if (solfege === "Sol") {
+    return modeInteger >= 6 ? "early" : "late";
+  } else if (solfege === "La") {
+    return modeInteger >= 4 ? "early" : "late";
+  } else if (solfege === "Ti") {
+    return modeInteger >= 2 ? "early" : "late";
   } else {
-    throw new Error("invalid scale degree");
+    throw new Error(`invalid solfege note: ${solfege}`);
   }
+}
+
+function getIsActive(solfege, modeInteger) {
+  if (solfege === "Do") {
+    return false;
+  } else if (solfege === "Re") {
+    return modeInteger === 4 || modeInteger === 5;
+  } else if (solfege === "Mi") {
+    return modeInteger === 2 || modeInteger === 3;
+  } else if (solfege === "Fa") {
+    return modeInteger === 0 || modeInteger === 1;
+  } else if (solfege === "Sol") {
+    return modeInteger === 5 || modeInteger === 6;
+  } else if (solfege === "La") {
+    return modeInteger === 3 || modeInteger === 4;
+  } else if (solfege === "Ti") {
+    return modeInteger === 1 || modeInteger === 2;
+  } else {
+    throw new Error(`invalid solfege note: ${solfege}`);
+  }
+}
+
+function getNextModeInteger(solfege, modeInteger) {
+  if (solfege === "Fa") {
+    if (modeInteger === 0) return 1;
+    if (modeInteger === 1) return 0;
+  }
+  if (solfege === "Ti") {
+    if (modeInteger === 1) return 2;
+    if (modeInteger === 2) return 1;
+  }
+  if (solfege === "Mi") {
+    if (modeInteger === 2) return 3;
+    if (modeInteger === 3) return 2;
+  }
+  if (solfege === "La") {
+    if (modeInteger === 3) return 4;
+    if (modeInteger === 4) return 3;
+  }
+  if (solfege === "Re") {
+    if (modeInteger === 4) return 5;
+    if (modeInteger === 5) return 4;
+  }
+  if (solfege === "Sol") {
+    if (modeInteger === 5) return 6;
+    if (modeInteger === 6) return 5;
+  }
+  return modeInteger;
 }
