@@ -1,0 +1,129 @@
+/*
+clock hour positions:
+
+0:  (0, -120)                     do
+1:  (60, -103.92304845413263)     re early
+2:  (103.92304845413263, -60)     re late
+3:  (120, 0)                      mi early
+4:  (103.92304845413263, 60)      mi late
+5:  (60, 103.92304845413263)      fa early
+6:  (0, 120)                      fa late and sol early
+7:  (-60, 103.92304845413263)     sol late
+8:  (-103.92304845413263, 60)     la early
+9:  (-120, 0)                     la late
+10: (-103.92304845413263, -60)    ti early
+11: (-60, -103.92304845413263)    ti late
+*/
+
+.note {
+  &.do {
+    offset-path: path("M 0,-120");
+  }
+
+  &.re {
+    &.early {
+      offset-path: path("M 60,-103.92304845413263");
+    }
+
+    &.late {
+      offset-path: path("M 103.92304845413263,-60");
+    }
+
+    &.advance,
+    &.retreat {
+      offset-path: path("M 60,-103.92304845413263 a 120 120 0 0 1 43.923048454132626 43.923048454132626");
+    }
+  }
+
+  &.mi {
+    &.early {
+      offset-path: path("M 120,0");
+    }
+
+    &.late {
+      offset-path: path("M 103.92304845413263,60");
+    }
+
+    &.advance,
+    &.retreat {
+      offset-path: path("M 120,0 a 120 120 0 0 1 -16.07695154586737 60");
+    }
+  }
+
+  &.fa {
+    &.early {
+      offset-path: path("M 60,103.92304845413263");
+    }
+
+    &.late {
+      offset-path: path("M 0,120");
+    }
+
+    &.advance,
+    &.retreat {
+      offset-path: path("M 60,103.92304845413263 a 120 120 0 0 1 -60 16.07695154586737");
+    }
+  }
+
+  &.sol {
+    &.early {
+      offset-path: path("M 0,120");
+    }
+
+    &.late {
+      offset-path: path("M -60,103.92304845413263");
+    }
+
+    &.advance,
+    &.retreat {
+      offset-path: path("M 0,120 a 120 120 0 0 1 -60 -16.07695154586737");
+    }
+  }
+
+  &.la {
+    &.early {
+      offset-path: path("M -103.92304845413263,60");
+    }
+
+    &.late {
+      offset-path: path("M -120,0");
+    }
+
+    &.advance,
+    &.retreat {
+      offset-path: path("M -103.92304845413263,60 a 120 120 0 0 1 -16.07695154586737 -60");
+    }
+  }
+
+  &.ti {
+    &.early {
+      offset-path: path("M -103.92304845413263,-60");
+    }
+
+    &.late {
+      offset-path: path("M -60,-103.92304845413263");
+    }
+
+    &.advance,
+    &.retreat {
+      offset-path: path("M -103.92304845413263,-60 a 120 120 0 0 1 43.923048454132626 -43.923048454132626");
+    }
+  }
+
+  &.advance {
+    animation: advance 1000ms ease-in-out 1 forwards;
+  }
+
+  &.retreat {
+    animation: advance 1000ms ease-in-out 1 reverse;
+  }
+}
+
+@keyframes advance {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
