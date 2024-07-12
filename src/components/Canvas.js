@@ -4,6 +4,9 @@ import { Component } from "inferno";
 import Clock from "./Clock.js";
 import Solfege from "./Solfege.js";
 
+const SOLFEGE_NAMES = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
+const SOLFEGE_NAMES_FOR_MODE_CHANGING = ["Sol", "Re", "La", "Mi", "Ti", "Fa"];
+
 export default class Canvas extends Component {
   constructor(props) {
     super(props)
@@ -13,45 +16,40 @@ export default class Canvas extends Component {
     };
   }
 
-  move = (solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName) => {
-    if (this.state.motion !== "still") return;
-    const modeInteger = this.state.modeInteger;
-    if (solfegeName === canAdvanceSolfegeName) {
-      this.setState({
-        motion: "advance",
-        modeInteger
-      });
-    } else if (solfegeName === canRetreatSolfegeName) {
-      this.setState({
-        motion: "retreat",
-        modeInteger
-      });
+  buildMove = (solfegeName, derivedState) => {
+    const { motion, advancingSolfegeName, retreatingSolfegeName } = derivedState;
+    if (motion === "still") {
+      if (solfegeName === advancingSolfegeName) return this.advance;
+      if (solfegeName === retreatingSolfegeName) return this.retreat;
     }
+    return null;
   }
 
-  animationEndHandler = () => {
-    const pendingModeInteger = getPendingModeInteger(this.state.motion, this.state.modeInteger);
+  advance = () => {
+    this.setState({ motion: "advance" });
+  }
+
+  retreat = () => {
+    this.setState({ motion: "retreat" });
+  }
+
+  finishMovement = () => {
     this.setState({
       motion: "still",
-      modeInteger: pendingModeInteger
+      modeInteger: getPendingModeInteger(this.state.motion, this.state.modeInteger)
     });
   };
 
   render() {
-    const motion = this.state.motion;
-    const modeInteger = this.state.modeInteger;
-    const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeInteger);
-    const canRetreatSolfegeName = getCanRetreatSolfegeName(modeInteger);
-    const solfegeNames = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
-    const solfegeComponents = solfegeNames.map((solfegeName) => (
+    const derivedState = getDerivedState(this.state);
+    const solfegeComponents = SOLFEGE_NAMES.map((solfegeName) => (
       <Solfege
         key={solfegeName}
         name={solfegeName}
-        location={getLocation(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName, motion, modeInteger)}
-        canMove={getCanMove(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName)}
-        move={() => this.move(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName)}
-        onComponentDidAppear={(domNode) => registerAnimationEndHandler(domNode, this.animationEndHandler)}
-        onComponentWillDisappear={(domNode) => unregisterAnimationEndHandler(domNode, this.animationEndHandler)}
+        location={getLocation(solfegeName, derivedState)}
+        move={this.buildMove(solfegeName, derivedState)}
+        onComponentDidAppear={(domNode) => registerAnimationEndHandler(domNode, this.finishMovement)}
+        onComponentWillDisappear={(domNode) => unregisterAnimationEndHandler(domNode, this.finishMovement)}
       />
     ));
     return (
@@ -68,28 +66,32 @@ export default class Canvas extends Component {
   }
 }
 
-const NON_DO_SOLFEGE_NAMES = ["Sol", "Re", "La", "Mi", "Ti", "Fa"];
+function getDerivedState(state) {
+  return {
+    motion: state.motion,
+    modeInteger: state.modeInteger,
+    advancingSolfegeName: getAdvancingSolfegeName(state.modeInteger),
+    retreatingSolfegeName: getRetreatingSolfegeName(state.modeInteger)
+  };
+}
 
-function getCanAdvanceSolfegeName(modeInteger) {
+function getAdvancingSolfegeName(modeInteger) {
   if (! (modeInteger >= 0 && modeInteger <= 5)) return null;
-  return NON_DO_SOLFEGE_NAMES[modeInteger];
+  return SOLFEGE_NAMES_FOR_MODE_CHANGING[modeInteger];
 }
 
-function getCanRetreatSolfegeName(modeInteger) {
-  return getCanAdvanceSolfegeName(modeInteger - 1);
+function getRetreatingSolfegeName(modeInteger) {
+  return getAdvancingSolfegeName(modeInteger - 1);
 }
 
-function getLocation(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName, motion, modeInteger) {
-  if (motion === "advance" && solfegeName === canAdvanceSolfegeName) return "advance";
-  if (motion === "retreat" && solfegeName === canRetreatSolfegeName) return "retreat";
+function getLocation(solfegeName, derivedState) {
+  const { motion, modeInteger, advancingSolfegeName, retreatingSolfegeName } = derivedState;
+  if (motion === "advance" && solfegeName === advancingSolfegeName) return "advance";
+  if (motion === "retreat" && solfegeName === retreatingSolfegeName) return "retreat";
   if (solfegeName === "Do") return "root";
-  const index = NON_DO_SOLFEGE_NAMES.indexOf(solfegeName);
+  const index = SOLFEGE_NAMES_FOR_MODE_CHANGING.indexOf(solfegeName);
   if (index === -1) throw new Error(`invalid solfege note: ${solfegeName}`);
   return (modeInteger <= index) ? "early" : "late";
-}
-
-function getCanMove(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName) {
-  return solfegeName === canAdvanceSolfegeName || solfegeName === canRetreatSolfegeName;
 }
 
 function getPendingModeInteger(motion, modeInteger) {
@@ -98,10 +100,10 @@ function getPendingModeInteger(motion, modeInteger) {
   return modeInteger;
 }
 
-function registerAnimationEndHandler(domNode, animationEndHandler) {
-  domNode.addEventListener("animationend", animationEndHandler, false);
+function registerAnimationEndHandler(domNode, finishMovement) {
+  domNode.addEventListener("animationend", finishMovement, false);
 }
 
-function unregisterAnimationEndHandler(domNode, animationEndHandler) {
-  domNode.removeEventListener("animationend", animationEndHandler);
+function unregisterAnimationEndHandler(domNode, finishMovement) {
+  domNode.removeEventListener("animationend", finishMovement);
 }

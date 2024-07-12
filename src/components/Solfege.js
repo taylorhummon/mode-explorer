@@ -2,14 +2,14 @@
 
 import "./Solfege.scss";
 
-const Solfege = ({ name, location, canMove, move }) => {
+const Solfege = ({ name, location, move }) => {
   return (
     <circle
       className={getClassName(name, location)}
       cx="0"
       cy="0"
       r="10"
-      fill={getFillColor(name, canMove)}
+      fill={getFillColor(name, move)}
       onClick={move}
     />
   );
@@ -23,8 +23,8 @@ function getClassName(name, location) {
   return classNameArray.join(" ");
 }
 
-function getFillColor(name, canMove) {
+function getFillColor(name, move) {
   if (name === "Do") return "blue";
-  if (canMove) return "green";
+  if (move) return "green";
   return "black";
 }
