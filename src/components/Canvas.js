@@ -15,21 +15,22 @@ export default class Canvas extends Component {
 
   move = (solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName) => {
     if (this.state.motion !== "still") return;
+    const modeInteger = this.state.modeInteger;
     if (solfegeName === canAdvanceSolfegeName) {
       this.setState({
         motion: "advance",
-        modeInteger: this.state.modeInteger
+        modeInteger
       });
-    }
-    if (solfegeName === canRetreatSolfegeName) {
+    } else if (solfegeName === canRetreatSolfegeName) {
       this.setState({
         motion: "retreat",
-        modeInteger: this.state.modeInteger
+        modeInteger
       });
     }
   }
 
-  doneMoving = (pendingModeInteger) => {
+  animationEndHandler = () => {
+    const pendingModeInteger = getPendingModeInteger(this.state.motion, this.state.modeInteger);
     this.setState({
       motion: "still",
       modeInteger: pendingModeInteger
@@ -39,7 +40,6 @@ export default class Canvas extends Component {
   render() {
     const motion = this.state.motion;
     const modeInteger = this.state.modeInteger;
-    const pendingModeInteger = getPendingModeInteger(motion, modeInteger);
     const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeInteger);
     const canRetreatSolfegeName = getCanRetreatSolfegeName(modeInteger);
     const solfegeNames = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
@@ -50,7 +50,8 @@ export default class Canvas extends Component {
         location={getLocation(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName, motion, modeInteger)}
         canMove={getCanMove(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName)}
         move={() => this.move(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName)}
-        doneMoving={() => this.doneMoving(pendingModeInteger)}
+        onComponentDidAppear={(domNode) => registerAnimationEndHandler(domNode, this.animationEndHandler)}
+        onComponentWillDisappear={(domNode) => unregisterAnimationEndHandler(domNode, this.animationEndHandler)}
       />
     ));
     return (
@@ -95,4 +96,12 @@ function getPendingModeInteger(motion, modeInteger) {
   if (motion === "advance") return modeInteger + 1;
   if (motion === "retreat") return modeInteger - 1;
   return modeInteger;
+}
+
+function registerAnimationEndHandler(domNode, animationEndHandler) {
+  domNode.addEventListener("animationend", animationEndHandler, false);
+}
+
+function unregisterAnimationEndHandler(domNode, animationEndHandler) {
+  domNode.removeEventListener("animationend", animationEndHandler);
 }
