@@ -1,5 +1,5 @@
 /*
-Positions of notes around the clock face at various hours
+Positions of solfege notes around the clock face at various hours
 
 0:  (0, -120)                     Do
 1:  (60, -103.92304845413263)     Re early
@@ -15,7 +15,7 @@ Positions of notes around the clock face at various hours
 11: (-60, -103.92304845413263)    Ti late
 */
 
-.note {
+.solfege {
   &.Do {
     offset-path: path("M 0,-120");
   }

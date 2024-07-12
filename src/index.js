@@ -1,9 +1,9 @@
 import { render } from 'inferno';
 import './index.css';
-import Clock from './components/Clock.js';
+import Canvas from './components/Canvas.js';
 import reportWebVitals from './reportWebVitals.js';
 
-render(<Clock />, document.getElementById('root'));
+render(<Canvas />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
