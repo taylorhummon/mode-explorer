@@ -111,11 +111,11 @@ Positions of solfege notes around the clock face at various hours
   }
 
   &.advance {
-    animation: advance 1000ms ease-in-out 1;
+    animation: advance 600ms ease-in-out 1;
   }
 
   &.retreat {
-    animation: retreat 1000ms ease-in-out 1;
+    animation: retreat 600ms ease-in-out 1;
   }
 }
 

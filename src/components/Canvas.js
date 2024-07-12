@@ -3,7 +3,6 @@
 import { Component } from "inferno";
 import Clock from "./Clock.js";
 import Solfege from "./Solfege.js";
-import "./Canvas.scss";
 
 export default class Canvas extends Component {
   constructor(props) {

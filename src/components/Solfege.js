@@ -25,28 +25,28 @@ export default class Solfege extends Component {
   //   domNode.removeEventListener("animationend", this.doneMoving);
   // }
 
-  className() {
-    const classNameArray= ["solfege", this.props.name];
-    if (this.props.location) classNameArray.push(this.props.location);
-    return classNameArray.join(" ");
-  }
-
-  color() {
-    if (this.props.name === "Do") return "blue";
-    if (this.props.canMove) return "green";
-    return "black";
-  }
-
   render() {
     return (
       <circle
-        className={this.className()}
+        className={getClassName(this.props.name, this.props.location)}
         onClick={this.props.move}
         cx="0"
         cy="0"
         r="10"
-        fill={this.color()}
+        fill={getFillColor(this.props.name, this.props.canMove)}
       />
     )
   }
+}
+
+function getClassName(name, location) {
+  const classNameArray= ["solfege", name];
+  if (location) classNameArray.push(location);
+  return classNameArray.join(" ");
+}
+
+function getFillColor(name, canMove) {
+  if (name === "Do") return "blue";
+  if (canMove) return "green";
+  return "black";
 }
