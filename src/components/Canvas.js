@@ -1,5 +1,6 @@
 import { Component } from "inferno";
 import Clock from "./Clock.js";
+import ModeName from "./ModeName.js";
 import Solfege from "./Solfege.js";
 
 const SOLFEGE_NAMES = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
@@ -58,6 +59,10 @@ export default class Canvas extends Component {
         width="300px"
       >
         <Clock />
+        <ModeName
+          isVisible={derivedState.motion === "still"}
+          modeInteger={derivedState.modeInteger}
+        />
         {solfegeComponents}
       </svg>
     );
