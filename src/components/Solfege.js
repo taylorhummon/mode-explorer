@@ -1,5 +1,4 @@
-/* eslint no-unused-vars: 0 */
-
+import { BLUE, GREEN, BLACK } from "../colors.js";
 import "./Solfege.scss";
 
 const Solfege = ({ name, location, move }) => {
@@ -24,7 +23,7 @@ function getClassName(name, location) {
 }
 
 function getFillColor(name, move) {
-  if (name === "Do") return "blue";
-  if (move) return "green";
-  return "black";
+  if (name === "Do") return BLUE;
+  if (move) return GREEN;
+  return BLACK;
 }

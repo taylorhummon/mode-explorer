@@ -1,5 +1,3 @@
-/* eslint no-unused-vars: 0 */
-
 import { Component } from "inferno";
 import Clock from "./Clock.js";
 import Solfege from "./Solfege.js";

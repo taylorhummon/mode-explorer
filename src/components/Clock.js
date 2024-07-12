@@ -1,4 +1,5 @@
 import { CLOCK_RADIUS } from "../utilities/clock.js";
+import { GRAY } from "../colors.js";
 import Tick from "./Tick.js";
 
 const Clock = () => {
@@ -6,7 +7,14 @@ const Clock = () => {
   const tickComponents = tickHours.map((hour) => Tick({ hour }));
   return (
     <>
-      <circle cx="0" cy="0" r={CLOCK_RADIUS} fill="none" stroke="black" strokeWidth="1" />
+      <circle
+        cx="0"
+        cy="0"
+        r={CLOCK_RADIUS}
+        fill="none"
+        stroke={GRAY}
+        strokeWidth="2"
+      />
       {tickComponents}
     </>
   );
