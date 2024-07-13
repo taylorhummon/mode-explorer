@@ -4,14 +4,14 @@ import ModeName from "./ModeName.js";
 import Solfege from "./Solfege.js";
 
 const SOLFEGE_NAMES = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
-const SOLFEGE_NAMES_FOR_MODE_CHANGING = ["Sol", "Re", "La", "Mi", "Ti", "Fa"];
+const SOLFEGE_NAMES_IN_BEADGCF_ORDER = ["Sol", "Re", "La", "Mi", "Ti", "Fa"];
 
 export default class Canvas extends Component {
   constructor(props) {
     super(props)
     this.state = {
       motion: "still",
-      modeInteger: 5
+      modeIndex: 5
     };
   }
 
@@ -35,7 +35,7 @@ export default class Canvas extends Component {
   finishMovement = () => {
     this.setState({
       motion: "still",
-      modeInteger: getPendingModeInteger(this.state.motion, this.state.modeInteger)
+      modeIndex: getPendingmodeIndex(this.state.motion, this.state.modeIndex)
     });
   };
 
@@ -61,7 +61,7 @@ export default class Canvas extends Component {
         <Clock />
         <ModeName
           isVisible={derivedState.motion === "still"}
-          modeInteger={derivedState.modeInteger}
+          modeIndex={derivedState.modeIndex}
         />
         {solfegeComponents}
       </svg>
@@ -72,35 +72,35 @@ export default class Canvas extends Component {
 function getDerivedState(state) {
   return {
     motion: state.motion,
-    modeInteger: state.modeInteger,
-    advancingSolfegeName: getAdvancingSolfegeName(state.modeInteger),
-    retreatingSolfegeName: getRetreatingSolfegeName(state.modeInteger)
+    modeIndex: state.modeIndex,
+    advancingSolfegeName: getAdvancingSolfegeName(state.modeIndex),
+    retreatingSolfegeName: getRetreatingSolfegeName(state.modeIndex)
   };
 }
 
-function getAdvancingSolfegeName(modeInteger) {
-  if (! (modeInteger >= 0 && modeInteger <= 5)) return null;
-  return SOLFEGE_NAMES_FOR_MODE_CHANGING[modeInteger];
+function getAdvancingSolfegeName(modeIndex) {
+  if (! (modeIndex >= 0 && modeIndex <= 5)) return null;
+  return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex];
 }
 
-function getRetreatingSolfegeName(modeInteger) {
-  return getAdvancingSolfegeName(modeInteger - 1);
+function getRetreatingSolfegeName(modeIndex) {
+  return getAdvancingSolfegeName(modeIndex - 1);
 }
 
 function getLocation(solfegeName, derivedState) {
-  const { motion, modeInteger, advancingSolfegeName, retreatingSolfegeName } = derivedState;
+  const { motion, modeIndex, advancingSolfegeName, retreatingSolfegeName } = derivedState;
   if (motion === "advance" && solfegeName === advancingSolfegeName) return "advance";
   if (motion === "retreat" && solfegeName === retreatingSolfegeName) return "retreat";
   if (solfegeName === "Do") return "root";
-  const index = SOLFEGE_NAMES_FOR_MODE_CHANGING.indexOf(solfegeName);
+  const index = SOLFEGE_NAMES_IN_BEADGCF_ORDER.indexOf(solfegeName);
   if (index === -1) throw new Error(`invalid solfege note: ${solfegeName}`);
-  return (modeInteger <= index) ? "early" : "late";
+  return (modeIndex <= index) ? "early" : "late";
 }
 
-function getPendingModeInteger(motion, modeInteger) {
-  if (motion === "advance") return modeInteger + 1;
-  if (motion === "retreat") return modeInteger - 1;
-  return modeInteger;
+function getPendingmodeIndex(motion, modeIndex) {
+  if (motion === "advance") return modeIndex + 1;
+  if (motion === "retreat") return modeIndex - 1;
+  return modeIndex;
 }
 
 function registerAnimationEndHandler(domNode, finishMovement) {

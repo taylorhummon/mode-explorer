@@ -8,7 +8,7 @@ const MODE_NAMES = [
   "Lydian"
 ];
 
-const ModeName = ({ isVisible, modeInteger }) => {
+const ModeName = ({ isVisible, modeIndex }) => {
   if (! isVisible) return null;
   return (
     <text
@@ -16,7 +16,7 @@ const ModeName = ({ isVisible, modeInteger }) => {
       x="0"
       y="8"
     >
-      {MODE_NAMES[modeInteger]}
+      {MODE_NAMES[modeIndex]}
     </text>
   );
 }
