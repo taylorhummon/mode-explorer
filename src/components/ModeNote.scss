@@ -1,0 +1,16 @@
+.mode-note {
+  fill: #ff2f92;
+  font-size: 24px;
+  line-height: 0;
+  font-family: "PT Mono";
+  text-align: center;
+  text-anchor: middle;
+
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 200ms;
+
+  &.hidden {
+    opacity: 0;
+  }
+}

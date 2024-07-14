@@ -1,3 +1,5 @@
+import "./ModeName.scss";
+
 const MODE_NAMES = [
   "Locrian",
   "Phrygian",
@@ -8,13 +10,13 @@ const MODE_NAMES = [
   "Lydian"
 ];
 
-const ModeName = ({ isVisible, modeIndex }) => {
-  if (! isVisible) return null;
+const ModeName = ({ isHidden, modeIndex }) => {
+  if (isHidden) return null;
   return (
     <text
-      style="font-size:18px;line-height:0;font-family:'PT Mono';fill:#ff2f92;text-align:center;text-anchor:middle"
+      className="mode-name"
       x="0"
-      y="8"
+      y="8px"
     >
       {MODE_NAMES[modeIndex]}
     </text>

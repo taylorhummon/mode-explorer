@@ -1,6 +1,6 @@
 import { Component } from "inferno";
 import Clock from "./Clock.js";
-import ModeName from "./ModeName.js";
+import ModeNote from "./ModeNote.js";
 import Solfege from "./Solfege.js";
 
 const SOLFEGE_NAMES = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
@@ -35,7 +35,7 @@ export default class Canvas extends Component {
   finishMovement = () => {
     this.setState({
       motion: "still",
-      modeIndex: getPendingmodeIndex(this.state.motion, this.state.modeIndex)
+      modeIndex: getPendingModeIndex(this.state.motion, this.state.modeIndex)
     });
   };
 
@@ -59,8 +59,8 @@ export default class Canvas extends Component {
         width="300px"
       >
         <Clock />
-        <ModeName
-          isVisible={derivedState.motion === "still"}
+        <ModeNote
+          isHidden={derivedState.motion !== "still"}
           modeIndex={derivedState.modeIndex}
         />
         {solfegeComponents}
@@ -97,7 +97,7 @@ function getLocation(solfegeName, derivedState) {
   return (modeIndex <= index) ? "early" : "late";
 }
 
-function getPendingmodeIndex(motion, modeIndex) {
+function getPendingModeIndex(motion, modeIndex) {
   if (motion === "advance") return modeIndex + 1;
   if (motion === "retreat") return modeIndex - 1;
   return modeIndex;
