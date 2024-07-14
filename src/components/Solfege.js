@@ -1,29 +1,30 @@
-import { BLUE, GREEN, BLACK } from "../colors.js";
 import "./Solfege.scss";
 
 const Solfege = ({ name, location, move }) => {
   return (
     <circle
-      className={getClassName(name, location)}
+      className={getClassName(name, location, move)}
       cx="0"
       cy="0"
       r="10"
-      fill={getFillColor(name, move)}
       onClick={move}
     />
   );
 };
 
+function getClassName(name, location, move) {
+  return [
+    "solfege",
+    name,
+    location,
+    getColor(name, move),
+  ].join(" ");
+}
+
+function getColor(name, move) {
+  if (name === "Do") return "blue";
+  if (move) return "green";
+  return "black";
+}
+
 export default Solfege;
-
-function getClassName(name, location) {
-  const classNameArray= ["solfege", name];
-  if (location) classNameArray.push(location);
-  return classNameArray.join(" ");
-}
-
-function getFillColor(name, move) {
-  if (name === "Do") return BLUE;
-  if (move) return GREEN;
-  return BLACK;
-}

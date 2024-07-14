@@ -16,6 +16,21 @@ Positions of solfege notes around the clock face at various hours
 */
 
 .solfege {
+  transition-property: fill;
+  transition-duration: 250ms;
+
+  &.black {
+    fill: #000000;
+  }
+
+  &.green {
+    fill: #0B9B0D;
+  }
+
+  &.blue {
+    fill: #0433FF;
+  }
+
   &.Do {
     offset-path: path("M 0,-120");
   }
