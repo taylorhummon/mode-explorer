@@ -1,16 +1,14 @@
 import "./Solfege.scss";
 
-const Solfege = ({ name, location, move }) => {
-  return (
-    <circle
-      className={getClassName(name, location, move)}
-      cx="0"
-      cy="0"
-      r="10"
-      onClick={move}
-    />
-  );
-};
+const Solfege = ({ name, location, move }) => (
+  <circle
+    className={getClassName(name, location, move)}
+    cx="0"
+    cy="0"
+    r="10"
+    onClick={move}
+  />
+);
 
 function getClassName(name, location, move) {
   return [
