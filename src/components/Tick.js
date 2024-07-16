@@ -3,7 +3,7 @@ import "./Tick.scss";
 
 const Tick = ({ hour }) => (
   <line
-    className={getClassName(hour)}
+    className={className(hour)}
     key={hour}
     x1={xOnClockAt(hour)}
     y1={yOnClockAt(hour)}
@@ -12,7 +12,7 @@ const Tick = ({ hour }) => (
   />
 );
 
-function getClassName(hour) {
+function className(hour) {
   const classNames = ["tick"];
   if (hour === 0) classNames.push("root");
   return classNames.join(" ");

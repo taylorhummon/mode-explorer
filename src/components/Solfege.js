@@ -2,7 +2,7 @@ import "./Solfege.scss";
 
 const Solfege = ({ name, location, move }) => (
   <circle
-    className={getClassName(name, location, move)}
+    className={className(name, location, move)}
     cx="0"
     cy="0"
     r="10"
@@ -10,7 +10,7 @@ const Solfege = ({ name, location, move }) => (
   />
 );
 
-function getClassName(name, location, move) {
+function className(name, location, move) {
   const classNames = ["solfege", name, location];
   if (move) classNames.push("can-move");
   return classNames.join(" ");

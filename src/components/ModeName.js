@@ -1,17 +1,18 @@
 import { MODE_NAMES } from "../constants/mode.js";
 import "./ModeName.scss";
 
-const ModeName = ({ isHidden, modeIndex }) => {
-  if (isHidden) return null;
+const ModeName = ({ modeIndex, isHidden }) => {
   return (
-    <text
-      className="mode-name"
-      x="0"
-      y="8px"
-    >
-      {MODE_NAMES[modeIndex]}
-    </text>
+    <p className="mode-name">Mode:&nbsp;
+      <span className={className(isHidden)}>{MODE_NAMES[modeIndex]}</span>
+    </p>
   );
+}
+
+function className(isHidden) {
+  const classNames = ["mode-name-span"];
+  if (isHidden) classNames.push("hidden");
+  return classNames.join(" ");
 }
 
 export default ModeName;

@@ -1,19 +1,19 @@
 import { MODE_NOTES } from "../constants/mode.js";
 import "./ModeNote.scss";
 
-const ModeNote = ({ isHidden, modeIndex }) => {
+const ModeNote = ({ modeIndex, isHidden }) => {
   return (
     <text
-      className={getClassName(isHidden)}
+      className={className(isHidden)}
       x="0"
-      y="8px"
+      y="8"
     >
       {MODE_NOTES[modeIndex]}
     </text>
   );
 }
 
-function getClassName(isHidden) {
+function className(isHidden) {
   const classNames = ["mode-note"];
   if (isHidden) classNames.push("hidden");
   return classNames.join(" ");
