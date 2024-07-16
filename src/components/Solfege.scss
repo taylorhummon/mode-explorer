@@ -1,38 +1,32 @@
-/*
-Positions of solfege notes around the clock face at various hours
-
-0:  (0, -120)                     Do
-1:  (60, -103.92304845413263)     Re early
-2:  (103.92304845413263, -60)     Re late
-3:  (120, 0)                      Mi early
-4:  (103.92304845413263, 60)      Mi late
-5:  (60, 103.92304845413263)      Fa early
-6:  (0, 120)                      Fa late and Sol early
-7:  (-60, 103.92304845413263)     Sol late
-8:  (-103.92304845413263, 60)     La early
-9:  (-120, 0)                     La late
-10: (-103.92304845413263, -60)    Ti early
-11: (-60, -103.92304845413263)    Ti late
-*/
-
 .solfege {
+  fill: #000000;
   transition-property: fill;
   transition-duration: 200ms;
 
-  &.black {
-    fill: #000000;
-  }
-
-  &.green {
+  &.can-move {
     fill: #0B9B0D;
   }
 
-  &.blue {
-    fill: #0433FF;
-  }
-
   &.Do {
-    offset-path: path("M 0,-120");
+    fill: #0433FF;
+
+    &.can-move {
+      fill: #0B9B0D;
+    }
+
+    &.still {
+      offset-path: path("M 0,-120");
+    }
+
+    &.advance-individual,
+    &.retreat-all {
+      offset-path: path("M 0,-120 a 120 120 0 0 1 60 16.07695154586737");
+    }
+
+    &.retreat-individual,
+    &.advance-all {
+      offset-path: path("M -60,-103.92304845413263 a 120 120 0 0 1 60 -16.07695154586737");
+    }
   }
 
   &.Re {
@@ -44,8 +38,10 @@ Positions of solfege notes around the clock face at various hours
       offset-path: path("M 103.92304845413263,-60");
     }
 
-    &.advance,
-    &.retreat {
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
       offset-path: path("M 60,-103.92304845413263 a 120 120 0 0 1 43.923048454132626 43.923048454132626");
     }
   }
@@ -59,8 +55,10 @@ Positions of solfege notes around the clock face at various hours
       offset-path: path("M 103.92304845413263,60");
     }
 
-    &.advance,
-    &.retreat {
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
       offset-path: path("M 120,0 a 120 120 0 0 1 -16.07695154586737 60");
     }
   }
@@ -74,8 +72,10 @@ Positions of solfege notes around the clock face at various hours
       offset-path: path("M 0,120");
     }
 
-    &.advance,
-    &.retreat {
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
       offset-path: path("M 60,103.92304845413263 a 120 120 0 0 1 -60 16.07695154586737");
     }
   }
@@ -89,8 +89,10 @@ Positions of solfege notes around the clock face at various hours
       offset-path: path("M -60,103.92304845413263");
     }
 
-    &.advance,
-    &.retreat {
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
       offset-path: path("M 0,120 a 120 120 0 0 1 -60 -16.07695154586737");
     }
   }
@@ -104,8 +106,10 @@ Positions of solfege notes around the clock face at various hours
       offset-path: path("M -120,0");
     }
 
-    &.advance,
-    &.retreat {
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
       offset-path: path("M -103.92304845413263,60 a 120 120 0 0 1 -16.07695154586737 -60");
     }
   }
@@ -119,18 +123,22 @@ Positions of solfege notes around the clock face at various hours
       offset-path: path("M -60,-103.92304845413263");
     }
 
-    &.advance,
-    &.retreat {
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
       offset-path: path("M -103.92304845413263,-60 a 120 120 0 0 1 43.923048454132626 -43.923048454132626");
     }
   }
 
-  &.advance {
-    animation: advance 600ms ease-in-out 1;
+  &.advance-individual,
+  &.advance-all {
+    animation: advance 650ms ease-in-out 1 forwards;
   }
 
-  &.retreat {
-    animation: retreat 600ms ease-in-out 1;
+  &.retreat-individual,
+  &.retreat-all {
+    animation: retreat 650ms ease-in-out 1 forwards;
   }
 }
 

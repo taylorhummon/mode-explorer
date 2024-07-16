@@ -11,18 +11,9 @@ const Solfege = ({ name, location, move }) => (
 );
 
 function getClassName(name, location, move) {
-  return [
-    "solfege",
-    name,
-    location,
-    getColor(name, move),
-  ].join(" ");
-}
-
-function getColor(name, move) {
-  if (name === "Do") return "blue";
-  if (move) return "green";
-  return "black";
+  const classNames = ["solfege", name, location];
+  if (move) classNames.push("can-move");
+  return classNames.join(" ");
 }
 
 export default Solfege;

@@ -1,6 +1,5 @@
+import { MODE_NOTES } from "../constants/mode.js";
 import "./ModeNote.scss";
-
-const MODE_NOTES = ["B", "E", "A", "D", "G", "C", "F"];
 
 const ModeNote = ({ isHidden, modeIndex }) => {
   return (

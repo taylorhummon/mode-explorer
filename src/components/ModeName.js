@@ -1,14 +1,5 @@
+import { MODE_NAMES } from "../constants/mode.js";
 import "./ModeName.scss";
-
-const MODE_NAMES = [
-  "Locrian",
-  "Phrygian",
-  "Aeolian",
-  "Dorian",
-  "Mixolydian",
-  "Ionian",
-  "Lydian"
-];
 
 const ModeName = ({ isHidden, modeIndex }) => {
   if (isHidden) return null;
