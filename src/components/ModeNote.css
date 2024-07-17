@@ -11,8 +11,8 @@
   opacity: 1;
   transition-property: opacity;
   transition-duration: 200ms;
+}
 
-  &.hidden {
-    opacity: 0;
-  }
+.mode-note.hidden {
+  opacity: 0;
 }

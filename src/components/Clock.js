@@ -1,7 +1,7 @@
 import { CLOCK_RADIUS } from "../utilities/clock.js";
 import { buildIndicesArray } from "../utilities/array.js";
 import Tick from "./Tick.js";
-import "./Clock.scss";
+import "./Clock.css";
 
 const Clock = () => (
   <>

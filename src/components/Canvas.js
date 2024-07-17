@@ -2,7 +2,7 @@ import Clock from "./Clock.js";
 import ModeNote from "./ModeNote.js";
 import Solfege from "./Solfege.js";
 import { arrayFromMap } from "../utilities/map.js";
-import "./Canvas.scss";
+import "./Canvas.css";
 
 const Canvas = ({ derived, buildMove }) => (
   <svg

@@ -1,5 +1,5 @@
 import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock.js";
-import "./Tick.scss";
+import "./Tick.css";
 
 const Tick = ({ hour }) => (
   <line

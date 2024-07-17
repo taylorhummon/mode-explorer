@@ -1,0 +1,150 @@
+.solfege {
+  fill: #000000;
+  transition-property: fill;
+  transition-duration: 200ms;
+}
+
+.solfege.can-move {
+  fill: #0B9B0D;
+}
+
+.solfege.Do {
+  fill: #0433FF;
+}
+
+.solfege.Do.can-move {
+  fill: #0B9B0D;
+}
+
+.solfege.Do.still {
+  offset-path: path("M 0,-120");
+}
+
+.solfege.Do.advance-individual,
+.solfege.Do.retreat-all {
+  offset-path: path("M 0,-120 a 120 120 0 0 1 60 16.07695154586737");
+}
+
+.solfege.Do.retreat-individual,
+.solfege.Do.advance-all {
+  offset-path: path("M -60,-103.92304845413263 a 120 120 0 0 1 60 -16.07695154586737");
+}
+
+.solfege.Re.early {
+  offset-path: path("M 60,-103.92304845413263");
+}
+
+.solfege.Re.late {
+  offset-path: path("M 103.92304845413263,-60");
+}
+
+
+.solfege.Re.advance-individual,
+.solfege.Re.retreat-individual,
+.solfege.Re.advance-all,
+.solfege.Re.retreat-all {
+  offset-path: path("M 60,-103.92304845413263 a 120 120 0 0 1 43.923048454132626 43.923048454132626");
+}
+
+.solfege.Mi.early {
+  offset-path: path("M 120,0");
+}
+
+.solfege.Mi.late {
+  offset-path: path("M 103.92304845413263,60");
+}
+
+.solfege.Mi.advance-individual,
+.solfege.Mi.retreat-individual,
+.solfege.Mi.advance-all,
+.solfege.Mi.retreat-all {
+  offset-path: path("M 120,0 a 120 120 0 0 1 -16.07695154586737 60");
+}
+
+.solfege.Fa.early {
+  offset-path: path("M 60,103.92304845413263");
+}
+
+.solfege.Fa.late {
+  offset-path: path("M 0,120");
+}
+
+.solfege.Fa.advance-individual,
+.solfege.Fa.retreat-individual,
+.solfege.Fa.advance-all,
+.solfege.Fa.retreat-all {
+  offset-path: path("M 60,103.92304845413263 a 120 120 0 0 1 -60 16.07695154586737");
+}
+
+.solfege.Sol.early {
+  offset-path: path("M 0,120");
+}
+
+.solfege.Sol.late {
+  offset-path: path("M -60,103.92304845413263");
+}
+
+.solfege.Sol.advance-individual,
+.solfege.Sol.retreat-individual,
+.solfege.Sol.advance-all,
+.solfege.Sol.retreat-all {
+  offset-path: path("M 0,120 a 120 120 0 0 1 -60 -16.07695154586737");
+}
+
+.solfege.La.early {
+  offset-path: path("M -103.92304845413263,60");
+}
+
+.solfege.La.late {
+  offset-path: path("M -120,0");
+}
+
+.solfege.La.advance-individual,
+.solfege.La.retreat-individual,
+.solfege.La.advance-all,
+.solfege.La.retreat-all {
+  offset-path: path("M -103.92304845413263,60 a 120 120 0 0 1 -16.07695154586737 -60");
+}
+
+.solfege.Ti.early {
+  offset-path: path("M -103.92304845413263,-60");
+}
+
+.solfege.Ti.late {
+  offset-path: path("M -60,-103.92304845413263");
+}
+
+.solfege.Ti.advance-individual,
+.solfege.Ti.retreat-individual,
+.solfege.Ti.advance-all,
+.solfege.Ti.retreat-all {
+  offset-path: path("M -103.92304845413263,-60 a 120 120 0 0 1 43.923048454132626 -43.923048454132626");
+}
+
+.solfege.advance-individual,
+.solfege.advance-all {
+  animation: advance 650ms ease-in-out 1 forwards;
+}
+
+.solfege.retreat-individual,
+.solfege.retreat-all {
+  animation: retreat 650ms ease-in-out 1 forwards;
+}
+
+@keyframes advance {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes retreat {
+  0% {
+    offset-distance: 100%;
+  }
+  100% {
+    offset-distance: 0%;
+  }
+}

@@ -1,5 +1,5 @@
 import { MODE_NOTES } from "../constants/mode.js";
-import "./ModeNote.scss";
+import "./ModeNote.css";
 
 const ModeNote = ({ modeIndex, isHidden }) => {
   return (

@@ -6,7 +6,7 @@ import { DO } from "../constants/solfege.js";
 import {
   STILL, ADVANCE_INDIVIDUAL, RETREAT_INDIVIDUAL, ADVANCE_ALL, RETREAT_ALL
 } from "../constants/location.js";
-import "./ModeExplorer.scss";
+import "./ModeExplorer.css";
 
 export default class ModeExplorer extends Component {
   constructor(props) {

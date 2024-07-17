@@ -1,8 +1,8 @@
 .tick {
   stroke-width: 3;
   stroke: #7F7F7F;
+}
 
-  &.root {
-    stroke: #0433FF;
-  }
+.tick.root {
+  stroke: #0433FF;
 }

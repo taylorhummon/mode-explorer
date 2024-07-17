@@ -1,5 +1,5 @@
 import { MODE_NAMES } from "../constants/mode.js";
-import "./ModeName.scss";
+import "./ModeName.css";
 
 const ModeName = ({ modeIndex, isHidden }) => {
   return (

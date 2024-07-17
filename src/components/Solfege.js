@@ -1,4 +1,4 @@
-import "./Solfege.scss";
+import "./Solfege.css";
 
 const Solfege = ({ name, location, move }) => (
   <circle
