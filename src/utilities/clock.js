@@ -1,4 +1,4 @@
-import { cosineOfDegrees, sineOfDegrees } from "./trigonometry.js"
+import { cosineOfDegrees, sineOfDegrees } from "./math.js"
 
 export const CLOCK_RADIUS = 120;
 export const TICK_LENGTH = 20;

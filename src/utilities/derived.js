@@ -1,4 +1,5 @@
 import { buildMap } from "../utilities/map.js";
+import { remainderFor } from "../utilities/math.js";
 import { DO, SOLFEGE_NAMES, SOLFEGE_NAMES_IN_BEADGCF_ORDER } from "../constants/solfege.js";
 import {
   STILL, EARLY, LATE, ADVANCE_INDIVIDUAL, RETREAT_INDIVIDUAL, ADVANCE_ALL, RETREAT_ALL
@@ -61,8 +62,8 @@ function getCanRetreatSolfegeName(modeIndex) {
 }
 
 function getNextModeIndex(motion, modeIndex) {
-  if (motion === ADVANCE_INDIVIDUAL) return (modeIndex + 1) % 7;
-  if (motion === RETREAT_INDIVIDUAL) return (modeIndex - 1) % 7;
+  if (motion === ADVANCE_INDIVIDUAL) return remainderFor(modeIndex + 1, 7);
+  if (motion === RETREAT_INDIVIDUAL) return remainderFor(modeIndex - 1, 7);
   if (motion === ADVANCE_ALL) return 6;
   if (motion === RETREAT_ALL) return 0;
   return modeIndex;
