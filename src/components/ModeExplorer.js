@@ -1,4 +1,4 @@
-import { Component } from "inferno";
+import { Component, createRef } from "react";
 import ModeName from "./ModeName.js";
 import Canvas from "./Canvas.js";
 import { derivedFromState } from "../utilities/derived.js";
@@ -9,6 +9,8 @@ import {
 import "./ModeExplorer.css";
 
 export default class ModeExplorer extends Component {
+  domNodeRef = createRef();
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,18 +19,18 @@ export default class ModeExplorer extends Component {
     };
   }
 
-  componentDidAppear(domNode) {
-    domNode.addEventListener("animationend", this.animationEndHandler, false);
+  componentDidMount() {
+    this.domNodeRef.current.addEventListener("animationend", this.animationEndHandler, false);
   }
 
-  componentWillDisappear(domNode) {
-    domNode.removeEventListener("animationend", this.animationEndHandler);
+  componentWillUnmount() {
+    this.domNodeRef.current.removeEventListener("animationend", this.animationEndHandler);
   }
 
   render() {
     const derived = derivedFromState(this.state);
     return (
-      <div className="mode-explorer">
+      <div className="mode-explorer" ref={this.domNodeRef}>
         <p className="title">
           Explore musical modes
         </p>
