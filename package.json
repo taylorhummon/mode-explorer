@@ -2,6 +2,10 @@
   "name": "mode-explorer",
   "type": "module",
   "version": "0.1.0",
+  "author": {
+    "name": "Taylor Hummon",
+    "email": "taylor@taylorhummon.com"
+  },
   "private": true,
   "source": "src/index.html",
   "browserslist": {
