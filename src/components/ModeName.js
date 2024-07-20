@@ -1,7 +1,7 @@
 import { MODE_NAMES } from "../constants/mode.js";
 import "./ModeName.css";
 
-const ModeName = ({ modeIndex, isHidden }) => {
+export default function ModeName({ modeIndex, isHidden }) {
   return (
     <p className="mode-name">Mode:&nbsp;
       <span className={className(isHidden)}>{MODE_NAMES[modeIndex]}</span>
@@ -14,5 +14,3 @@ function className(isHidden) {
   if (isHidden) classNames.push("hidden");
   return classNames.join(" ");
 }
-
-export default ModeName;

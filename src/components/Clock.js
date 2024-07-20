@@ -3,16 +3,16 @@ import { buildIndicesArray } from "../utilities/array.js";
 import Tick from "./Tick.js";
 import "./Clock.css";
 
-const Clock = () => (
-  <>
-    <circle
-      className="clock"
-      cx="0"
-      cy="0"
-      r={CLOCK_RADIUS}
-    />
-    {buildIndicesArray(12).map((hour) => Tick({ hour }))}
-  </>
-);
-
-export default Clock;
+export default function Clock() {
+  return (
+    <>
+      <circle
+        className="clock"
+        cx="0"
+        cy="0"
+        r={CLOCK_RADIUS}
+      />
+      {buildIndicesArray(12).map((hour) => Tick({ hour }))}
+    </>
+  );
+}

@@ -1,4 +1,4 @@
-import { Component, createRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ModeName from "./ModeName.js";
 import Canvas from "./Canvas.js";
 import { derivedFromState } from "../utilities/derived.js";
@@ -8,73 +8,77 @@ import {
 } from "../constants/location.js";
 import "./ModeExplorer.css";
 
-export default class ModeExplorer extends Component {
-  domNodeRef = createRef();
+const INITIAL_MODE_INDEX = 5; // Major mode
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      motion: STILL,
-      modeIndex: 5
-    };
-  }
-
-  componentDidMount() {
-    this.domNodeRef.current.addEventListener("animationend", this.animationEndHandler, false);
-  }
-
-  componentWillUnmount() {
-    this.domNodeRef.current.removeEventListener("animationend", this.animationEndHandler);
-  }
-
-  render() {
-    const derived = derivedFromState(this.state);
-    return (
-      <div className="mode-explorer" ref={this.domNodeRef}>
-        <p className="title">
-          Explore musical modes
-        </p>
-        <p className="instructions">
-          Click on a green dot to switch modes.
-        </p>
-        <Canvas
-          derived={derived}
-          buildMove={this.buildMove}
-        />
-        <ModeName
-          modeIndex={derived.modeIndex}
-          isHidden={derived.isAnimating}
-        />
-      </div>
-    );
-  }
-
-  buildMove = (solfege) => {
-    if (solfege.canAdvance) return this.advanceIndividual;
-    if (solfege.canRetreat) return this.retreatIndividual;
+export default function ModeExplorer() {
+  const domNodeRef = useRef();
+  const [state, setState] = useState({
+    motion: STILL,
+    modeIndex: INITIAL_MODE_INDEX
+  });
+  const derived = derivedFromState(state);
+  const buildMove = (solfege) => {
+    if (solfege.canAdvance) {
+      return () => setState({
+        motion: ADVANCE_INDIVIDUAL,
+        modeIndex: derived.modeIndex
+      });
+    }
+    if (solfege.canRetreat) {
+      return () => setState({
+        motion: RETREAT_INDIVIDUAL,
+        modeIndex: derived.modeIndex
+      });
+    }
     return null;
-  }
+  };
+  useEffect(() => {
+    function animationEndHandler() {
+      setState(nextStateOnAnimationEnd);
+    }
+    domNodeRef.current.addEventListener("animationend", animationEndHandler, false);
+    return () => {
+      domNodeRef.current.removeEventListener("animationend", animationEndHandler);
+    };
+  }, []);
+  return (
+    <div className="mode-explorer" ref={domNodeRef}>
+      <p className="title">
+        Explore musical modes
+      </p>
+      <p className="instructions">
+        Click on a green dot to switch modes.
+      </p>
+      <Canvas
+        derived={derived}
+        buildMove={buildMove}
+      />
+      <ModeName
+        modeIndex={derived.modeIndex}
+        isHidden={derived.isAnimating}
+      />
+    </div>
+  );
+}
 
-  advanceIndividual = () => {
-    this.setState({ motion: ADVANCE_INDIVIDUAL });
-  }
-
-  retreatIndividual = () => {
-    this.setState({ motion: RETREAT_INDIVIDUAL });
-  }
-
-  animationEndHandler = () => {
-    this.setState((state) => {
-      const derived = derivedFromState(state);
-      if (! derived.isAnimating) return null;
-      const doSolfege = derived.solfegeByName.get(DO);
-      if (doSolfege.location === ADVANCE_INDIVIDUAL) {
-        return { motion: RETREAT_ALL };
-      } else if (doSolfege.location === RETREAT_INDIVIDUAL) {
-        return { motion: ADVANCE_ALL };
-      } else {
-        return { motion: STILL, modeIndex: derived.nextModeIndex };
-      }
-    });
+function nextStateOnAnimationEnd(state) {
+  const derived = derivedFromState(state);
+  if (! derived.isAnimating) return state;
+  const doSolfege = derived.solfegeByName.get(DO);
+  if (doSolfege.location === ADVANCE_INDIVIDUAL) {
+    return {
+      motion: RETREAT_ALL,
+      modeIndex: derived.modeIndex
+    };
+  } else if (doSolfege.location === RETREAT_INDIVIDUAL) {
+    return {
+      motion: ADVANCE_ALL,
+      modeIndex: derived.modeIndex
+    };
+  } else {
+    return {
+      motion: STILL,
+      modeIndex: derived.nextModeIndex
+    };
   }
 }

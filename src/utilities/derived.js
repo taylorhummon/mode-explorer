@@ -13,9 +13,7 @@ export function derivedFromState(state) {
   }
 }
 
-function derivedFromStateWhenStill(state) {
-  const motion = state.motion;
-  const modeIndex = state.modeIndex;
+function derivedFromStateWhenStill({ motion, modeIndex }) {
   const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeIndex);
   const canRetreatSolfegeName = getCanRetreatSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, (solfegeName => ({
@@ -32,9 +30,7 @@ function derivedFromStateWhenStill(state) {
   };
 }
 
-function derivedFromStateWhenAnimating(state) {
-  const motion = state.motion;
-  const modeIndex = state.modeIndex;
+function derivedFromStateWhenAnimating({ motion, modeIndex }) {
   const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeIndex);
   const canRetreatSolfegeName = getCanRetreatSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, (solfegeName => ({

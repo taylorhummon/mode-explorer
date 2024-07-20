@@ -1,7 +1,7 @@
 import { MODE_NOTES } from "../constants/mode.js";
 import "./ModeNote.css";
 
-const ModeNote = ({ modeIndex, isHidden }) => {
+export default function ModeNote({ modeIndex, isHidden }) {
   return (
     <text
       className={className(isHidden)}
@@ -18,5 +18,3 @@ function className(isHidden) {
   if (isHidden) classNames.push("hidden");
   return classNames.join(" ");
 }
-
-export default ModeNote;
