@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import ModeName from "./ModeName.js";
 import Canvas from "./Canvas.js";
-import { derivedFromState } from "../utilities/derived.js";
-import { DO } from "../constants/solfege.js";
-import {
-  STILL, ADVANCE_INDIVIDUAL, RETREAT_INDIVIDUAL, ADVANCE_ALL, RETREAT_ALL
-} from "../constants/location.js";
+import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived.js";
+import { STILL } from "../constants/location.js";
 import "./ModeExplorer.css";
 
 const INITIAL_MODE_INDEX = 5; // Major mode
@@ -18,19 +15,11 @@ export default function ModeExplorer() {
   });
   const derived = derivedFromState(state);
   const buildMove = (solfege) => {
-    if (solfege.canAdvance) {
-      return () => setState({
-        motion: ADVANCE_INDIVIDUAL,
-        modeIndex: derived.modeIndex
-      });
-    }
-    if (solfege.canRetreat) {
-      return () => setState({
-        motion: RETREAT_INDIVIDUAL,
-        modeIndex: derived.modeIndex
-      });
-    }
-    return null;
+    if (! solfege.availableMotion) return null;
+    return () => setState({
+      motion: solfege.availableMotion,
+      modeIndex: derived.modeIndex
+    });
   };
   useEffect(() => {
     function animationEndHandler() {
@@ -59,26 +48,4 @@ export default function ModeExplorer() {
       />
     </div>
   );
-}
-
-function nextStateOnAnimationEnd(state) {
-  const derived = derivedFromState(state);
-  if (! derived.isAnimating) return state;
-  const doSolfege = derived.solfegeByName.get(DO);
-  if (doSolfege.location === ADVANCE_INDIVIDUAL) {
-    return {
-      motion: RETREAT_ALL,
-      modeIndex: derived.modeIndex
-    };
-  } else if (doSolfege.location === RETREAT_INDIVIDUAL) {
-    return {
-      motion: ADVANCE_ALL,
-      modeIndex: derived.modeIndex
-    };
-  } else {
-    return {
-      motion: STILL,
-      modeIndex: derived.nextModeIndex
-    };
-  }
 }

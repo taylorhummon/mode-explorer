@@ -18,8 +18,7 @@ function derivedFromStateWhenStill({ motion, modeIndex }) {
   const canRetreatSolfegeName = getCanRetreatSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, (solfegeName => ({
     location: getStillLocation(solfegeName, { modeIndex }),
-    canAdvance: solfegeName === canAdvanceSolfegeName,
-    canRetreat: solfegeName === canRetreatSolfegeName
+    availableMotion: getAvailableMotion(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName)
   })));
   return {
     isAnimating: false,
@@ -34,9 +33,11 @@ function derivedFromStateWhenAnimating({ motion, modeIndex }) {
   const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeIndex);
   const canRetreatSolfegeName = getCanRetreatSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, (solfegeName => ({
-    location: getAnimatedLocation(solfegeName, { motion, modeIndex, canAdvanceSolfegeName, canRetreatSolfegeName }),
-    canAdvance: false,
-    canRetreat: false
+    location: getAnimatedLocation(
+      solfegeName,
+      { motion, modeIndex, canAdvanceSolfegeName, canRetreatSolfegeName }
+    ),
+    availableMotion: null
   })));
   return {
     isAnimating: true,
@@ -55,6 +56,12 @@ function getCanAdvanceSolfegeName(modeIndex) {
 function getCanRetreatSolfegeName(modeIndex) {
   if (modeIndex === 0) return DO;
   return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex - 1];
+}
+
+function getAvailableMotion(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName) {
+  if (solfegeName === canAdvanceSolfegeName) return ADVANCE_INDIVIDUAL;
+  if (solfegeName === canRetreatSolfegeName) return RETREAT_INDIVIDUAL;
+  return null;
 }
 
 function getNextModeIndex(motion, modeIndex) {
@@ -78,4 +85,26 @@ function getStillLocation(solfegeName, { modeIndex }) {
   const index = SOLFEGE_NAMES_IN_BEADGCF_ORDER.indexOf(solfegeName);
   if (index === -1) throw new Error(`invalid solfege note: ${solfegeName}`);
   return (modeIndex <= index) ? EARLY : LATE;
+}
+
+export function nextStateOnAnimationEnd(state) {
+  const derived = derivedFromState(state);
+  if (! derived.isAnimating) return state;
+  const doSolfege = derived.solfegeByName.get(DO);
+  if (doSolfege.location === ADVANCE_INDIVIDUAL) {
+    return {
+      motion: RETREAT_ALL,
+      modeIndex: derived.modeIndex
+    };
+  } else if (doSolfege.location === RETREAT_INDIVIDUAL) {
+    return {
+      motion: ADVANCE_ALL,
+      modeIndex: derived.modeIndex
+    };
+  } else {
+    return {
+      motion: STILL,
+      modeIndex: derived.nextModeIndex
+    };
+  }
 }
