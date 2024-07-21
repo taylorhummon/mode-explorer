@@ -1,20 +1,3 @@
 .mode-explorer {
   width: 400px;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.mode-explorer .title {
-  margin: 10px 0 14px 0;
-  font-size: 24pt;
-  font-weight: bold;
-}
-
-.mode-explorer .instructions {
-  margin: 6px 0 6px 0;
-  font-style: italic;
 }

@@ -32,12 +32,6 @@ export default function ModeExplorer() {
   }, []);
   return (
     <div className="mode-explorer" ref={domNodeRef}>
-      <p className="title">
-        Explore musical modes
-      </p>
-      <p className="instructions">
-        Click on a green dot to switch modes.
-      </p>
       <Canvas
         derived={derived}
         buildMove={buildMove}
