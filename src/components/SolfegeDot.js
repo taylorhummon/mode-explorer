@@ -8,6 +8,7 @@ export default function SolfegeDot({ name, location, move }) {
       cy="0"
       r="10"
       onClick={move}
+      data-testid={`solfege-dot-${name}`}
     />
   );
 }
