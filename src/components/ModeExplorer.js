@@ -23,7 +23,7 @@ export default function ModeExplorer() {
   };
   useEffect(() => {
     function animationEndHandler(event) {
-      setState((state) => nextStateOnAnimationEnd(event, state));
+      setState((state) => nextStateOnAnimationEnd(state, event));
     }
     domNodeRef.current.addEventListener("animationend", animationEndHandler, false);
     return () => {

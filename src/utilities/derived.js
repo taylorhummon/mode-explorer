@@ -89,7 +89,7 @@ function getStillLocation(solfegeName, { modeIndex }) {
 
 const OBSERVED_ANIMATIONS = ["advance-solfege-dot", "retreat-solfege-dot"];
 
-export function nextStateOnAnimationEnd(event, state) {
+export function nextStateOnAnimationEnd(state, event) {
   if (! OBSERVED_ANIMATIONS.includes(event.animationName)) return state;
   const derived = derivedFromState(state);
   if (! derived.isAnimating) return state;
