@@ -22,8 +22,8 @@ export default function ModeExplorer() {
     });
   };
   useEffect(() => {
-    function animationEndHandler() {
-      setState(nextStateOnAnimationEnd);
+    function animationEndHandler(event) {
+      setState((state) => nextStateOnAnimationEnd(event, state));
     }
     domNodeRef.current.addEventListener("animationend", animationEndHandler, false);
     return () => {

@@ -1,6 +1,7 @@
 import Clock from "./Clock.js";
 import ModeNote from "./ModeNote.js";
-import Solfege from "./Solfege.js";
+import SolfegeDot from "./SolfegeDot.js";
+import SolfegeLabel from "./SolfegeLabel.js";
 import { arrayFromMap } from "../utilities/map.js";
 import "./Canvas.css";
 
@@ -19,11 +20,18 @@ export default function Canvas({ derived, buildMove }) {
         modeIndex={derived.modeIndex}
       />
       {arrayFromMap(derived.solfegeByName, (solfege, name) => (
-        <Solfege
+        <SolfegeDot
           key={name}
           name={name}
           location={solfege.location}
           move={buildMove(solfege)}
+        />
+      ))}
+      {arrayFromMap(derived.solfegeByName, (solfege, name) => (
+        <SolfegeLabel
+          key={name}
+          name={name}
+          location={solfege.location}
         />
       ))}
     </svg>

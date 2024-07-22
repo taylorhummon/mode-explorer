@@ -1,6 +1,6 @@
-import "./Solfege.css";
+import "./SolfegeDot.css";
 
-export default function Solfege({ name, location, move }) {
+export default function SolfegeDot({ name, location, move }) {
   return (
     <circle
       className={className(name, location, move)}
@@ -13,7 +13,7 @@ export default function Solfege({ name, location, move }) {
 }
 
 function className(name, location, move) {
-  const classNames = ["solfege", name, location];
+  const classNames = ["solfege-dot", name, location];
   if (move) classNames.push("can-move");
   return classNames.join(" ");
 }
