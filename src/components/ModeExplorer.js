@@ -25,9 +25,13 @@ export default function ModeExplorer() {
     function animationEndHandler(event) {
       setState((state) => nextStateOnAnimationEnd(state, event));
     }
-    domNodeRef.current.addEventListener("animationend", animationEndHandler, false);
+    if (domNodeRef.current) {
+      domNodeRef.current.addEventListener("animationend", animationEndHandler, false);
+    }
     return () => {
-      domNodeRef.current.removeEventListener("animationend", animationEndHandler);
+      if (domNodeRef.current) {
+        domNodeRef.current.removeEventListener("animationend", animationEndHandler);
+      }
     };
   }, []);
   return (
