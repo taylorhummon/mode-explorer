@@ -1,4 +1,4 @@
-import { MODE_NAMES } from "../constants/mode";
+import { MODE_NAMES } from "../enumerations";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeName.module.scss";
 

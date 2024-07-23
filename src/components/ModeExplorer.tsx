@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Solfege } from "../types";
+import { Motion } from "../enumerations";
 import ModeName from "./ModeName";
 import Canvas from "./Canvas";
-import { STILL } from "../constants/location";
 import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeExplorer.module.scss";
@@ -12,7 +12,7 @@ const INITIAL_MODE_INDEX = 5; // Major mode
 export default function ModeExplorer() {
   const domNodeRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState({
-    motion: STILL,
+    motion: Motion.Still,
     modeIndex: INITIAL_MODE_INDEX
   });
   const derived = derivedFromState(state);

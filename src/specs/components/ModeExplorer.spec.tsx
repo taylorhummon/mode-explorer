@@ -1,9 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { SolfegeName } from "../../enumerations";
 import ModeExplorer from "../../components/ModeExplorer";
 
-function getSolfegeDot(name) {
+function getSolfegeDot(name: SolfegeName) {
   return screen.getByTestId(`solfege-dot-${name}`);
 }
 
@@ -13,7 +14,7 @@ describe("ModeExplorer", () => {
   });
   it("shows solfege notes at the correct positions for the major mode", () => {
     render(<ModeExplorer />);
-    const domElementDo = getSolfegeDot("Do");
+    const domElementDo = getSolfegeDot(SolfegeName.Do);
     expect(
       domElementDo.getAttribute("class")
     ).toEqual(
@@ -24,7 +25,7 @@ describe("ModeExplorer", () => {
     ).toEqual(
       expect.not.stringContaining("can-move")
     );
-    const domElementRe = getSolfegeDot("Re");
+    const domElementRe = getSolfegeDot(SolfegeName.Re);
     expect(
       domElementRe.getAttribute("class")
     ).toEqual(
@@ -35,7 +36,7 @@ describe("ModeExplorer", () => {
     ).toEqual(
       expect.not.stringContaining("can-move")
     );
-    const domElementMi = getSolfegeDot("Mi");
+    const domElementMi = getSolfegeDot(SolfegeName.Mi);
     expect(
       domElementMi.getAttribute("class")
     ).toEqual(
@@ -46,7 +47,7 @@ describe("ModeExplorer", () => {
     ).toEqual(
       expect.not.stringContaining("can-move")
     );
-    const domElementFa = getSolfegeDot("Fa");
+    const domElementFa = getSolfegeDot(SolfegeName.Fa);
     expect(
       domElementFa.getAttribute("class")
     ).toEqual(
@@ -57,7 +58,7 @@ describe("ModeExplorer", () => {
     ).toEqual(
       expect.stringContaining("can-move")
     );
-    const domElementSol = getSolfegeDot("Sol");
+    const domElementSol = getSolfegeDot(SolfegeName.Sol);
     expect(
       domElementSol.getAttribute("class")
     ).toEqual(
@@ -68,7 +69,7 @@ describe("ModeExplorer", () => {
     ).toEqual(
       expect.not.stringContaining("can-move")
     );
-    const domElementLa = getSolfegeDot("La");
+    const domElementLa = getSolfegeDot(SolfegeName.La);
     expect(
       domElementLa.getAttribute("class")
     ).toEqual(
@@ -79,7 +80,7 @@ describe("ModeExplorer", () => {
     ).toEqual(
       expect.not.stringContaining("can-move")
     );
-    const domElementTi = getSolfegeDot("Ti");
+    const domElementTi = getSolfegeDot(SolfegeName.Ti);
     expect(
       domElementTi.getAttribute("class")
     ).toEqual(
@@ -95,9 +96,9 @@ describe("ModeExplorer", () => {
     const user = userEvent.setup();
     const div = document.createElement("div");
     render(<ModeExplorer />);
-    await user.click(getSolfegeDot("Fa"));
+    await user.click(getSolfegeDot(SolfegeName.Fa));
     expect(
-      getSolfegeDot("Fa").getAttribute("class")
+      getSolfegeDot(SolfegeName.Fa).getAttribute("class")
     ).toEqual(
       expect.stringContaining("advance-individual")
     );

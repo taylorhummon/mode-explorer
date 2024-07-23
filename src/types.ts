@@ -1,17 +1,19 @@
+import { Motion, SolfegeName } from "./enumerations";
+
 export interface State {
-  motion: string;
+  motion: Motion;
   modeIndex: number;
 }
 
 export interface Derived {
   isAnimating: boolean;
-  motion: string;
+  motion: Motion;
   modeIndex: number;
   nextModeIndex: number;
-  solfegeByName: Map<string, Solfege>;
+  solfegeByName: Map<SolfegeName, Solfege>;
 }
 
 export interface Solfege {
-  location: string;
-  availableMotion: string | null;
+  location: Motion;
+  availableMotion: Motion | null;
 }

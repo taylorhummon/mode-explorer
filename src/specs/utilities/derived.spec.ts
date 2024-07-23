@@ -1,8 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
+import { Motion } from "../../enumerations";
 import { derivedFromState, nextStateOnAnimationEnd } from "../../utilities/derived";
-import {
-  STILL, ADVANCE_INDIVIDUAL, RETREAT_INDIVIDUAL, ADVANCE_ALL, RETREAT_ALL
-} from "../../constants/location";
 
 function mockAnimationEvent(
   animationName: string
@@ -13,73 +11,73 @@ function mockAnimationEvent(
 describe("derivedFromState()", () => {
   it("correctly decides isAnimating", () => {
     expect(
-      derivedFromState({ motion: STILL, modeIndex: 5 }).isAnimating
+      derivedFromState({ motion: Motion.Still, modeIndex: 5 }).isAnimating
     ).toBe(
       false
     );
     expect(
-      derivedFromState({ motion: ADVANCE_INDIVIDUAL, modeIndex: 5 }).isAnimating
+      derivedFromState({ motion: Motion.AdvanceIndividual, modeIndex: 5 }).isAnimating
     ).toBe(
       true
     );
     expect(
-      derivedFromState({ motion: ADVANCE_ALL, modeIndex: 5 }).isAnimating
+      derivedFromState({ motion: Motion.AdvanceAll, modeIndex: 5 }).isAnimating
     ).toBe(
       true
     );
   });
   it("includes the motion", () => {
     expect(
-      derivedFromState({ motion: STILL, modeIndex: 5 }).motion
+      derivedFromState({ motion: Motion.Still, modeIndex: 5 }).motion
     ).toBe(
-      STILL
+      Motion.Still
     );
     expect(
-      derivedFromState({ motion: RETREAT_INDIVIDUAL, modeIndex: 5 }).motion
+      derivedFromState({ motion: Motion.RetreatIndividual, modeIndex: 5 }).motion
     ).toBe(
-      RETREAT_INDIVIDUAL
+      Motion.RetreatIndividual
     );
     expect(
-      derivedFromState({ motion: RETREAT_ALL, modeIndex: 5 }).motion
+      derivedFromState({ motion: Motion.RetreatAll, modeIndex: 5 }).motion
     ).toBe(
-      RETREAT_ALL
+      Motion.RetreatAll
     );
   });
   it("includes the modeIndex", () => {
     expect(
-      derivedFromState({ motion: STILL, modeIndex: 5 }).modeIndex
+      derivedFromState({ motion: Motion.Still, modeIndex: 5 }).modeIndex
     ).toBe(
       5
     );
     expect(
-      derivedFromState({ motion: STILL, modeIndex: 0 }).modeIndex
+      derivedFromState({ motion: Motion.Still, modeIndex: 0 }).modeIndex
     ).toBe(
       0
     );
   });
   it("correctly decides nextModeIndex", () => {
     expect(
-      derivedFromState({ motion: STILL, modeIndex: 5 }).nextModeIndex
+      derivedFromState({ motion: Motion.Still, modeIndex: 5 }).nextModeIndex
     ).toBe(
       5
     );
     expect(
-      derivedFromState({ motion: ADVANCE_INDIVIDUAL, modeIndex: 5 }).nextModeIndex
+      derivedFromState({ motion: Motion.AdvanceIndividual, modeIndex: 5 }).nextModeIndex
     ).toBe(
       6
     );
     expect(
-      derivedFromState({ motion: RETREAT_INDIVIDUAL, modeIndex: 5 }).nextModeIndex
+      derivedFromState({ motion: Motion.RetreatIndividual, modeIndex: 5 }).nextModeIndex
     ).toBe(
       4
     );
     expect(
-      derivedFromState({ motion: ADVANCE_INDIVIDUAL, modeIndex: 6 }).nextModeIndex
+      derivedFromState({ motion: Motion.AdvanceIndividual, modeIndex: 6 }).nextModeIndex
     ).toBe(
       0
     );
     expect(
-      derivedFromState({ motion: RETREAT_INDIVIDUAL, modeIndex: 0 }).nextModeIndex
+      derivedFromState({ motion: Motion.RetreatIndividual, modeIndex: 0 }).nextModeIndex
     ).toBe(
       6
     );
@@ -89,13 +87,13 @@ describe("derivedFromState()", () => {
 describe("nextStateOnAnimationEnd()", () => {
   it("completes the animation of an individual solfege note advancing", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: ADVANCE_INDIVIDUAL, modeIndex: 5 },
+      { motion: Motion.AdvanceIndividual, modeIndex: 5 },
       mockAnimationEvent("advance-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      STILL
+      Motion.Still
     );
     expect(
       nextState.modeIndex
@@ -105,13 +103,13 @@ describe("nextStateOnAnimationEnd()", () => {
   });
   it("completes the animation of an individual solfege note retreating", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: RETREAT_INDIVIDUAL, modeIndex: 5 },
+      { motion: Motion.RetreatIndividual, modeIndex: 5 },
       mockAnimationEvent("retreat-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      STILL
+      Motion.Still
     );
     expect(
       nextState.modeIndex
@@ -121,13 +119,13 @@ describe("nextStateOnAnimationEnd()", () => {
   });
   it("does nothing when a label animation ends", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: ADVANCE_INDIVIDUAL, modeIndex: 2 },
+      { motion: Motion.AdvanceIndividual, modeIndex: 2 },
       mockAnimationEvent("advance-solfege-label")
     );
     expect(
       nextState.motion
     ).toBe(
-      ADVANCE_INDIVIDUAL
+      Motion.AdvanceIndividual
     );
     expect(
       nextState.modeIndex
@@ -135,15 +133,15 @@ describe("nextStateOnAnimationEnd()", () => {
       2
     );
   });
-  it("does nothing when the state's motion is STILL", () => {
+  it("does nothing when the state's motion is Motion.Still", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: STILL, modeIndex: 2 },
+      { motion: Motion.Still, modeIndex: 2 },
       mockAnimationEvent("advance-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      STILL
+      Motion.Still
     );
     expect(
       nextState.modeIndex
@@ -151,15 +149,15 @@ describe("nextStateOnAnimationEnd()", () => {
       2
     );
   });
-  it("triggers a RETREAT_ALL when Do has advanced individually", () => {
+  it("triggers a Motion.RetreatAll when Do has advanced individually", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: ADVANCE_INDIVIDUAL, modeIndex: 6 },
+      { motion: Motion.AdvanceIndividual, modeIndex: 6 },
       mockAnimationEvent("advance-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      RETREAT_ALL
+      Motion.RetreatAll
     );
     expect(
       nextState.modeIndex
@@ -167,15 +165,15 @@ describe("nextStateOnAnimationEnd()", () => {
       6
     );
   });
-  it("completes the animation of a RETREAT_ALL", () => {
+  it("completes the animation of a Motion.RetreatAll", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: RETREAT_ALL, modeIndex: 6 },
+      { motion: Motion.RetreatAll, modeIndex: 6 },
       mockAnimationEvent("retreat-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      STILL
+      Motion.Still
     );
     expect(
       nextState.modeIndex
@@ -183,15 +181,15 @@ describe("nextStateOnAnimationEnd()", () => {
       0
     );
   });
-  it("triggers an ADVANCE_ALL when Do has retreated individually", () => {
+  it("triggers an Motion.AdvanceAll when Do has retreated individually", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: RETREAT_INDIVIDUAL, modeIndex: 0 },
+      { motion: Motion.RetreatIndividual, modeIndex: 0 },
       mockAnimationEvent("retreat-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      ADVANCE_ALL
+      Motion.AdvanceAll
     );
     expect(
       nextState.modeIndex
@@ -199,15 +197,15 @@ describe("nextStateOnAnimationEnd()", () => {
       0
     );
   });
-  it("completes the animation of an ADVANCE_ALL", () => {
+  it("completes the animation of an Motion.AdvanceAll", () => {
     const nextState = nextStateOnAnimationEnd(
-      { motion: ADVANCE_ALL, modeIndex: 0 },
+      { motion: Motion.AdvanceAll, modeIndex: 0 },
       mockAnimationEvent("advance-solfege-dot")
     );
     expect(
       nextState.motion
     ).toBe(
-      STILL
+      Motion.Still
     );
     expect(
       nextState.modeIndex
