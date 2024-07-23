@@ -1,6 +1,6 @@
 import { MODE_NOTES } from "../constants/mode";
 import { buildClassString } from "../utilities/css";
-import cssModule from "./ModeNote.module.css";
+import cssModule from "./ModeNote.module.scss";
 
 interface ModeNoteProps {
   modeIndex: number;

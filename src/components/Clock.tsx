@@ -2,7 +2,7 @@ import Tick from "./Tick";
 import { CLOCK_RADIUS } from "../utilities/clock";
 import { buildIndicesArray } from "../utilities/array";
 import { buildClassString } from "../utilities/css";
-import cssModule from "./Clock.module.css";
+import cssModule from "./Clock.module.scss";
 
 export default function Clock() {
   return (

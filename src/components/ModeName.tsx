@@ -1,6 +1,6 @@
 import { MODE_NAMES } from "../constants/mode";
 import { buildClassString } from "../utilities/css";
-import cssModule from "./ModeName.module.css";
+import cssModule from "./ModeName.module.scss";
 
 interface ModeNameProps {
   modeIndex: number;

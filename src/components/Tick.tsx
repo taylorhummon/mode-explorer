@@ -1,6 +1,6 @@
 import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock";
 import { buildClassString } from "../utilities/css";
-import cssModule from "./Tick.module.css";
+import cssModule from "./Tick.module.scss";
 
 interface TickProps {
   hour: number;

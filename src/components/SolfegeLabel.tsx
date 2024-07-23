@@ -1,5 +1,5 @@
 import { buildClassString } from "../utilities/css";
-import cssModule from "./SolfegeLabel.module.css";
+import cssModule from "./SolfegeLabel.module.scss";
 
 interface SolfegeLabelProps {
   name: string;

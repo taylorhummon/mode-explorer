@@ -1,5 +1,5 @@
 import { buildClassString } from "../utilities/css";
-import cssModule from "./SolfegeDot.module.css";
+import cssModule from "./SolfegeDot.module.scss";
 
 interface SolfegeDotProps {
   name: string;

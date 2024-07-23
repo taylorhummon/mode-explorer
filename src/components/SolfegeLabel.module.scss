@@ -1,0 +1,159 @@
+@keyframes advance-solfege-label {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes retreat-solfege-label {
+  0% {
+    offset-distance: 100%;
+  }
+  100% {
+    offset-distance: 0%;
+  }
+}
+
+.solfege-label {
+  offset-rotate: 0deg;
+  fill: #000000;
+  font-size: 18px;
+  line-height: 0;
+  font-family: "PT Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  text-anchor: middle;
+
+  &.advance-individual,
+  &.advance-all {
+    animation: advance-solfege-label 650ms ease-in-out 1 forwards;
+  }
+
+  &.retreat-individual,
+  &.retreat-all {
+    animation: retreat-solfege-label 650ms ease-in-out 1 forwards;
+  }
+
+  &.Do {
+    fill: #0433FF;
+
+    &.still {
+      offset-path: path("M 0, -80");
+    }
+
+    &.advance-individual,
+    &.retreat-all {
+      offset-path: path("M 0,-80 a 80 80 0 0 1 40 10.71796769724492");
+    }
+
+    &.retreat-individual,
+    &.advance-all {
+      offset-path: path("M -40,-69.28203230275508 a 80 80 0 0 1 40 -10.71796769724492");
+    }
+  }
+
+  &.Re {
+    &.early {
+      offset-path: path("M 40,-69.28203230275508");
+    }
+
+    &.late {
+      offset-path: path("M 69.28203230275508,-40");
+    }
+
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
+      offset-path: path("M 40,-69.28203230275508 a 80 80 0 0 1 29.282032302755084 29.282032302755084");
+    }
+  }
+
+  &.Mi {
+    &.early {
+      offset-path: path("M 80,0");
+    }
+
+    &.late {
+      offset-path: path("M 69.28203230275508,40");
+    }
+
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
+      offset-path: path("M 80,0 a 80 80 0 0 1 -10.71796769724492 40");
+    }
+  }
+
+  &.Fa {
+    &.early {
+      offset-path: path("M 40,69.28203230275508");
+    }
+
+    &.late {
+      offset-path: path("M 0,80");
+    }
+
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
+      offset-path: path("M 40,69.28203230275508 a 80 80 0 0 1 -40 10.71796769724492");
+    }
+  }
+
+  &.Sol {
+    &.early {
+      offset-path: path("M 0,80");
+    }
+
+    &.late {
+      offset-path: path("M -40,69.28203230275508");
+    }
+
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
+      offset-path: path("M 0,80 a 80 80 0 0 1 -40 -10.71796769724492");
+    }
+  }
+
+  &.La {
+    &.early {
+      offset-path: path("M -69.28203230275508,40");
+    }
+
+    &.late {
+      offset-path: path("M -80,0");
+    }
+
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
+      offset-path: path("M -69.28203230275508,40 a 80 80 0 0 1 -10.71796769724492 -40");
+    }
+  }
+
+  &.Ti {
+    &.early {
+      offset-path: path("M -69.28203230275508,-40");
+    }
+
+    &.late {
+      offset-path: path("M -40,-69.28203230275508");
+    }
+
+    &.advance-individual,
+    &.retreat-individual,
+    &.advance-all,
+    &.retreat-all {
+      offset-path: path("M -69.28203230275508,-40 a 80 80 0 0 1 29.282032302755084 -29.282032302755084");
+    }
+  }
+}
