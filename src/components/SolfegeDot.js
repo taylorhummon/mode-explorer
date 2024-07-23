@@ -1,4 +1,5 @@
-import "./SolfegeDot.css";
+import cssModule from "./SolfegeDot.module.css";
+import { buildClassString } from "../utilities/css.js";
 
 export default function SolfegeDot({ name, location, move }) {
   return (
@@ -16,5 +17,5 @@ export default function SolfegeDot({ name, location, move }) {
 function className(name, location, move) {
   const classNames = ["solfege-dot", name, location];
   if (move) classNames.push("can-move");
-  return classNames.join(" ");
+  return buildClassString(cssModule, classNames);
 }

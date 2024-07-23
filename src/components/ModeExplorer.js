@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import ModeName from "./ModeName.js";
 import Canvas from "./Canvas.js";
-import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived.js";
 import { STILL } from "../constants/location.js";
-import "./ModeExplorer.css";
+import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived.js";
+import { buildClassString } from "../utilities/css.js";
+import cssModule from "./ModeExplorer.module.css";
 
 const INITIAL_MODE_INDEX = 5; // Major mode
 
@@ -35,7 +36,10 @@ export default function ModeExplorer() {
     };
   }, []);
   return (
-    <div className="mode-explorer" ref={domNodeRef}>
+    <div
+      ref={domNodeRef}
+      className={buildClassString(cssModule, ["mode-explorer"])}
+    >
       <Canvas
         derived={derived}
         buildMove={buildMove}

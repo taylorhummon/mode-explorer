@@ -1,4 +1,5 @@
-import "./SolfegeLabel.css";
+import { buildClassString } from "../utilities/css.js";
+import cssModule from "./SolfegeLabel.module.css";
 
 export default function SolfegeLabel({ name, location }) {
   return (
@@ -13,5 +14,5 @@ export default function SolfegeLabel({ name, location }) {
 }
 
 function className(name, location) {
-  return ["solfege-label", name, location].join(" ");
+  return buildClassString(cssModule, ["solfege-label", name, location]);
 }

@@ -87,10 +87,8 @@ function getStillLocation(solfegeName, { modeIndex }) {
   return (modeIndex <= index) ? EARLY : LATE;
 }
 
-const OBSERVED_ANIMATIONS = ["advance-solfege-dot", "retreat-solfege-dot"];
-
 export function nextStateOnAnimationEnd(state, event) {
-  if (! OBSERVED_ANIMATIONS.includes(event.animationName)) return state;
+  if (! isAnimationObserved(event.animationName)) return state;
   const derived = derivedFromState(state);
   if (! derived.isAnimating) return state;
   const doSolfege = derived.solfegeByName.get(DO);
@@ -110,4 +108,8 @@ export function nextStateOnAnimationEnd(state, event) {
       modeIndex: derived.nextModeIndex
     };
   }
+}
+
+function isAnimationObserved(animationName) {
+  return animationName.endsWith("solfege-dot");
 }

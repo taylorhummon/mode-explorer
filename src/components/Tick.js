@@ -1,5 +1,6 @@
 import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock.js";
-import "./Tick.css";
+import { buildClassString } from "../utilities/css.js";
+import cssModule from "./Tick.module.css";
 
 export default function Tick({ hour }) {
   return (
@@ -17,5 +18,5 @@ export default function Tick({ hour }) {
 function className(hour) {
   const classNames = ["tick"];
   if (hour === 0) classNames.push("root");
-  return classNames.join(" ");
+  return buildClassString(cssModule, classNames);
 }

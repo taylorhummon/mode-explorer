@@ -3,7 +3,6 @@ import ModeNote from "./ModeNote.js";
 import SolfegeDot from "./SolfegeDot.js";
 import SolfegeLabel from "./SolfegeLabel.js";
 import { arrayFromMap } from "../utilities/map.js";
-import "./Canvas.css";
 
 export default function Canvas({ derived, buildMove }) {
   return (

@@ -24,7 +24,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "test": "jest --watch"
+    "test": "jest --watch --no-cache"
   },
   "dependencies": {
     "react": "^18.3.1",

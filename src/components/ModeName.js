@@ -1,5 +1,6 @@
 import { MODE_NAMES } from "../constants/mode.js";
-import "./ModeName.css";
+import { buildClassString } from "../utilities/css.js";
+import cssModule from "./ModeName.module.css";
 
 export default function ModeName({ modeIndex, isHidden }) {
   return (
@@ -12,5 +13,5 @@ export default function ModeName({ modeIndex, isHidden }) {
 function className(isHidden) {
   const classNames = ["mode-name-span"];
   if (isHidden) classNames.push("hidden");
-  return classNames.join(" ");
+  return buildClassString(cssModule, classNames);
 }
