@@ -1,7 +1,15 @@
+import { buildClassString } from "../utilities/css";
 import cssModule from "./SolfegeDot.module.css";
-import { buildClassString } from "../utilities/css.js";
 
-export default function SolfegeDot({ name, location, move }) {
+interface SolfegeDotProps {
+  name: string;
+  location: string;
+  move: (() => void) | undefined;
+}
+
+export default function SolfegeDot(
+  { name, location, move }: SolfegeDotProps
+) {
   return (
     <circle
       className={className(name, location, move)}
@@ -14,7 +22,11 @@ export default function SolfegeDot({ name, location, move }) {
   );
 }
 
-function className(name, location, move) {
+function className(
+  name: string,
+  location: string,
+  move: (() => void) | undefined
+): string {
   const classNames = ["solfege-dot", name, location];
   if (move) classNames.push("can-move");
   return buildClassString(cssModule, classNames);

@@ -1,8 +1,14 @@
-import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock.js";
-import { buildClassString } from "../utilities/css.js";
+import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock";
+import { buildClassString } from "../utilities/css";
 import cssModule from "./Tick.module.css";
 
-export default function Tick({ hour }) {
+interface TickProps {
+  hour: number;
+}
+
+export default function Tick(
+  { hour }: TickProps
+) {
   return (
     <line
       className={className(hour)}
@@ -15,7 +21,9 @@ export default function Tick({ hour }) {
   );
 }
 
-function className(hour) {
+function className(
+  hour: number
+): string {
   const classNames = ["tick"];
   if (hour === 0) classNames.push("root");
   return buildClassString(cssModule, classNames);

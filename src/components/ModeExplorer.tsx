@@ -1,29 +1,37 @@
 import { useState, useRef, useEffect } from "react";
-import ModeName from "./ModeName.js";
-import Canvas from "./Canvas.js";
-import { STILL } from "../constants/location.js";
-import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived.js";
-import { buildClassString } from "../utilities/css.js";
+import { Solfege } from "../types";
+import ModeName from "./ModeName";
+import Canvas from "./Canvas";
+import { STILL } from "../constants/location";
+import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived";
+import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeExplorer.module.css";
 
 const INITIAL_MODE_INDEX = 5; // Major mode
 
 export default function ModeExplorer() {
-  const domNodeRef = useRef();
+  const domNodeRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState({
     motion: STILL,
     modeIndex: INITIAL_MODE_INDEX
   });
   const derived = derivedFromState(state);
-  const buildMove = (solfege) => {
-    if (! solfege.availableMotion) return null;
-    return () => setState({
-      motion: solfege.availableMotion,
-      modeIndex: derived.modeIndex
-    });
-  };
+  function buildMove(
+    solfege: Solfege
+  ): (() => void) | undefined {
+    const motion = solfege.availableMotion;
+    if (! motion) return undefined;
+    return () => {
+      setState({
+        motion,
+        modeIndex: derived.modeIndex
+      });
+    };
+  }
   useEffect(() => {
-    function animationEndHandler(event) {
+    function animationEndHandler(
+      event: AnimationEvent
+    ): void {
       setState((state) => nextStateOnAnimationEnd(state, event));
     }
     if (domNodeRef.current) {

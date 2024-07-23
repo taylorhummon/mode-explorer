@@ -1,8 +1,15 @@
-import { MODE_NOTES } from "../constants/mode.js";
-import { buildClassString } from "../utilities/css.js";
+import { MODE_NOTES } from "../constants/mode";
+import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeNote.module.css";
 
-export default function ModeNote({ modeIndex, isHidden }) {
+interface ModeNoteProps {
+  modeIndex: number;
+  isHidden: boolean;
+}
+
+export default function ModeNote(
+  { modeIndex, isHidden }: ModeNoteProps
+) {
   return (
     <text
       className={className(isHidden)}
@@ -14,7 +21,9 @@ export default function ModeNote({ modeIndex, isHidden }) {
   );
 }
 
-function className(isHidden) {
+function className(
+  isHidden: boolean
+): string {
   const classNames = ["mode-note"];
   if (isHidden) classNames.push("hidden");
   return buildClassString(cssModule, classNames)

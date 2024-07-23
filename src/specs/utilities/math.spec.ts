@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { remainderFor, cosineOfDegrees, sineOfDegrees } from "../../utilities/math";
 
 describe("remainderFor()", () => {

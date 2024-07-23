@@ -1,10 +1,18 @@
-import Clock from "./Clock.js";
-import ModeNote from "./ModeNote.js";
-import SolfegeDot from "./SolfegeDot.js";
-import SolfegeLabel from "./SolfegeLabel.js";
-import { arrayFromMap } from "../utilities/map.js";
+import { Derived, Solfege } from "../types";
+import Clock from "./Clock";
+import ModeNote from "./ModeNote";
+import SolfegeDot from "./SolfegeDot";
+import SolfegeLabel from "./SolfegeLabel";
+import { arrayFromMap } from "../utilities/map";
 
-export default function Canvas({ derived, buildMove }) {
+interface CanvasProps {
+  derived: Derived;
+  buildMove: (solfege: Solfege) => ((() => void) | undefined);
+}
+
+export default function Canvas(
+  { derived, buildMove }: CanvasProps
+) {
   return (
     <svg
       className="canvas"

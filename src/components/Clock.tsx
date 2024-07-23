@@ -1,7 +1,7 @@
-import { CLOCK_RADIUS } from "../utilities/clock.js";
-import { buildIndicesArray } from "../utilities/array.js";
-import Tick from "./Tick.js";
-import { buildClassString } from "../utilities/css.js";
+import Tick from "./Tick";
+import { CLOCK_RADIUS } from "../utilities/clock";
+import { buildIndicesArray } from "../utilities/array";
+import { buildClassString } from "../utilities/css";
 import cssModule from "./Clock.module.css";
 
 export default function Clock() {

@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { xOnClockAt, yOnClockAt } from "../../utilities/clock";
 
 describe("xOnClockAt()", () => {

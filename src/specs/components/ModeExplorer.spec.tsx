@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ModeExplorer from "../../components/ModeExplorer";
@@ -8,12 +9,10 @@ function getSolfegeDot(name) {
 
 describe("ModeExplorer", () => {
   it("renders without crashing", () => {
-    const div = document.createElement("div");
-    render(<ModeExplorer />, div);
+    render(<ModeExplorer />);
   });
   it("shows solfege notes at the correct positions for the major mode", () => {
-    const div = document.createElement("div");
-    render(<ModeExplorer />, div);
+    render(<ModeExplorer />);
     const domElementDo = getSolfegeDot("Do");
     expect(
       domElementDo.getAttribute("class")
@@ -95,9 +94,8 @@ describe("ModeExplorer", () => {
   it("solfege note animates after clicking", async () => {
     const user = userEvent.setup();
     const div = document.createElement("div");
-    render(<ModeExplorer />, div);
+    render(<ModeExplorer />);
     await user.click(getSolfegeDot("Fa"));
-    const domElementFa = getSolfegeDot("Fa")
     expect(
       getSolfegeDot("Fa").getAttribute("class")
     ).toEqual(
