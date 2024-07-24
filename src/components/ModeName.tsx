@@ -11,8 +11,12 @@ export default function ModeName(
   { modeIndex, isHidden }: ModeNameProps
 ) {
   return (
-    <p className="mode-name">Mode:&nbsp;
-      <span className={className(isHidden)}>{MODE_NAMES[modeIndex]}</span>
+    <p
+      className={buildClassString(cssModule, ["mode-name"])}
+    >Mode:&nbsp;
+      <span
+        className={className(isHidden)}
+      >{MODE_NAMES[modeIndex]}</span>
     </p>
   );
 }
