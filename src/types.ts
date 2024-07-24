@@ -17,3 +17,5 @@ export interface Solfege {
   location: Motion;
   availableMotion: Motion | null;
 }
+
+export type Move = (() => void) | undefined;

@@ -1,14 +1,16 @@
+import { SolfegeName, Motion } from "../enumerations";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./SolfegeLabel.module.scss";
 
 interface SolfegeLabelProps {
-  name: string;
-  location: string;
+  name: SolfegeName;
+  location: Motion;
 }
 
-export default function SolfegeLabel(
-  { name, location }: SolfegeLabelProps
-) {
+export default function SolfegeLabel({
+  name,
+  location
+}: SolfegeLabelProps) {
   return (
     <text
       className={className(name, location)}
@@ -21,8 +23,9 @@ export default function SolfegeLabel(
 }
 
 function className(
-  name: string,
-  location: string
+  name: SolfegeName,
+  location: Motion
 ): string {
-  return buildClassString(cssModule, ["solfege-label", name, location]);
+  const classNames = ["solfege-label", name, location];
+  return buildClassString(cssModule, classNames);
 }

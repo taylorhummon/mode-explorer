@@ -7,9 +7,10 @@ interface ModeNoteProps {
   isHidden: boolean;
 }
 
-export default function ModeNote(
-  { modeIndex, isHidden }: ModeNoteProps
-) {
+export default function ModeNote({
+  modeIndex,
+  isHidden
+}: ModeNoteProps) {
   return (
     <text
       className={className(isHidden)}

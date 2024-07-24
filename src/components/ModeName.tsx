@@ -7,9 +7,10 @@ interface ModeNameProps {
   isHidden: boolean;
 }
 
-export default function ModeName(
-  { modeIndex, isHidden }: ModeNameProps
-) {
+export default function ModeName({
+  modeIndex,
+  isHidden
+}: ModeNameProps) {
   return (
     <p
       className={buildClassString(cssModule, ["mode-name"])}

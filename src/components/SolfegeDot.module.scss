@@ -59,11 +59,11 @@
   }
 
   &.Re {
-    &.early {
+    &.still-early {
       offset-path: path("M 60,-103.92304845413263");
     }
 
-    &.late {
+    &.still-late {
       offset-path: path("M 103.92304845413263,-60");
     }
 
@@ -76,11 +76,11 @@
   }
 
   &.Mi {
-    &.early {
+    &.still-early {
       offset-path: path("M 120,0");
     }
 
-    &.late {
+    &.still-late {
       offset-path: path("M 103.92304845413263,60");
     }
 
@@ -93,11 +93,11 @@
   }
 
   &.Fa {
-    &.early {
+    &.still-early {
       offset-path: path("M 60,103.92304845413263");
     }
 
-    &.late {
+    &.still-late {
       offset-path: path("M 0,120");
     }
 
@@ -110,11 +110,11 @@
   }
 
   &.Sol {
-    &.early {
+    &.still-early {
       offset-path: path("M 0,120");
     }
 
-    &.late {
+    &.still-late {
       offset-path: path("M -60,103.92304845413263");
     }
 
@@ -127,11 +127,11 @@
   }
 
   &.La {
-    &.early {
+    &.still-early {
       offset-path: path("M -103.92304845413263,60");
     }
 
-    &.late {
+    &.still-late {
       offset-path: path("M -120,0");
     }
 
@@ -144,11 +144,11 @@
   }
 
   &.Ti {
-    &.early {
+    &.still-early {
       offset-path: path("M -103.92304845413263,-60");
     }
 
-    &.late {
+    &.still-late {
       offset-path: path("M -60,-103.92304845413263");
     }
 

@@ -13,14 +13,15 @@ export function derivedFromState(
   }
 }
 
-function derivedFromStateWhenStill(
-  { motion, modeIndex }: State
-): Derived {
-  const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeIndex);
-  const canRetreatSolfegeName = getCanRetreatSolfegeName(modeIndex);
+function derivedFromStateWhenStill({
+  motion,
+  modeIndex
+}: State): Derived {
+  const canAdvance = getCanAdvance(modeIndex);
+  const canRetreat = getCanRetreat(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, ((solfegeName: SolfegeName) => ({
     location: getStillMotion(solfegeName, modeIndex),
-    availableMotion: getAvailableMotion(solfegeName, canAdvanceSolfegeName, canRetreatSolfegeName)
+    availableMotion: getAvailableMotion(solfegeName, canAdvance, canRetreat)
   })));
   return {
     isAnimating: false,
@@ -31,13 +32,14 @@ function derivedFromStateWhenStill(
   };
 }
 
-function derivedFromStateWhenAnimating(
-  { motion, modeIndex }: State
-): Derived {
-  const canAdvanceSolfegeName = getCanAdvanceSolfegeName(modeIndex);
-  const canRetreatSolfegeName = getCanRetreatSolfegeName(modeIndex);
+function derivedFromStateWhenAnimating({
+  motion,
+  modeIndex
+}: State): Derived {
+  const canAdvance = getCanAdvance(modeIndex);
+  const canRetreat = getCanRetreat(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, ((solfegeName: SolfegeName) => ({
-    location: getAnimatedMotion(solfegeName, motion, modeIndex, canAdvanceSolfegeName, canRetreatSolfegeName),
+    location: getAnimatedMotion(solfegeName, motion, modeIndex, canAdvance, canRetreat),
     availableMotion: null
   })));
   return {
@@ -49,14 +51,14 @@ function derivedFromStateWhenAnimating(
   };
 }
 
-function getCanAdvanceSolfegeName(
+function getCanAdvance(
   modeIndex: number
 ): SolfegeName {
   if (modeIndex === 6) return SolfegeName.Do;
   return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex];
 }
 
-function getCanRetreatSolfegeName(
+function getCanRetreat(
   modeIndex: number
 ): SolfegeName {
   if (modeIndex === 0) return SolfegeName.Do;
@@ -64,12 +66,12 @@ function getCanRetreatSolfegeName(
 }
 
 function getAvailableMotion(
-  solfegeName: string,
-  canAdvanceSolfegeName: string,
-  canRetreatSolfegeName: string
+  solfegeName: SolfegeName,
+  canAdvance: SolfegeName,
+  canRetreat: SolfegeName
 ): Motion | null {
-  if (solfegeName === canAdvanceSolfegeName) return Motion.AdvanceIndividual;
-  if (solfegeName === canRetreatSolfegeName) return Motion.RetreatIndividual;
+  if (solfegeName === canAdvance) return Motion.AdvanceIndividual;
+  if (solfegeName === canRetreat) return Motion.RetreatIndividual;
   return null;
 }
 
@@ -88,11 +90,11 @@ function getAnimatedMotion(
   solfegeName: SolfegeName,
   motion: Motion,
   modeIndex: number,
-  canAdvanceSolfegeName: SolfegeName,
-  canRetreatSolfegeName: SolfegeName
+  canAdvance: SolfegeName,
+  canRetreat: SolfegeName
 ): Motion {
-  if (motion === Motion.AdvanceIndividual && canAdvanceSolfegeName === solfegeName) return Motion.AdvanceIndividual;
-  if (motion === Motion.RetreatIndividual && canRetreatSolfegeName === solfegeName) return Motion.RetreatIndividual;
+  if (motion === Motion.AdvanceIndividual && canAdvance === solfegeName) return Motion.AdvanceIndividual;
+  if (motion === Motion.RetreatIndividual && canRetreat === solfegeName) return Motion.RetreatIndividual;
   if (motion === Motion.AdvanceAll) return Motion.AdvanceAll;
   if (motion === Motion.RetreatAll) return Motion.RetreatAll;
   return getStillMotion(solfegeName, modeIndex);
@@ -105,7 +107,7 @@ function getStillMotion(
   if (solfegeName === SolfegeName.Do) return Motion.Still;
   const index = SOLFEGE_NAMES_IN_BEADGCF_ORDER.indexOf(solfegeName);
   if (index === -1) throw new Error(`invalid solfege note: ${solfegeName}`);
-  return (modeIndex <= index) ? Motion.Early : Motion.Late;
+  return (modeIndex <= index) ? Motion.StillEarly : Motion.StillLate;
 }
 
 export function nextStateOnAnimationEnd(

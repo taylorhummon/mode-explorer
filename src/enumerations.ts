@@ -69,8 +69,8 @@ export const MODE_NAMES = [
 
 export enum Motion {
   Still = "still",
-  Early = "early",
-  Late = "late",
+  StillEarly = "still-early",
+  StillLate = "still-late",
   AdvanceIndividual = "advance-individual",
   RetreatIndividual = "retreat-individual",
   AdvanceAll = "advance-all",

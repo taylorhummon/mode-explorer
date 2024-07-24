@@ -6,9 +6,9 @@ interface TickProps {
   hour: number;
 }
 
-export default function Tick(
-  { hour }: TickProps
-) {
+export default function Tick({
+  hour
+}: TickProps) {
   return (
     <line
       className={className(hour)}

@@ -1,4 +1,4 @@
-import { Derived, Solfege } from "../types";
+import { Derived, Solfege, Move } from "../types";
 import Clock from "./Clock";
 import ModeNote from "./ModeNote";
 import SolfegeDot from "./SolfegeDot";
@@ -7,15 +7,15 @@ import { arrayFromMap } from "../utilities/map";
 
 interface CanvasProps {
   derived: Derived;
-  buildMove: (solfege: Solfege) => ((() => void) | undefined);
+  buildMove: (solfege: Solfege) => Move;
 }
 
-export default function Canvas(
-  { derived, buildMove }: CanvasProps
-) {
+export default function Canvas({
+  derived,
+  buildMove
+}: CanvasProps) {
   return (
     <svg
-      className="canvas"
       viewBox="-150 -150 300 300"
       xmlns="http://www.w3.org/2000/svg"
       height="300px"
