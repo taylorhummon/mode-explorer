@@ -6,9 +6,9 @@ export interface State {
 }
 
 export interface Derived {
-  isAnimating: boolean;
   motion: Motion;
   modeIndex: number;
+  isAnimating: boolean;
   nextModeIndex: number;
   solfegeByName: Map<SolfegeName, Solfege>;
 }

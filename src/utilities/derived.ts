@@ -24,9 +24,9 @@ function derivedFromStateWhenStill({
     availableMotion: getAvailableMotion(solfegeName, canAdvance, canRetreat)
   })));
   return {
-    isAnimating: false,
     motion,
     modeIndex,
+    isAnimating: false,
     nextModeIndex: modeIndex,
     solfegeByName
   };
@@ -43,9 +43,9 @@ function derivedFromStateWhenAnimating({
     availableMotion: null
   })));
   return {
-    isAnimating: true,
     motion,
     modeIndex,
+    isAnimating: true,
     nextModeIndex: getNextModeIndex(motion, modeIndex),
     solfegeByName
   };

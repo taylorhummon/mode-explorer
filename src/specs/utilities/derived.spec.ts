@@ -9,23 +9,6 @@ function mockAnimationEvent(
 }
 
 describe("derivedFromState()", () => {
-  it("correctly decides isAnimating", () => {
-    expect(
-      derivedFromState({ motion: Motion.Still, modeIndex: 5 }).isAnimating
-    ).toBe(
-      false
-    );
-    expect(
-      derivedFromState({ motion: Motion.AdvanceIndividual, modeIndex: 5 }).isAnimating
-    ).toBe(
-      true
-    );
-    expect(
-      derivedFromState({ motion: Motion.AdvanceAll, modeIndex: 5 }).isAnimating
-    ).toBe(
-      true
-    );
-  });
   it("includes the motion", () => {
     expect(
       derivedFromState({ motion: Motion.Still, modeIndex: 5 }).motion
@@ -53,6 +36,23 @@ describe("derivedFromState()", () => {
       derivedFromState({ motion: Motion.Still, modeIndex: 0 }).modeIndex
     ).toBe(
       0
+    );
+  });
+  it("correctly decides isAnimating", () => {
+    expect(
+      derivedFromState({ motion: Motion.Still, modeIndex: 5 }).isAnimating
+    ).toBe(
+      false
+    );
+    expect(
+      derivedFromState({ motion: Motion.AdvanceIndividual, modeIndex: 5 }).isAnimating
+    ).toBe(
+      true
+    );
+    expect(
+      derivedFromState({ motion: Motion.AdvanceAll, modeIndex: 5 }).isAnimating
+    ).toBe(
+      true
     );
   });
   it("correctly decides nextModeIndex", () => {
