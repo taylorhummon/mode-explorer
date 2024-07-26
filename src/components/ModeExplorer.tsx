@@ -9,7 +9,7 @@ import cssModule from "./ModeExplorer.module.scss";
 
 const INITIAL_MODE_INDEX = 5; // Major mode
 
-export default function ModeExplorer() {
+export default function ModeExplorer(): JSX.Element {
   const domNodeRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState({
     motion: Motion.Still,

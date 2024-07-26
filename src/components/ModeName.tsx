@@ -10,7 +10,7 @@ interface ModeNameProps {
 export default function ModeName({
   modeIndex,
   isHidden
-}: ModeNameProps) {
+}: ModeNameProps): JSX.Element {
   return (
     <p
       className={buildClassString(cssModule, ["mode-name"])}

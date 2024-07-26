@@ -8,7 +8,7 @@ interface TickProps {
 
 export default function Tick({
   hour
-}: TickProps) {
+}: TickProps): JSX.Element {
   return (
     <line
       className={className(hour)}

@@ -10,7 +10,7 @@ interface ModeNoteProps {
 export default function ModeNote({
   modeIndex,
   isHidden
-}: ModeNoteProps) {
+}: ModeNoteProps): JSX.Element {
   return (
     <text
       className={className(isHidden)}

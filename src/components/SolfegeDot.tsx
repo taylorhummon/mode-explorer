@@ -13,7 +13,7 @@ export default function SolfegeDot({
   name,
   location,
   move
-}: SolfegeDotProps) {
+}: SolfegeDotProps): JSX.Element {
   return (
     <circle
       className={className(name, location, move)}

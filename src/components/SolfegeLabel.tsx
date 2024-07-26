@@ -10,7 +10,7 @@ interface SolfegeLabelProps {
 export default function SolfegeLabel({
   name,
   location
-}: SolfegeLabelProps) {
+}: SolfegeLabelProps): JSX.Element {
   return (
     <text
       className={className(name, location)}

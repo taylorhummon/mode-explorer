@@ -13,7 +13,7 @@ interface CanvasProps {
 export default function Canvas({
   derived,
   buildMove
-}: CanvasProps) {
+}: CanvasProps): JSX.Element {
   return (
     <svg
       viewBox="-150 -150 300 300"
