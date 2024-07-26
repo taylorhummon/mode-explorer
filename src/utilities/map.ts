@@ -13,7 +13,7 @@ export function arrayFromMap<K, V, E>(
   map: Map<K, V>,
   entryFromValueAndKey: (value: V, key: K) => E
 ): Array<E> {
-  const array: Array<E> = [];
+  const array = [] as Array<E>;
   map.forEach((value: V, key: K) => {
     array.push(entryFromValueAndKey(value, key))
   });

@@ -8,9 +8,9 @@ describe("buildMap()", () => {
     ).toStrictEqual(
       new Map([["a", "A"], ["B", "B"], ["c", "C"]])
     );
-    const emptyArrayOfStrings: Array<string> = [];
+    const empty = [] as Array<string>;
     expect(
-      buildMap(emptyArrayOfStrings, (string) => string.toUpperCase())
+      buildMap(empty, (string) => string.toUpperCase())
     ).toStrictEqual(
       new Map()
     );
