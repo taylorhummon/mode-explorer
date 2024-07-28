@@ -1,5 +1,6 @@
 import { SolfegeName, Motion } from "../enumerations";
 import { buildClassString } from "../utilities/css";
+import { DRAWING_BY_SOLFEGE_NAME } from "../textDrawings";
 import cssModule from "./SolfegeLabel.module.scss";
 
 interface SolfegeLabelProps {
@@ -11,14 +12,16 @@ export default function SolfegeLabel({
   name,
   location
 }: SolfegeLabelProps): JSX.Element {
+  const xTranslation = -5 * name.length;
+  const transform = `translate(${xTranslation}, -6)`;
   return (
-    <text
-      className={className(name, location)}
-      x="0"
-      y="6"
-    >
-      {name}
-    </text>
+    <g className={className(name, location)}>
+      <path
+        d={DRAWING_BY_SOLFEGE_NAME[name]}
+        transform={transform}
+        fillRule="evenodd"
+      />
+    </g>
   );
 }
 
