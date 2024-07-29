@@ -41,5 +41,6 @@ I'm using [Parcel](https://parceljs.org/) to build this application. It seems to
 invalidating its cache when I make significant structural changes to the codebase. If it's acting 
 up, removing the `.parcel-cache` directory seems to fix things.
 
-Also, Parcel does it's own transpiling so Babel is not necessary in most circumstances. However, 
-our test runner Jest needs Babel so we allow Babel to run when executing the test suite.
+Also, Parcel does it's own transpiling so [Babel](https://babeljs.io/) is not necessary in most 
+circumstances. However, our test runner [Jest](https://jestjs.io/) needs Babel so we allow Babel 
+to run when executing the test suite.
