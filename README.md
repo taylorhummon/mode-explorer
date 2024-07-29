@@ -5,14 +5,14 @@ app running live at [https://scales.taylorhummon.com](https://scales.taylorhummo
 
 ## Installation
 
-This project requires [node](https://nodejs.org) v20.9 or higher. I recommend using 
+This project requires [Node.js](https://nodejs.org) v20.9 or higher. I recommend using 
 [nvm](https://github.com/nvm-sh/nvm) to install a recent version of node. Here are its 
 [installation instructions](https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script).
 
-We'll be using yarn to track dependencies. Yarn is included with node, but you may need to 
-[enable it](https://yarnpkg.com/getting-started/install). 
+We'll be using [Yarn](https://yarnpkg.com/) to track dependencies. Yarn is included with node, 
+but you may need to [enable it](https://yarnpkg.com/getting-started/install).
 
-To install dependencies, change into the project directory and run yarn:
+To install this application's dependencies, change into the project directory and run yarn:
 ```
 cd mode-explorer
 yarn
