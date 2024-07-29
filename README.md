@@ -12,7 +12,7 @@ This project requires [Node.js](https://nodejs.org) v20.9 or higher. I recommend
 We'll be using [Yarn](https://yarnpkg.com/) to track dependencies. Yarn is included with node, 
 but you may need to [enable it](https://yarnpkg.com/getting-started/install).
 
-To install this application's dependencies, change into the project directory and run yarn:
+To install this application's dependencies, change into the project directory and run `yarn`:
 ```
 cd mode-explorer
 yarn
