@@ -25,6 +25,8 @@ To start a development server:
 yarn start
 ```
 
+The app will be running at [http://localhost:1234](http://localhost:1234).
+
 To run tests:
 ```
 yarn test
