@@ -1,3 +1,5 @@
+@use 'src/constants';
+
 @keyframes advance-solfege-dot {
   0% {
     offset-distance: 0%;
@@ -18,29 +20,29 @@
 
 .solfege-dot {
   offset-rotate: 0deg;
-  fill: #000000;
+  fill: constants.$black;
   transition-property: fill;
-  transition-duration: 200ms;
+  transition-duration: constants.$transition-duration;
 
   &.can-move {
-    fill: #0B9B0D;
+    fill: constants.$green;
   }
 
   &.advance-individual,
   &.advance-all {
-    animation: advance-solfege-dot 650ms ease-in-out 1 forwards;
+    animation: advance-solfege-dot constants.$animation-duration ease-in-out 1 forwards;
   }
 
   &.retreat-individual,
   &.retreat-all {
-    animation: retreat-solfege-dot 650ms ease-in-out 1 forwards;
+    animation: retreat-solfege-dot constants.$animation-duration ease-in-out 1 forwards;
   }
 
   &.Do {
-    fill: #0433FF;
+    fill: constants.$blue;
 
     &.can-move {
-      fill: #0B9B0D;
+      fill: constants.$green;
     }
 
     &.still {

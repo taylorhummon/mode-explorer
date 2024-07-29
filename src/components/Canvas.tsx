@@ -1,13 +1,15 @@
-import { Derived, Solfege, Move } from "../types";
+import { Derived, Move } from "../types";
+import { Motion } from "../enumerations";
 import Clock from "./Clock";
 import ModeNote from "./ModeNote";
 import SolfegeDot from "./SolfegeDot";
-import SolfegeLabel from "./SolfegeLabel";
+import SolfegeLabel from "./SolfegeLabel"
+import Arrow from "./Arrow";
 import { arrayFromMap } from "../utilities/map";
 
 interface CanvasProps {
   derived: Derived;
-  buildMove: (solfege: Solfege) => Move;
+  buildMove: (motion: Motion | null) => Move;
 }
 
 export default function Canvas({
@@ -23,15 +25,15 @@ export default function Canvas({
     >
       <Clock />
       <ModeNote
-        isHidden={derived.isAnimating}
         modeIndex={derived.modeIndex}
+        isHidden={derived.isAnimating}
       />
       {arrayFromMap(derived.solfegeByName, (solfege, name) => (
         <SolfegeDot
           key={name}
           name={name}
           location={solfege.location}
-          move={buildMove(solfege)}
+          move={buildMove(solfege.availableMotion)}
         />
       ))}
       {arrayFromMap(derived.solfegeByName, (solfege, name) => (
@@ -41,6 +43,18 @@ export default function Canvas({
           location={solfege.location}
         />
       ))}
+      <Arrow
+        isAdvance={true}
+        hour={derived.advanceableHour}
+        isHidden={derived.isAnimating}
+        move={buildMove(Motion.AdvanceIndividual)}
+      />
+      <Arrow
+        isAdvance={false}
+        hour={derived.retreatableHour}
+        isHidden={derived.isAnimating}
+        move={buildMove(Motion.RetreatIndividual)}
+      />
     </svg>
   )
 };

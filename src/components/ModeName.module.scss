@@ -1,3 +1,5 @@
+@use 'src/constants';
+
 .mode-name {
   margin: 0;
   font-size: 16px;
@@ -6,7 +8,7 @@
   & .mode-name-span {
     opacity: 1;
     transition-property: opacity;
-    transition-duration: 200ms;
+    transition-duration: constants.$transition-duration;
   }
 
   & .mode-name-span.hidden {

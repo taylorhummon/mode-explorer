@@ -1,0 +1,123 @@
+@use 'src/constants';
+
+.arrow {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: constants.$transition-duration;
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  rect {
+    // this rectangle is used to capture clicks but shouldn't be visible to the user
+    fill: #FFFFFF00;
+    stroke: none;
+  }
+
+  polyline {
+    fill: none;
+    stroke: constants.$green;
+    stroke-width: 3;
+  }
+
+  &.advance {
+    &.hour-0 {
+      offset-path: path("M 31.05828541230249,-115.9110991546882");
+    }
+
+    &.hour-1 {
+      offset-path: path("M 84.8528137423857,-84.8528137423857");
+    }
+
+    &.hour-2 {
+      offset-path: path("M 115.9110991546882,-31.05828541230249");
+    }
+
+    &.hour-3 {
+      offset-path: path("M 115.9110991546882,31.05828541230249");
+    }
+
+    &.hour-4 {
+      offset-path: path("M 84.8528137423857,84.8528137423857");
+    }
+
+    &.hour-5 {
+      offset-path: path("M 31.05828541230252,115.91109915468819");
+    }
+
+    &.hour-6 {
+      offset-path: path("M -31.05828541230252,115.91109915468819");
+    }
+
+    &.hour-7 {
+      offset-path: path("M -84.8528137423857,84.8528137423857");
+    }
+
+    &.hour-8 {
+      offset-path: path("M -115.91109915468819,31.05828541230252");
+    }
+
+    &.hour-9 {
+      offset-path: path("M -115.91109915468819,-31.05828541230252");
+    }
+
+    &.hour-10 {
+      offset-path: path("M -84.8528137423857,-84.8528137423857");
+    }
+
+    &.hour-11 {
+      offset-path: path("M -31.05828541230252,-115.91109915468819");
+    }
+  }
+
+  &.retreat {
+    &.hour-0 {
+      offset-path: path("M -31.05828541230252,-115.91109915468819");
+    }
+
+    &.hour-1 {
+      offset-path: path("M 31.05828541230249,-115.9110991546882");
+    }
+
+    &.hour-2 {
+      offset-path: path("M 84.8528137423857,-84.8528137423857");
+    }
+
+    &.hour-3 {
+      offset-path: path("M 115.9110991546882,-31.05828541230249");
+    }
+
+    &.hour-4 {
+      offset-path: path("M 115.9110991546882,31.05828541230249");
+    }
+
+    &.hour-5 {
+      offset-path: path("M 84.8528137423857,84.8528137423857");
+    }
+
+    &.hour-6 {
+      offset-path: path("M 31.05828541230252,115.91109915468819");
+    }
+
+    &.hour-7 {
+      offset-path: path("M -31.05828541230252,115.91109915468819");
+    }
+
+    &.hour-8 {
+      offset-path: path("M -84.8528137423857,84.8528137423857");
+    }
+
+    &.hour-9 {
+      offset-path: path("M -115.91109915468819,31.05828541230252");
+    }
+
+    &.hour-10 {
+      offset-path: path("M -115.91109915468819,-31.05828541230252");
+    }
+
+    &.hour-11 {
+      offset-path: path("M -84.8528137423857,-84.8528137423857");
+    }
+  }
+}

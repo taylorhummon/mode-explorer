@@ -1,3 +1,5 @@
+@use 'src/constants';
+
 @keyframes advance-solfege-label {
   0% {
     offset-distance: 0%;
@@ -18,20 +20,20 @@
 
 .solfege-label {
   offset-rotate: 0deg;
-  fill: #000000;
+  fill: constants.$black;
 
   &.advance-individual,
   &.advance-all {
-    animation: advance-solfege-label 650ms ease-in-out 1 forwards;
+    animation: advance-solfege-label constants.$animation-duration ease-in-out 1 forwards;
   }
 
   &.retreat-individual,
   &.retreat-all {
-    animation: retreat-solfege-label 650ms ease-in-out 1 forwards;
+    animation: retreat-solfege-label constants.$animation-duration ease-in-out 1 forwards;
   }
 
   &.Do {
-    fill: #0433FF;
+    fill: constants.$blue;
 
     &.still {
       offset-path: path("M 0, -80");

@@ -1,8 +1,10 @@
+@use 'src/constants';
+
 .tick {
   stroke-width: 3;
-  stroke: #7F7F7F;
+  stroke: constants.$gray;
 
   &.root {
-    stroke: #0433FF;
+    stroke: constants.$blue;
   }
 }

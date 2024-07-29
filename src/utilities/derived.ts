@@ -7,71 +7,95 @@ export function derivedFromState(
   state: State
 ): Derived {
   if (state.motion === Motion.Still) {
-    return derivedFromStateWhenStill(state);
+    return derivedWhenStill(state);
   } else {
-    return derivedFromStateWhenAnimating(state);
+    return derivedWhenAnimating(state);
   }
 }
 
-function derivedFromStateWhenStill({
+function derivedWhenStill({
   motion,
   modeIndex
 }: State): Derived {
-  const canAdvance = getCanAdvance(modeIndex);
-  const canRetreat = getCanRetreat(modeIndex);
+  const advanceable = getAdvanceableSolfegeName(modeIndex);
+  const retreatable = getRetreatableSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, ((solfegeName: SolfegeName) => ({
-    location: getStillMotion(solfegeName, modeIndex),
-    availableMotion: getAvailableMotion(solfegeName, canAdvance, canRetreat)
+    location: locationWhenStill(solfegeName, modeIndex),
+    availableMotion: getAvailableMotion(solfegeName, advanceable, retreatable)
   })));
   return {
     motion,
     modeIndex,
     isAnimating: false,
+    solfegeByName,
+    advanceableHour: getAdvanceableHour(modeIndex),
+    retreatableHour: getRetreatableHour(modeIndex),
     nextModeIndex: modeIndex,
-    solfegeByName
   };
 }
 
-function derivedFromStateWhenAnimating({
+function derivedWhenAnimating({
   motion,
   modeIndex
 }: State): Derived {
-  const canAdvance = getCanAdvance(modeIndex);
-  const canRetreat = getCanRetreat(modeIndex);
+  const advanceable = getAdvanceableSolfegeName(modeIndex);
+  const retreatable = getRetreatableSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, ((solfegeName: SolfegeName) => ({
-    location: getAnimatedMotion(solfegeName, motion, modeIndex, canAdvance, canRetreat),
+    location: locationWhenAnimating(solfegeName, motion, modeIndex, advanceable, retreatable),
     availableMotion: null
   })));
   return {
     motion,
     modeIndex,
     isAnimating: true,
+    solfegeByName,
+    advanceableHour: getAdvanceableHour(modeIndex),
+    retreatableHour: getRetreatableHour(modeIndex),
     nextModeIndex: getNextModeIndex(motion, modeIndex),
-    solfegeByName
   };
 }
 
-function getCanAdvance(
+function getAdvanceableSolfegeName(
   modeIndex: number
 ): SolfegeName {
   if (modeIndex === 6) return SolfegeName.Do;
   return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex];
 }
 
-function getCanRetreat(
+function getRetreatableSolfegeName(
   modeIndex: number
 ): SolfegeName {
   if (modeIndex === 0) return SolfegeName.Do;
   return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex - 1];
 }
 
+function getAdvanceableHour(
+  modeIndex: number
+): number {
+  if (modeIndex % 2 === 0) {
+    return (modeIndex + 6) % 12;
+  } else {
+    return modeIndex;
+  }
+}
+
+function getRetreatableHour(
+  modeIndex: number
+): number {
+  if (modeIndex % 2 === 0) {
+    return modeIndex;
+  } else {
+    return (modeIndex + 6) % 12;
+  }
+}
+
 function getAvailableMotion(
   solfegeName: SolfegeName,
-  canAdvance: SolfegeName,
-  canRetreat: SolfegeName
+  advanceable: SolfegeName,
+  retreatable: SolfegeName
 ): Motion | null {
-  if (solfegeName === canAdvance) return Motion.AdvanceIndividual;
-  if (solfegeName === canRetreat) return Motion.RetreatIndividual;
+  if (solfegeName === advanceable) return Motion.AdvanceIndividual;
+  if (solfegeName === retreatable) return Motion.RetreatIndividual;
   return null;
 }
 
@@ -86,21 +110,21 @@ function getNextModeIndex(
   return modeIndex;
 }
 
-function getAnimatedMotion(
+function locationWhenAnimating(
   solfegeName: SolfegeName,
   motion: Motion,
   modeIndex: number,
-  canAdvance: SolfegeName,
-  canRetreat: SolfegeName
+  advanceable: SolfegeName,
+  retreatable: SolfegeName
 ): Motion {
-  if (motion === Motion.AdvanceIndividual && canAdvance === solfegeName) return Motion.AdvanceIndividual;
-  if (motion === Motion.RetreatIndividual && canRetreat === solfegeName) return Motion.RetreatIndividual;
+  if (motion === Motion.AdvanceIndividual && advanceable === solfegeName) return Motion.AdvanceIndividual;
+  if (motion === Motion.RetreatIndividual && retreatable === solfegeName) return Motion.RetreatIndividual;
   if (motion === Motion.AdvanceAll) return Motion.AdvanceAll;
   if (motion === Motion.RetreatAll) return Motion.RetreatAll;
-  return getStillMotion(solfegeName, modeIndex);
+  return locationWhenStill(solfegeName, modeIndex);
 }
 
-function getStillMotion(
+function locationWhenStill(
   solfegeName: SolfegeName,
   modeIndex: number
 ): Motion {

@@ -9,8 +9,10 @@ export interface Derived {
   motion: Motion;
   modeIndex: number;
   isAnimating: boolean;
-  nextModeIndex: number;
   solfegeByName: Map<SolfegeName, Solfege>;
+  advanceableHour: number;
+  retreatableHour: number;
+  nextModeIndex: number;
 }
 
 export interface Solfege {

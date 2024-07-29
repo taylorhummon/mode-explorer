@@ -17,10 +17,10 @@ export default function SolfegeDot({
   return (
     <circle
       className={className(name, location, move)}
+      onClick={move}
       cx="0"
       cy="0"
       r="10"
-      onClick={move}
       data-testid={`solfege-dot-${name}`}
     />
   );

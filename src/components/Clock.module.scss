@@ -1,5 +1,7 @@
+@use 'src/constants';
+
 .clock {
   fill: none;
   stroke-width: 2;
-  stroke: #7F7F7F;
+  stroke: constants.$gray;
 }

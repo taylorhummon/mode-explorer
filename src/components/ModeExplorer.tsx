@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { Solfege } from "../types";
 import { Motion } from "../enumerations";
 import ModeName from "./ModeName";
 import Canvas from "./Canvas";
@@ -17,16 +16,10 @@ export default function ModeExplorer(): JSX.Element {
   });
   const derived = derivedFromState(state);
   function buildMove(
-    solfege: Solfege
+    motion: Motion | null
   ): (() => void) | undefined {
-    const motion = solfege.availableMotion;
-    if (! motion) return undefined;
-    return () => {
-      setState({
-        motion,
-        modeIndex: derived.modeIndex
-      });
-    };
+    if (motion === null) return undefined;
+    return () => { setState({ ...state, motion }); };
   }
   useEffect(() => {
     function animationEndHandler(
