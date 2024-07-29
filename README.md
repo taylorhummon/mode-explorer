@@ -1,7 +1,5 @@
 # Mode Explorer
 
-Explore musical modes!
-
 This app is a companion to <emph>Taylor's Guide to Scales</emph>. You can find the guide and this 
 app running live at [https://scales.taylorhummon.com](https://scales.taylorhummon.com).
 
@@ -39,9 +37,9 @@ yarn build
 
 ## Note
 
-I'm using [Parcel](https://parceljs.org/) as my build tool. It seems to have an issue invalidating
-its cache when I make significant structural changes to the codebase. If it's acting up,
-removing the `.parcel-cache` directory seems to fix things.
+I'm using [Parcel](https://parceljs.org/) to build this application. It seems to have an issue 
+invalidating its cache when I make significant structural changes to the codebase. If it's acting 
+up, removing the `.parcel-cache` directory seems to fix things.
 
 Also, Parcel does it's own transpiling so Babel is not necessary in most circumstances. However, 
 our test runner Jest needs Babel so we allow Babel to run when executing the test suite.
