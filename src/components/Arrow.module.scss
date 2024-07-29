@@ -24,100 +24,124 @@
   &.advance {
     &.hour-0 {
       offset-path: path("M 31.05828541230249,-115.9110991546882");
+      offset-rotate: 15deg;
     }
 
     &.hour-1 {
       offset-path: path("M 84.8528137423857,-84.8528137423857");
+      offset-rotate: 45deg;
     }
 
     &.hour-2 {
       offset-path: path("M 115.9110991546882,-31.05828541230249");
+      offset-rotate: 75deg;
     }
 
     &.hour-3 {
       offset-path: path("M 115.9110991546882,31.05828541230249");
+      offset-rotate: 105deg;
     }
 
     &.hour-4 {
       offset-path: path("M 84.8528137423857,84.8528137423857");
+      offset-rotate: 135deg;
     }
 
     &.hour-5 {
       offset-path: path("M 31.05828541230252,115.91109915468819");
+      offset-rotate: 165deg;
     }
 
     &.hour-6 {
       offset-path: path("M -31.05828541230252,115.91109915468819");
+      offset-rotate: 195deg;
     }
 
     &.hour-7 {
       offset-path: path("M -84.8528137423857,84.8528137423857");
+      offset-rotate: 225deg;
     }
 
     &.hour-8 {
       offset-path: path("M -115.91109915468819,31.05828541230252");
+      offset-rotate: 255deg;
     }
 
     &.hour-9 {
       offset-path: path("M -115.91109915468819,-31.05828541230252");
+      offset-rotate: 285deg;
     }
 
     &.hour-10 {
       offset-path: path("M -84.8528137423857,-84.8528137423857");
+      offset-rotate: 315deg;
     }
 
     &.hour-11 {
       offset-path: path("M -31.05828541230252,-115.91109915468819");
+      offset-rotate: 345deg;
     }
   }
 
   &.retreat {
     &.hour-0 {
       offset-path: path("M -31.05828541230252,-115.91109915468819");
+      offset-rotate: 165deg;
     }
 
     &.hour-1 {
       offset-path: path("M 31.05828541230249,-115.9110991546882");
+      offset-rotate: 195deg;
     }
 
     &.hour-2 {
       offset-path: path("M 84.8528137423857,-84.8528137423857");
+      offset-rotate: 225deg;
     }
 
     &.hour-3 {
       offset-path: path("M 115.9110991546882,-31.05828541230249");
+      offset-rotate: 255deg;
     }
 
     &.hour-4 {
       offset-path: path("M 115.9110991546882,31.05828541230249");
+      offset-rotate: 285deg;
     }
 
     &.hour-5 {
       offset-path: path("M 84.8528137423857,84.8528137423857");
+      offset-rotate: 315deg;
     }
 
     &.hour-6 {
       offset-path: path("M 31.05828541230252,115.91109915468819");
+      offset-rotate: 345deg;
     }
 
     &.hour-7 {
       offset-path: path("M -31.05828541230252,115.91109915468819");
+      offset-rotate: 15deg;
     }
 
     &.hour-8 {
       offset-path: path("M -84.8528137423857,84.8528137423857");
+      offset-rotate: 45deg;
     }
 
     &.hour-9 {
       offset-path: path("M -115.91109915468819,31.05828541230252");
+      offset-rotate: 75deg;
     }
 
     &.hour-10 {
       offset-path: path("M -115.91109915468819,-31.05828541230252");
+      offset-rotate: 105deg;
     }
 
     &.hour-11 {
       offset-path: path("M -84.8528137423857,-84.8528137423857");
+      offset-rotate: 135deg;
     }
   }
 }

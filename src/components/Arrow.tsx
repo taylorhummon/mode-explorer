@@ -20,43 +20,17 @@ export default function Arrow({
       className={className(isAdvance, hour, isHidden)}
       onClick={move}
     >
-      {innerSvgElements(isAdvance)}
+      <rect
+        x="-15"
+        y="-15"
+        width="20"
+        height="30"
+      />
+      <polyline
+        points="-10,-10 0,0 -10,10"
+      />
     </g>
   );
-}
-
-function innerSvgElements(
-  isAdvance: boolean
-): JSX.Element {
-  if (isAdvance) {
-    return (
-      <>
-        <rect
-          x="-15"
-          y="-15"
-          width="30"
-          height="20"
-        />
-        <polyline
-          points="-10,-10 0,0 10,-10"
-        />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <rect
-          x="-15"
-          y="-5"
-          width="30"
-          height="20"
-        />
-        <polyline
-          points="-10,10 0,0 10,10"
-        />
-      </>
-    );
-  }
 }
 
 function className(
