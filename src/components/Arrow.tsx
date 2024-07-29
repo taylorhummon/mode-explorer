@@ -35,10 +35,10 @@ function innerSvgElements(
           x="-15"
           y="-15"
           width="30"
-          height="15"
+          height="20"
         />
         <polyline
-          points="-13,-13 0,0 13,-13"
+          points="-10,-10 0,0 10,-10"
         />
       </>
     );
@@ -47,12 +47,12 @@ function innerSvgElements(
       <>
         <rect
           x="-15"
-          y="0"
+          y="-5"
           width="30"
-          height="15"
+          height="20"
         />
         <polyline
-          points="-13,13 0,0 13,13"
+          points="-10,10 0,0 10,10"
         />
       </>
     );
