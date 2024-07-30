@@ -1,32 +1,57 @@
-import { MODE_NOTES } from "../enumerations";
+import { Derived } from "../types";
+import { Motion, NoteName } from "../enumerations";
 import { DRAWING_BY_NOTE_NAME } from "../textDrawings";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeNote.module.scss";
 
 interface ModeNoteProps {
-  modeIndex: number;
-  isHidden: boolean;
+  derived: Derived
 }
 
 export default function ModeNote({
-  modeIndex,
-  isHidden
+  derived
 }: ModeNoteProps): JSX.Element {
+  const { motion, modeNote, advanceableModeNote, retreatableModeNote } = derived;
   return (
-    <g className={className(isHidden)}>
-      <path
-        d={DRAWING_BY_NOTE_NAME[MODE_NOTES[modeIndex]]}
-        transform="translate(-5 -6)"
-        fillRule="evenodd"
-      />
-    </g>
+    <>
+      <defs>
+        <clipPath id="mode-notes-crop">
+          <rect x="-35" y="-15" width="70" height="30" />
+        </clipPath>
+      </defs>
+      <g className={buildClassString(cssModule, ["mode-notes-crop"])}>
+        <g className={className("left", motion)}>
+          {modeNotePath(advanceableModeNote)}
+        </g>
+        <g className={className("center", motion)}>
+          {modeNotePath(modeNote)}
+        </g>
+        <g className={className("right", motion)}>
+          {modeNotePath(retreatableModeNote)}
+        </g>
+      </g>
+    </>
   );
 }
 
+function modeNotePath(
+  modeNote: NoteName
+): JSX.Element {
+  return (
+    <path
+      transform="translate(-5 -6)"
+      d={DRAWING_BY_NOTE_NAME[modeNote]}
+      fillRule="evenodd"
+    />
+  )
+}
+
 function className(
-  isHidden: boolean
+  name: string,
+  motion: Motion,
 ): string {
-  const classNames = ["mode-note"];
-  if (isHidden) classNames.push("hidden");
-  return buildClassString(cssModule, classNames)
+  const classNames = ["mode-note", name];
+  if (motion === Motion.AdvanceIndividual) classNames.push("advance");
+  if (motion === Motion.RetreatIndividual) classNames.push("retreat");
+  return buildClassString(cssModule, classNames);
 }

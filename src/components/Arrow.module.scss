@@ -3,7 +3,7 @@
 .arrow {
   opacity: 1;
   transition-property: opacity;
-  transition-duration: constants.$transition-duration;
+  transition-duration: constants.$fade-effect-duration;
 
   &.hidden {
     opacity: 0;

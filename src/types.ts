@@ -1,4 +1,4 @@
-import { Motion, SolfegeName } from "./enumerations";
+import { Motion, SolfegeName, NoteName } from "./enumerations";
 
 export interface State {
   motion: Motion;
@@ -10,6 +10,9 @@ export interface Derived {
   modeIndex: number;
   isAnimating: boolean;
   solfegeByName: Map<SolfegeName, Solfege>;
+  modeNote: NoteName;
+  advanceableModeNote: NoteName;
+  retreatableModeNote: NoteName;
   advanceableHour: number;
   retreatableHour: number;
   nextModeIndex: number;

@@ -7,8 +7,6 @@
 
   & .mode-name-span {
     opacity: 1;
-    transition-property: opacity;
-    transition-duration: constants.$transition-duration;
   }
 
   & .mode-name-span.hidden {

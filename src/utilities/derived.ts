@@ -1,5 +1,12 @@
 import { State, Derived } from "../types";
-import { Motion, SolfegeName, SOLFEGE_NAMES, SOLFEGE_NAMES_IN_BEADGCF_ORDER } from "../enumerations";
+import {
+  Motion,
+  SolfegeName,
+  SOLFEGE_NAMES,
+  SOLFEGE_NAMES_IN_BEADGCF_ORDER,
+  NoteName,
+  MODE_NOTES
+} from "../enumerations";
 import { buildMap } from "../utilities/map";
 import { remainderFor } from "../utilities/math";
 
@@ -17,17 +24,20 @@ function derivedWhenStill({
   motion,
   modeIndex
 }: State): Derived {
-  const advanceable = getAdvanceableSolfegeName(modeIndex);
-  const retreatable = getRetreatableSolfegeName(modeIndex);
+  const advanceableSolfegeName = getAdvanceableSolfegeName(modeIndex);
+  const retreatableSolfegeName = getRetreatableSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, ((solfegeName: SolfegeName) => ({
     location: locationWhenStill(solfegeName, modeIndex),
-    availableMotion: getAvailableMotion(solfegeName, advanceable, retreatable)
+    availableMotion: getAvailableMotion(solfegeName, advanceableSolfegeName, retreatableSolfegeName)
   })));
   return {
     motion,
     modeIndex,
     isAnimating: false,
     solfegeByName,
+    modeNote: MODE_NOTES[modeIndex],
+    advanceableModeNote: getAdvanceableModeNote(modeIndex),
+    retreatableModeNote: getRetreatableModeNote(modeIndex),
     advanceableHour: getAdvanceableHour(modeIndex),
     retreatableHour: getRetreatableHour(modeIndex),
     nextModeIndex: modeIndex,
@@ -38,10 +48,12 @@ function derivedWhenAnimating({
   motion,
   modeIndex
 }: State): Derived {
-  const advanceable = getAdvanceableSolfegeName(modeIndex);
-  const retreatable = getRetreatableSolfegeName(modeIndex);
+  const advanceableSolfegeName = getAdvanceableSolfegeName(modeIndex);
+  const retreatableSolfegeName = getRetreatableSolfegeName(modeIndex);
   const solfegeByName = buildMap(SOLFEGE_NAMES, ((solfegeName: SolfegeName) => ({
-    location: locationWhenAnimating(solfegeName, motion, modeIndex, advanceable, retreatable),
+    location: locationWhenAnimating(
+      solfegeName, motion, modeIndex, advanceableSolfegeName, retreatableSolfegeName
+    ),
     availableMotion: null
   })));
   return {
@@ -49,6 +61,9 @@ function derivedWhenAnimating({
     modeIndex,
     isAnimating: true,
     solfegeByName,
+    modeNote: MODE_NOTES[modeIndex],
+    advanceableModeNote: getAdvanceableModeNote(modeIndex),
+    retreatableModeNote: getRetreatableModeNote(modeIndex),
     advanceableHour: getAdvanceableHour(modeIndex),
     retreatableHour: getRetreatableHour(modeIndex),
     nextModeIndex: getNextModeIndex(motion, modeIndex),
@@ -67,6 +82,18 @@ function getRetreatableSolfegeName(
 ): SolfegeName {
   if (modeIndex === 0) return SolfegeName.Do;
   return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex - 1];
+}
+
+function getAdvanceableModeNote(
+  modeIndex: number
+): NoteName {
+  return MODE_NOTES[remainderFor(modeIndex + 1, 7)];
+}
+
+function getRetreatableModeNote(
+  modeIndex: number
+): NoteName {
+  return MODE_NOTES[remainderFor(modeIndex - 1, 7)];
 }
 
 function getAdvanceableHour(
@@ -145,12 +172,12 @@ export function nextStateOnAnimationEnd(
   if (doSolfege?.location === Motion.AdvanceIndividual) {
     return {
       motion: Motion.RetreatAll,
-      modeIndex: derived.modeIndex
+      modeIndex: derived.nextModeIndex
     };
   } else if (doSolfege?.location === Motion.RetreatIndividual) {
     return {
       motion: Motion.AdvanceAll,
-      modeIndex: derived.modeIndex
+      modeIndex: derived.nextModeIndex
     };
   } else {
     return {

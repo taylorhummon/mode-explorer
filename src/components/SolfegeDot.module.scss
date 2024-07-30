@@ -22,7 +22,7 @@
   offset-rotate: 0deg;
   fill: constants.$black;
   transition-property: fill;
-  transition-duration: constants.$transition-duration;
+  transition-duration: constants.$fade-effect-duration;
 
   &.can-move {
     fill: constants.$green;
@@ -30,12 +30,12 @@
 
   &.advance-individual,
   &.advance-all {
-    animation: advance-solfege-dot constants.$animation-duration ease-in-out 1 forwards;
+    animation: advance-solfege-dot constants.$motion-duration ease-in-out 1 forwards;
   }
 
   &.retreat-individual,
   &.retreat-all {
-    animation: retreat-solfege-dot constants.$animation-duration ease-in-out 1 forwards;
+    animation: retreat-solfege-dot constants.$motion-duration ease-in-out 1 forwards;
   }
 
   &.Do {

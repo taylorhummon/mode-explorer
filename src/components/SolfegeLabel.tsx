@@ -12,13 +12,11 @@ export default function SolfegeLabel({
   name,
   location
 }: SolfegeLabelProps): JSX.Element {
-  const xTranslation = -5 * name.length;
-  const transform = `translate(${xTranslation}, -6)`;
   return (
     <g className={className(name, location)}>
       <path
+        transform={`translate(${-5 * name.length} -6)`}
         d={DRAWING_BY_SOLFEGE_NAME[name]}
-        transform={transform}
         fillRule="evenodd"
       />
     </g>

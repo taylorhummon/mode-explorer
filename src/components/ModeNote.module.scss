@@ -1,12 +1,42 @@
 @use 'src/constants';
 
+.mode-notes-crop {
+  clip-path: url(#mode-notes-crop);
+}
+
 .mode-note {
   fill: constants.$red;
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: constants.$transition-duration;
 
-  &.hidden {
-    opacity: 0;
+  &.retreat,
+  &.advance {
+    transition: translate constants.$motion-duration ease-in-out;
+  }
+
+  &.left {
+    translate: -50px;
+
+    &.advance{
+      translate: 0px;
+    }
+  }
+
+  &.center {
+    translate: 0px;
+
+    &.advance {
+      translate: 50px;
+    }
+
+    &.retreat {
+      translate: -50px;
+    }
+  }
+
+  &.right {
+    translate: 50px;
+
+    &.retreat{
+      translate: 0px;
+    }
   }
 }

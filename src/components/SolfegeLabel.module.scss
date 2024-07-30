@@ -24,12 +24,12 @@
 
   &.advance-individual,
   &.advance-all {
-    animation: advance-solfege-label constants.$animation-duration ease-in-out 1 forwards;
+    animation: advance-solfege-label constants.$motion-duration ease-in-out 1 forwards;
   }
 
   &.retreat-individual,
   &.retreat-all {
-    animation: retreat-solfege-label constants.$animation-duration ease-in-out 1 forwards;
+    animation: retreat-solfege-label constants.$motion-duration ease-in-out 1 forwards;
   }
 
   &.Do {

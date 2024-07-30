@@ -25,8 +25,7 @@ export default function Canvas({
     >
       <Clock />
       <ModeNote
-        modeIndex={derived.modeIndex}
-        isHidden={derived.isAnimating}
+        derived={derived}
       />
       {arrayFromMap(derived.solfegeByName, (solfege, name) => (
         <SolfegeDot
