@@ -1,4 +1,4 @@
-import { SolfegeName, NoteName } from "./enumerations";
+import { SolfegeName, NoteName } from "src/enumerations";
 
 
 /*

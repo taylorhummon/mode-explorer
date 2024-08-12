@@ -1,9 +1,9 @@
-import { describe, expect, it } from '@jest/globals';
-import { xOnClockAt, yOnClockAt } from "../../utilities/clock";
+import { describe, test, expect } from 'vitest';
+import { xOnClockAt, yOnClockAt } from "src/utilities/clock";
 
 
 describe("xOnClockAt()", () => {
-  it("should give the x value on the clock at various hours", () => {
+  test("should give the x value on the clock at various hours", () => {
     expect(
       xOnClockAt(0)
     ).toBeCloseTo(
@@ -43,7 +43,7 @@ describe("xOnClockAt()", () => {
 });
 
 describe("yOnClockAt()", () => {
-  it("should give the y value on the clock at various hours", () => {
+  test("should give the y value on the clock at various hours", () => {
     expect(
       yOnClockAt(0)
     ).toBeCloseTo(

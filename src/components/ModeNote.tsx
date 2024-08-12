@@ -1,7 +1,8 @@
-import type { Derived } from "../types";
-import { Motion, NoteName } from "../enumerations";
-import { DRAWING_BY_NOTE_NAME } from "../textDrawings";
-import { buildClassString } from "../utilities/css";
+import type { Derived } from "src/types";
+import { Motion, NoteName } from "src/enumerations";
+import { DRAWING_BY_NOTE_NAME } from "src/textDrawings";
+import { buildClassString } from "src/utilities/css";
+
 import cssModule from "./ModeNote.module.scss";
 
 

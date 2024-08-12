@@ -1,6 +1,6 @@
-import { describe, expect, it } from '@jest/globals';
-import { Motion } from "../../enumerations";
-import { derivedFromState, nextStateOnAnimationEnd } from "../../utilities/derived";
+import { describe, test, expect } from 'vitest';
+import { Motion } from "src/enumerations";
+import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
 
 
 function mockAnimationEvent(
@@ -10,7 +10,7 @@ function mockAnimationEvent(
 }
 
 describe("derivedFromState()", () => {
-  it("includes the motion", () => {
+  test("includes the motion", () => {
     expect(
       derivedFromState({ motion: Motion.Still, modeIndex: 5 }).motion
     ).toBe(
@@ -27,7 +27,7 @@ describe("derivedFromState()", () => {
       Motion.RetreatAll
     );
   });
-  it("includes the modeIndex", () => {
+  test("includes the modeIndex", () => {
     expect(
       derivedFromState({ motion: Motion.Still, modeIndex: 5 }).modeIndex
     ).toBe(
@@ -39,7 +39,7 @@ describe("derivedFromState()", () => {
       0
     );
   });
-  it("correctly decides isAnimating", () => {
+  test("correctly decides isAnimating", () => {
     expect(
       derivedFromState({ motion: Motion.Still, modeIndex: 5 }).isAnimating
     ).toBe(
@@ -56,7 +56,7 @@ describe("derivedFromState()", () => {
       true
     );
   });
-  it("correctly decides nextModeIndex", () => {
+  test("correctly decides nextModeIndex", () => {
     expect(
       derivedFromState({ motion: Motion.Still, modeIndex: 5 }).nextModeIndex
     ).toBe(
@@ -86,7 +86,7 @@ describe("derivedFromState()", () => {
 });
 
 describe("nextStateOnAnimationEnd()", () => {
-  it("completes the animation of an individual solfege note advancing", () => {
+  test("completes the animation of an individual solfege note advancing", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.AdvanceIndividual, modeIndex: 5 },
       mockAnimationEvent("advance-solfege-dot")
@@ -102,7 +102,7 @@ describe("nextStateOnAnimationEnd()", () => {
       6
     );
   });
-  it("completes the animation of an individual solfege note retreating", () => {
+  test("completes the animation of an individual solfege note retreating", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.RetreatIndividual, modeIndex: 5 },
       mockAnimationEvent("retreat-solfege-dot")
@@ -118,7 +118,7 @@ describe("nextStateOnAnimationEnd()", () => {
       4
     );
   });
-  it("does nothing when a label animation ends", () => {
+  test("does nothing when a label animation ends", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.AdvanceIndividual, modeIndex: 2 },
       mockAnimationEvent("advance-solfege-label")
@@ -134,7 +134,7 @@ describe("nextStateOnAnimationEnd()", () => {
       2
     );
   });
-  it("does nothing when the state's motion is Motion.Still", () => {
+  test("does nothing when the state's motion is Motion.Still", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.Still, modeIndex: 2 },
       mockAnimationEvent("advance-solfege-dot")
@@ -150,7 +150,7 @@ describe("nextStateOnAnimationEnd()", () => {
       2
     );
   });
-  it("triggers a Motion.RetreatAll when Do has advanced individually", () => {
+  test("triggers a Motion.RetreatAll when Do has advanced individually", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.AdvanceIndividual, modeIndex: 6 },
       mockAnimationEvent("advance-solfege-dot")
@@ -166,7 +166,7 @@ describe("nextStateOnAnimationEnd()", () => {
       0
     );
   });
-  it("completes the animation of a Motion.RetreatAll", () => {
+  test("completes the animation of a Motion.RetreatAll", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.RetreatAll, modeIndex: 6 },
       mockAnimationEvent("retreat-solfege-dot")
@@ -182,7 +182,7 @@ describe("nextStateOnAnimationEnd()", () => {
       0
     );
   });
-  it("triggers an Motion.AdvanceAll when Do has retreated individually", () => {
+  test("triggers an Motion.AdvanceAll when Do has retreated individually", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.RetreatIndividual, modeIndex: 0 },
       mockAnimationEvent("retreat-solfege-dot")
@@ -198,7 +198,7 @@ describe("nextStateOnAnimationEnd()", () => {
       6
     );
   });
-  it("completes the animation of an Motion.AdvanceAll", () => {
+  test("completes the animation of an Motion.AdvanceAll", () => {
     const nextState = nextStateOnAnimationEnd(
       { motion: Motion.AdvanceAll, modeIndex: 0 },
       mockAnimationEvent("advance-solfege-dot")

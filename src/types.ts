@@ -1,4 +1,4 @@
-import { Motion, SolfegeName, NoteName } from "./enumerations";
+import { Motion, SolfegeName, NoteName } from "src/enumerations";
 
 
 export interface State {

@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 
-import ModeExplorer from "./components/ModeExplorer";
+import ModeExplorer from "src/components/ModeExplorer";
 
 
 const container = document.getElementById("mode-explorer-mount-point") as HTMLElement;

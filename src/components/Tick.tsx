@@ -1,5 +1,6 @@
-import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "../utilities/clock";
-import { buildClassString } from "../utilities/css";
+import { CLOCK_RADIUS, TICK_LENGTH, xOnClockAt, yOnClockAt } from "src/utilities/clock";
+import { buildClassString } from "src/utilities/css";
+
 import cssModule from "./Tick.module.scss";
 
 

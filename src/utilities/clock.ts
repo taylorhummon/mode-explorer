@@ -1,4 +1,4 @@
-import { cosineOfDegrees, sineOfDegrees } from "./math"
+import { cosineOfDegrees, sineOfDegrees } from "src/utilities/math"
 
 
 export const CLOCK_RADIUS = 120;

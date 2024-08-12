@@ -1,7 +1,8 @@
 import Tick from "./Tick";
-import { CLOCK_RADIUS } from "../utilities/clock";
-import { buildIndicesArray } from "../utilities/array";
-import { buildClassString } from "../utilities/css";
+import { CLOCK_RADIUS } from "src/utilities/clock";
+import { buildIndicesArray } from "src/utilities/array";
+import { buildClassString } from "src/utilities/css";
+
 import cssModule from "./Clock.module.scss";
 
 

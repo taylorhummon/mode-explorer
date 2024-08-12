@@ -1,5 +1,6 @@
-import { MODE_NAMES } from "../enumerations";
-import { buildClassString } from "../utilities/css";
+import { MODE_NAMES } from "src/enumerations";
+import { buildClassString } from "src/utilities/css";
+
 import cssModule from "./ModeName.module.scss";
 
 

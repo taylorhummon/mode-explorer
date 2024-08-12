@@ -1,9 +1,9 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { SolfegeName } from "../../enumerations";
-import ModeExplorer from "../../components/ModeExplorer";
+import { SolfegeName } from "src/enumerations";
+import ModeExplorer from "src/components/ModeExplorer";
 
 
 function getSolfegeDot(name: SolfegeName) {
@@ -11,10 +11,10 @@ function getSolfegeDot(name: SolfegeName) {
 }
 
 describe("ModeExplorer", () => {
-  it("renders without crashing", () => {
+  test("renders without crashing", () => {
     render(<ModeExplorer />);
   });
-  it("shows solfege notes at the correct positions for the major mode", () => {
+  test("shows solfege notes at the correct positions for the major mode", () => {
     render(<ModeExplorer />);
     const domElementDo = getSolfegeDot(SolfegeName.Do);
     expect(
@@ -94,7 +94,7 @@ describe("ModeExplorer", () => {
       expect.stringContaining("can-move")
     );
   });
-  it("solfege note animates after clicking", async () => {
+  test("solfege note animates after clicking", async () => {
     const user = userEvent.setup();
     render(<ModeExplorer />);
     await user.click(getSolfegeDot(SolfegeName.Fa));

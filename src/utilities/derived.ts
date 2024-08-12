@@ -1,4 +1,4 @@
-import type { State, Derived } from "../types";
+import type { State, Derived } from "src/types";
 import {
   Motion,
   SolfegeName,
@@ -6,9 +6,10 @@ import {
   SOLFEGE_NAMES_IN_BEADGCF_ORDER,
   NoteName,
   MODE_NOTES
-} from "../enumerations";
-import { buildMap } from "../utilities/map";
-import { remainderFor } from "../utilities/math";
+} from "src/enumerations";
+import { buildMap } from "src/utilities/map";
+import { remainderFor } from "src/utilities/math";
+
 
 export function derivedFromState(
   state: State
@@ -19,7 +20,6 @@ export function derivedFromState(
     return derivedWhenAnimating(state);
   }
 }
-
 
 function derivedWhenStill({
   motion,
@@ -191,5 +191,8 @@ export function nextStateOnAnimationEnd(
 function isAnimationObserved(
   animationName: string
 ): boolean {
-  return animationName.endsWith("solfege-dot");
+  return (
+    animationName.includes("advance-solfege-dot") ||
+    animationName.includes("retreat-solfege-dot")
+  );
 }

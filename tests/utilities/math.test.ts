@@ -1,9 +1,9 @@
-import { describe, expect, it } from '@jest/globals';
-import { remainderFor, cosineOfDegrees, sineOfDegrees } from "../../utilities/math";
+import { describe, test, expect } from 'vitest';
+import { remainderFor, cosineOfDegrees, sineOfDegrees } from "src/utilities/math";
 
 
 describe("remainderFor()", () => {
-  it("works when the denominator is positive", () => {
+  test("works when the denominator is positive", () => {
     expect(
       remainderFor(14, 6)
     ).toBe(
@@ -35,7 +35,7 @@ describe("remainderFor()", () => {
       4
     );
   });
-  it("throws when the denominator is zero or negative", () => {
+  test("throws when the denominator is zero or negative", () => {
     expect(() => {
       remainderFor(14, 0);
     }).toThrow();
@@ -46,7 +46,7 @@ describe("remainderFor()", () => {
 });
 
 describe("cosineOfDegrees()", () => {
-  it("should work for common degree values", () => {
+  test("should work for common degree values", () => {
     expect(
       cosineOfDegrees(0)
     ).toBeCloseTo(
@@ -71,7 +71,7 @@ describe("cosineOfDegrees()", () => {
 });
 
 describe("sineOfDegrees()", () => {
-  it("should work for common degree values", () => {
+  test("should work for common degree values", () => {
     expect(
       sineOfDegrees(0)
     ).toBeCloseTo(

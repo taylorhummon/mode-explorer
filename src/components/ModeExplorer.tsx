@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import { Motion } from "../enumerations";
-import ModeName from "./ModeName";
-import Canvas from "./Canvas";
-import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived";
-import { buildClassString } from "../utilities/css";
+import { Motion } from "src/enumerations";
+import ModeName from "src/components/ModeName";
+import Canvas from "src/components/Canvas";
+import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
+import { buildClassString } from "src/utilities/css";
+
 import cssModule from "./ModeExplorer.module.scss";
 
 

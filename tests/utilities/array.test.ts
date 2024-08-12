@@ -1,9 +1,9 @@
-import { describe, expect, it } from '@jest/globals';
-import { buildIndicesArray } from "../../utilities/array";
+import { describe, test, expect } from 'vitest';
+import { buildIndicesArray } from "src/utilities/array";
 
 
 describe("buildIndicesArray()", () => {
-  it("builds the array of indices", () => {
+  test("builds the array of indices", () => {
     expect(
       buildIndicesArray(5)
     ).toStrictEqual(
@@ -20,7 +20,7 @@ describe("buildIndicesArray()", () => {
       []
     );
   });
-  it("throws when given a negative indices count", () => {
+  test("throws when given a negative indices count", () => {
     expect(() => {
       buildIndicesArray(-1);
     }).toThrow();
