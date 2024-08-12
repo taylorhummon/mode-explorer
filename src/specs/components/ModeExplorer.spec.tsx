@@ -96,7 +96,6 @@ describe("ModeExplorer", () => {
   });
   it("solfege note animates after clicking", async () => {
     const user = userEvent.setup();
-    const div = document.createElement("div");
     render(<ModeExplorer />);
     await user.click(getSolfegeDot(SolfegeName.Fa));
     expect(
