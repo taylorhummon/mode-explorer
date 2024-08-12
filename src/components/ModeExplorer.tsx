@@ -6,6 +6,7 @@ import { derivedFromState, nextStateOnAnimationEnd } from "../utilities/derived"
 import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeExplorer.module.scss";
 
+
 const INITIAL_MODE_INDEX = 5; // Major mode
 
 export default function ModeExplorer(): JSX.Element {

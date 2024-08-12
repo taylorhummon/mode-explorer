@@ -1,8 +1,10 @@
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import { SolfegeName } from "../../enumerations";
 import ModeExplorer from "../../components/ModeExplorer";
+
 
 function getSolfegeDot(name: SolfegeName) {
   return screen.getByTestId(`solfege-dot-${name}`);

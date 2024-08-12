@@ -1,5 +1,6 @@
 import { Motion, SolfegeName, NoteName } from "./enumerations";
 
+
 export interface State {
   motion: Motion;
   modeIndex: number;

@@ -4,6 +4,7 @@ import { buildIndicesArray } from "../utilities/array";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./Clock.module.scss";
 
+
 export default function Clock(): JSX.Element {
   return (
     <>

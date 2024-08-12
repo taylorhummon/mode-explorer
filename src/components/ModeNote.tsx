@@ -1,8 +1,9 @@
-import { Derived } from "../types";
+import type { Derived } from "../types";
 import { Motion, NoteName } from "../enumerations";
 import { DRAWING_BY_NOTE_NAME } from "../textDrawings";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./ModeNote.module.scss";
+
 
 interface ModeNoteProps {
   derived: Derived

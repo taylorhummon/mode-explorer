@@ -1,4 +1,4 @@
-import { Derived, Move } from "../types";
+import type { Derived, Move } from "../types";
 import { Motion } from "../enumerations";
 import Clock from "./Clock";
 import ModeNote from "./ModeNote";
@@ -6,6 +6,7 @@ import SolfegeDot from "./SolfegeDot";
 import SolfegeLabel from "./SolfegeLabel"
 import Arrow from "./Arrow";
 import { arrayFromMap } from "../utilities/map";
+
 
 interface CanvasProps {
   derived: Derived;

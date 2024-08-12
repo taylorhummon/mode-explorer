@@ -1,4 +1,4 @@
-import { State, Derived } from "../types";
+import type { State, Derived } from "../types";
 import {
   Motion,
   SolfegeName,
@@ -19,6 +19,7 @@ export function derivedFromState(
     return derivedWhenAnimating(state);
   }
 }
+
 
 function derivedWhenStill({
   motion,

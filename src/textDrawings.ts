@@ -1,5 +1,6 @@
 import { SolfegeName, NoteName } from "./enumerations";
 
+
 /*
 iOS Webkit does not (yet) support animating <text> elements within an SVG via the offset-path property.
 As a workaround, we'll draw note names as paths instead of using <text> elements.

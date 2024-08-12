@@ -1,6 +1,7 @@
-import { Move } from "../types";
+import type { Move } from "../types";
 import { buildClassString } from "../utilities/css";
 import cssModule from "./Arrow.module.scss";
+
 
 interface ArrowProps {
   isAdvance: boolean;

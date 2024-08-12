@@ -3,6 +3,7 @@ import { buildClassString } from "../utilities/css";
 import { DRAWING_BY_SOLFEGE_NAME } from "../textDrawings";
 import cssModule from "./SolfegeLabel.module.scss";
 
+
 interface SolfegeLabelProps {
   name: SolfegeName;
   location: Motion;

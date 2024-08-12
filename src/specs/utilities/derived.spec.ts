@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import { Motion } from "../../enumerations";
 import { derivedFromState, nextStateOnAnimationEnd } from "../../utilities/derived";
 
+
 function mockAnimationEvent(
   animationName: string
 ): AnimationEvent {
