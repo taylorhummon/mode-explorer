@@ -163,7 +163,7 @@ describe("nextStateOnAnimationEnd()", () => {
     expect(
       nextState.modeIndex
     ).toBe(
-      6
+      0
     );
   });
   it("completes the animation of a Motion.RetreatAll", () => {
@@ -195,7 +195,7 @@ describe("nextStateOnAnimationEnd()", () => {
     expect(
       nextState.modeIndex
     ).toBe(
-      0
+      6
     );
   });
   it("completes the animation of an Motion.AdvanceAll", () => {
