@@ -3,7 +3,7 @@ export function buildMap<K, V>(
   valueFromKey: ((key: K) => V)
 ): Map<K, V> {
   const map: Map<K, V> = new Map();
-  for (let key of keys) {
+  for (const key of keys) {
     map.set(key, valueFromKey(key));
   }
   return map;

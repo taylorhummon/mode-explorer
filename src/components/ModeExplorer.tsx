@@ -29,13 +29,10 @@ export default function ModeExplorer(): JSX.Element {
     ): void {
       setState((state) => nextStateOnAnimationEnd(state, event));
     }
-    if (domNodeRef.current) {
-      domNodeRef.current.addEventListener("animationend", animationEndHandler, false);
-    }
+    const domNode = domNodeRef.current;
+    if (domNode) domNode.addEventListener("animationend", animationEndHandler, false);
     return () => {
-      if (domNodeRef.current) {
-        domNodeRef.current.removeEventListener("animationend", animationEndHandler);
-      }
+      if (domNode) domNode.removeEventListener("animationend", animationEndHandler);
     };
   }, []);
   return (
