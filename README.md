@@ -14,35 +14,45 @@ but you may need to [enable it](https://yarnpkg.com/getting-started/install).
 
 To install this application's dependencies, change into the project directory and run `yarn`:
 ```
-cd mode-explorer
+cd mode-explorer/
 yarn
 ```
 
-## Usage
+## Development server
 
 To start a development server:
 ```
-yarn start
+yarn dev
 ```
 
 The app will be running at [http://localhost:1234](http://localhost:1234).
 
-To run tests:
+
+### Linting and Checking Types
+
+To lint, run:
+```
+yarn lint
+```
+
+And to execute the type checker, run:
+```
+yarn check-types
+```
+
+
+### Testing
+
+To execute the front end's test suite, run:
 ```
 yarn test
 ```
 
-To create a production build:
+
+### Building
+
+To build the app and preview the result, run:
 ```
-yarn build
+yarn build &&
+yarn preview
 ```
-
-## Note
-
-I'm using [Parcel](https://parceljs.org/) to build this application. It seems to have an issue 
-invalidating its cache when I make significant structural changes to the codebase. If it's acting 
-up, removing the `.parcel-cache` directory seems to fix things.
-
-Also, Parcel does it's own transpiling so [Babel](https://babeljs.io/) is not necessary in most 
-circumstances. However, our test runner [Jest](https://jestjs.io/) needs Babel so we allow Babel 
-to run when executing the test suite.
