@@ -1,7 +1,16 @@
 import { test, expect } from 'vitest';
+import { vi } from 'vitest';
 import { Motion } from "src/enumerations";
 import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
 
+
+vi.mock('src/utilities/animation', () => {
+  return {
+    isAnimationObserved(animationName: string) {
+      return ["advance-solfege-dot", "retreat-solfege-dot"].includes(animationName);
+    }
+  }
+});
 
 function mockAnimationEvent(
   animationName: string

@@ -9,6 +9,7 @@ import {
 } from "src/enumerations";
 import { buildMap } from "src/utilities/map";
 import { remainderFor } from "src/utilities/math";
+import { isAnimationObserved } from "src/utilities/animation";
 
 
 export function derivedFromState(
@@ -162,15 +163,6 @@ function locationWhenStill(
   return (modeIndex <= index) ? Motion.StillEarly : Motion.StillLate;
 }
 
-/*
-IDEAS:
-
-1. Don't mangle animation name.
-- That makes this component less self contained.
-I could entirly stop using CSS modules. But I don't think that's a great solution.
-
-*/
-
 export function nextStateOnAnimationEnd(
   state: State,
   event: AnimationEvent
@@ -195,13 +187,4 @@ export function nextStateOnAnimationEnd(
       modeIndex: derived.nextModeIndex
     };
   }
-}
-
-function isAnimationObserved(
-  animationName: string
-): boolean {
-  return (
-    animationName.includes("advance-solfege-dot") ||
-    animationName.includes("retreat-solfege-dot")
-  );
 }
