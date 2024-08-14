@@ -1,0 +1,8 @@
+@value color-black: #000000;
+@value color-gray: #7F7F7F;
+@value color-green: #0B9B0D;
+@value color-blue: #0433FF;
+@value color-red: #ff2f92;
+
+@value duration-fade-effect: 300ms;
+@value duration-motion: 650ms;

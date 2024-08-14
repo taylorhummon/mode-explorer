@@ -3,7 +3,7 @@ import { CLOCK_RADIUS } from "src/utilities/clock";
 import { buildIndicesArray } from "src/utilities/array";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./Clock.module.scss";
+import cssModule from "./Clock.module.css";
 
 
 export default function Clock(): JSX.Element {

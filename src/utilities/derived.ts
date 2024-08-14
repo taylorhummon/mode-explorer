@@ -162,6 +162,15 @@ function locationWhenStill(
   return (modeIndex <= index) ? Motion.StillEarly : Motion.StillLate;
 }
 
+/*
+IDEAS:
+
+1. Don't mangle animation name.
+- That makes this component less self contained.
+I could entirly stop using CSS modules. But I don't think that's a great solution.
+
+*/
+
 export function nextStateOnAnimationEnd(
   state: State,
   event: AnimationEvent

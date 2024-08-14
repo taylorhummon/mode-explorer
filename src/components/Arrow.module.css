@@ -1,23 +1,23 @@
-@use 'src/constants';
+@value color-green, duration-fade-effect from "../constants.css";
 
 .arrow {
   opacity: 1;
   transition-property: opacity;
-  transition-duration: constants.$fade-effect-duration;
+  transition-duration: duration-fade-effect;
 
   &.hidden {
     opacity: 0;
   }
 
   rect {
-    // this rectangle is used to capture clicks but shouldn't be visible to the user
+    /* this rectangle is used to capture clicks but shouldn't be visible to the user */
     fill: #FFFFFF00;
     stroke: none;
   }
 
   polyline {
     fill: none;
-    stroke: constants.$green;
+    stroke: color-green;
     stroke-width: 3;
   }
 

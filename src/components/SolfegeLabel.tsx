@@ -2,7 +2,7 @@ import { SolfegeName, Motion } from "src/enumerations";
 import { buildClassString } from "src/utilities/css";
 import { DRAWING_BY_SOLFEGE_NAME } from "src/textDrawings";
 
-import cssModule from "./SolfegeLabel.module.scss";
+import cssModule from "./SolfegeLabel.module.css";
 
 
 interface SolfegeLabelProps {

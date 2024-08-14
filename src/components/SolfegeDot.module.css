@@ -1,4 +1,4 @@
-@use 'src/constants';
+@value color-black, color-green, color-blue, duration-motion, duration-fade-effect from "../constants.css";
 
 @keyframes advance-solfege-dot {
   0% {
@@ -20,29 +20,29 @@
 
 .solfege-dot {
   offset-rotate: 0deg;
-  fill: constants.$black;
+  fill: color-black;
   transition-property: fill;
-  transition-duration: constants.$fade-effect-duration;
+  transition-duration: duration-fade-effect;
 
   &.can-move {
-    fill: constants.$green;
+    fill: color-green;
   }
 
   &.advance-individual,
   &.advance-all {
-    animation: advance-solfege-dot constants.$motion-duration ease-in-out 1 forwards;
+    animation: advance-solfege-dot duration-motion ease-in-out 1 forwards;
   }
 
   &.retreat-individual,
   &.retreat-all {
-    animation: retreat-solfege-dot constants.$motion-duration ease-in-out 1 forwards;
+    animation: retreat-solfege-dot duration-motion ease-in-out 1 forwards;
   }
 
   &.Do {
-    fill: constants.$blue;
+    fill: color-blue;
 
     &.can-move {
-      fill: constants.$green;
+      fill: color-green;
     }
 
     &.still {

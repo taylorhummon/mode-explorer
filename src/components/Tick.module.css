@@ -1,0 +1,10 @@
+@value color-gray, color-blue from "../constants.css";
+
+.tick {
+  stroke-width: 3;
+  stroke: color-gray;
+
+  &.root {
+    stroke: color-blue;
+  }
+}

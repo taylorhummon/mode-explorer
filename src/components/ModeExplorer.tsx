@@ -5,7 +5,7 @@ import Canvas from "src/components/Canvas";
 import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./ModeExplorer.module.scss";
+import cssModule from "./ModeExplorer.module.css";
 
 
 const INITIAL_MODE_INDEX = 5; // Major mode

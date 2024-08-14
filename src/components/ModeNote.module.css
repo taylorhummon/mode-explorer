@@ -1,15 +1,15 @@
-@use 'src/constants';
+@value color-red, duration-motion from "../constants.css";
 
 .mode-notes-crop {
   clip-path: url(#mode-notes-crop);
 }
 
 .mode-note {
-  fill: constants.$red;
+  fill: color-red;
 
   &.retreat,
   &.advance {
-    transition: translate constants.$motion-duration ease-in-out;
+    transition: translate duration-motion ease-in-out;
   }
 
   &.left {
