@@ -1,11 +1,11 @@
-@value color-red, duration-motion from "../constants.css";
+@value color-black, duration-motion from "../constants.css";
 
 .mode-notes-crop {
   clip-path: url(#mode-notes-crop);
 }
 
 .mode-note {
-  fill: color-red;
+  fill: color-black;
 
   &.retreat,
   &.advance {

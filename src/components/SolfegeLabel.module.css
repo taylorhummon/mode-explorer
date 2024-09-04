@@ -1,4 +1,4 @@
-@value color-black, color-blue, duration-motion from "../constants.css";
+@value color-red, duration-motion from "../constants.css";
 
 @keyframes advance-solfege-label {
   0% {
@@ -20,7 +20,7 @@
 
 .solfege-label {
   offset-rotate: 0deg;
-  fill: color-black;
+  fill: color-red;
 
   &.advance-individual,
   &.advance-all {
@@ -32,9 +32,7 @@
     animation: retreat-solfege-label duration-motion ease-in-out 1 forwards;
   }
 
-  &.Do {
-    fill: color-blue;
-
+  &.do {
     &.still {
       offset-path: path("M 0, -80");
     }
@@ -50,7 +48,7 @@
     }
   }
 
-  &.Re {
+  &.re {
     &.still-early {
       offset-path: path("M 40,-69.28203230275508");
     }
@@ -67,7 +65,7 @@
     }
   }
 
-  &.Mi {
+  &.mi {
     &.still-early {
       offset-path: path("M 80,0");
     }
@@ -84,7 +82,7 @@
     }
   }
 
-  &.Fa {
+  &.fa {
     &.still-early {
       offset-path: path("M 40,69.28203230275508");
     }
@@ -101,7 +99,7 @@
     }
   }
 
-  &.Sol {
+  &.sol {
     &.still-early {
       offset-path: path("M 0,80");
     }
@@ -118,7 +116,7 @@
     }
   }
 
-  &.La {
+  &.la {
     &.still-early {
       offset-path: path("M -69.28203230275508,40");
     }
@@ -135,7 +133,7 @@
     }
   }
 
-  &.Ti {
+  &.ti {
     &.still-early {
       offset-path: path("M -69.28203230275508,-40");
     }

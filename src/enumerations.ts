@@ -1,11 +1,11 @@
 export enum SolfegeName {
-  Do = "Do",
-  Re = "Re",
-  Mi = "Mi",
-  Fa = "Fa",
-  Sol = "Sol",
-  La = "La",
-  Ti = "Ti"
+  Do = "do",
+  Re = "re",
+  Mi = "mi",
+  Fa = "fa",
+  Sol = "sol",
+  La = "la",
+  Ti = "ti"
 }
 
 export const SOLFEGE_NAMES = [
@@ -48,9 +48,9 @@ export const MODE_NOTES = [
 ];
 
 export enum ModeName {
-  Minor = "Minor",
+  Aeolian = "Aeolian",
   Locrian = "Locrian",
-  Major = "Major",
+  Ionian = "Ionian",
   Dorian = "Dorian",
   Phrygian = "Phrygian",
   Lydian = "Lydian",
@@ -60,10 +60,10 @@ export enum ModeName {
 export const MODE_NAMES = [
   ModeName.Locrian,
   ModeName.Phrygian,
-  ModeName.Minor,
+  ModeName.Aeolian,
   ModeName.Dorian,
   ModeName.Mixolydian,
-  ModeName.Major,
+  ModeName.Ionian,
   ModeName.Lydian
 ];
 
