@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Motion } from "src/enumerations";
-import ModeName from "src/components/ModeName";
 import Canvas from "src/components/Canvas";
 import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
 import { buildClassString } from "src/utilities/css";
@@ -43,10 +42,6 @@ export default function ModeExplorer(): JSX.Element {
       <Canvas
         derived={derived}
         buildMove={buildMove}
-      />
-      <ModeName
-        modeIndex={derived.modeIndex}
-        isHidden={derived.isAnimating}
       />
     </div>
   );
