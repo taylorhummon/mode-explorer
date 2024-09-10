@@ -1,4 +1,4 @@
-@value color-red, duration-motion from "../constants.css";
+@value color-black, duration-motion from "../constants.css";
 
 @keyframes advance-solfege-label {
   0% {
@@ -20,7 +20,7 @@
 
 .solfege-label {
   offset-rotate: 0deg;
-  fill: color-red;
+  fill: color-black;
 
   &.advance-individual,
   &.advance-all {
