@@ -1,9 +1,7 @@
-@value color-green, duration-fade-effect from "../constants.css";
+@value color-green from "../constants.css";
 
 .arrow {
   opacity: 1;
-  transition-property: opacity;
-  transition-duration: duration-fade-effect;
 
   &.hidden {
     opacity: 0;

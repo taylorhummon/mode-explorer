@@ -1,4 +1,4 @@
-@value color-black, color-green, duration-motion, duration-fade-effect from "../constants.css";
+@value color-black, color-green, duration-motion from "../constants.css";
 
 @keyframes advance-solfege-dot {
   0% {
@@ -21,8 +21,6 @@
 .solfege-dot {
   offset-rotate: 0deg;
   fill: color-black;
-  transition-property: fill;
-  transition-duration: duration-fade-effect;
 
   &.can-move {
     fill: color-green;
