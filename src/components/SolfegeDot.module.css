@@ -20,9 +20,11 @@
 
 .solfege-dot {
   offset-rotate: 0deg;
+  cursor: default;
   fill: color-black;
 
   &.can-move {
+    cursor: pointer;
     fill: color-green;
   }
 

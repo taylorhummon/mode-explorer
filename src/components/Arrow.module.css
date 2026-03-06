@@ -1,9 +1,11 @@
 @value color-green from "../constants.css";
 
 .arrow {
+  cursor: pointer;
   opacity: 1;
 
   &.hidden {
+    cursor: default;
     opacity: 0;
   }
 
