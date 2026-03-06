@@ -1,41 +1,48 @@
 @value color-black, duration-motion from "../constants.css";
-
-.mode-notes-crop {
-  clip-path: url(#mode-notes-crop);
-}
+@value opacity-full: 1;
+@value opacity-transparent: 0;
 
 .mode-note {
   fill: color-black;
 
   &.retreat,
   &.advance {
-    transition: translate duration-motion ease-in-out;
+    transition-property: opacity, translate;
+    transition-duration: duration-motion;
+    transition-timing-function: ease-in-out;
   }
 
   &.left {
+    opacity: opacity-transparent;
     translate: -50px;
 
     &.advance{
+      opacity: opacity-full;
       translate: 0px;
     }
   }
 
   &.center {
+    opacity: opacity-full;
     translate: 0px;
 
     &.advance {
+      opacity: opacity-transparent;
       translate: 50px;
     }
 
     &.retreat {
+      opacity: opacity-transparent;
       translate: -50px;
     }
   }
 
   &.right {
+    opacity: opacity-transparent;
     translate: 50px;
 
     &.retreat{
+      opacity: opacity-full;
       translate: 0px;
     }
   }

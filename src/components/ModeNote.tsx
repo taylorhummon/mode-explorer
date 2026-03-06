@@ -15,24 +15,17 @@ export default function ModeNote({
 }: ModeNoteProps): JSX.Element {
   const { motion, modeNote, advanceableModeNote, retreatableModeNote } = derived;
   return (
-    <>
-      <defs>
-        <clipPath id="mode-notes-crop">
-          <rect x="-35" y="-15" width="70" height="30" />
-        </clipPath>
-      </defs>
-      <g className={buildClassString(cssModule, ["mode-notes-crop"])}>
-        <g className={className("left", motion)}>
-          {modeNotePath(advanceableModeNote)}
-        </g>
-        <g className={className("center", motion)}>
-          {modeNotePath(modeNote)}
-        </g>
-        <g className={className("right", motion)}>
-          {modeNotePath(retreatableModeNote)}
-        </g>
+    <g className={buildClassString(cssModule, ["mode-notes"])}>
+      <g className={className("left", motion)}>
+        {modeNotePath(advanceableModeNote)}
       </g>
-    </>
+      <g className={className("center", motion)}>
+        {modeNotePath(modeNote)}
+      </g>
+      <g className={className("right", motion)}>
+        {modeNotePath(retreatableModeNote)}
+      </g>
+    </g>
   );
 }
 
