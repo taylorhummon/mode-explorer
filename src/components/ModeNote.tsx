@@ -1,6 +1,6 @@
 import type { Derived } from "src/types";
-import { Motion, NoteName } from "src/enumerations";
-import { DRAWING_BY_NOTE_NAME } from "src/textDrawings";
+import { Motion, ModeNote as ModeNoteEnum } from "src/enumerations";
+import { DRAWING_BY_MODE_NOTE } from "src/textDrawings";
 import { buildClassString } from "src/utilities/css";
 
 import cssModule from "./ModeNote.module.css";
@@ -30,12 +30,12 @@ export default function ModeNote({
 }
 
 function modeNotePath(
-  modeNote: NoteName
+  modeNote: ModeNoteEnum
 ): JSX.Element {
   return (
     <path
       transform="translate(-5 -6)"
-      d={DRAWING_BY_NOTE_NAME[modeNote]}
+      d={DRAWING_BY_MODE_NOTE[modeNote]}
       fillRule="evenodd"
     />
   )

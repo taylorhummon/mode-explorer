@@ -9,7 +9,7 @@ export enum SolfegeName {
 }
 export const SOLFEGE_NAMES = Object.values(SolfegeName);
 
-export enum NoteName {
+export enum ModeNote {
   B = "B",
   E = "E",
   A = "A",
@@ -18,7 +18,7 @@ export enum NoteName {
   C = "C",
   F = "F"
 }
-export const MODE_NOTES = Object.values(NoteName);
+export const MODE_NOTES = Object.values(ModeNote);
 
 export enum ModeName {
   Locrian = "Locrian",

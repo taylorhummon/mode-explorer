@@ -3,7 +3,7 @@ import {
   Motion,
   SolfegeName,
   SOLFEGE_NAMES,
-  NoteName,
+  ModeNote,
   MODE_NOTES
 } from "src/enumerations";
 import { buildMap } from "src/utilities/map";
@@ -143,13 +143,13 @@ function getRetreatableSolfegeName(
 
 function getAdvanceableModeNote(
   modeIndex: number
-): NoteName {
+): ModeNote {
   return MODE_NOTES[remainderFor(modeIndex + 1, 7)];
 }
 
 function getRetreatableModeNote(
   modeIndex: number
-): NoteName {
+): ModeNote {
   return MODE_NOTES[remainderFor(modeIndex - 1, 7)];
 }
 
