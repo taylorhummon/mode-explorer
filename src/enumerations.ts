@@ -1,71 +1,35 @@
 export enum SolfegeName {
-  Do = "do",
-  Re = "re",
-  Mi = "mi",
-  Fa = "fa",
   Sol = "sol",
+  Re = "re",
   La = "la",
-  Ti = "ti"
+  Mi = "mi",
+  Ti = "ti",
+  Fa = "fa",
+  Do = "do"
 }
-
-export const SOLFEGE_NAMES = [
-  SolfegeName.Do,
-  SolfegeName.Re,
-  SolfegeName.Mi,
-  SolfegeName.Fa,
-  SolfegeName.Sol,
-  SolfegeName.La,
-  SolfegeName.Ti
-];
-
-export const SOLFEGE_NAMES_IN_BEADGCF_ORDER = [
-  SolfegeName.Sol,
-  SolfegeName.Re,
-  SolfegeName.La,
-  SolfegeName.Mi,
-  SolfegeName.Ti,
-  SolfegeName.Fa
-];
+export const SOLFEGE_NAMES = Object.values(SolfegeName);
 
 export enum NoteName {
-  A = "A",
   B = "B",
-  C = "C",
-  D = "D",
   E = "E",
-  F = "F",
-  G = "G"
+  A = "A",
+  D = "D",
+  G = "G",
+  C = "C",
+  F = "F"
 }
-
-export const MODE_NOTES = [
-  NoteName.B,
-  NoteName.E,
-  NoteName.A,
-  NoteName.D,
-  NoteName.G,
-  NoteName.C,
-  NoteName.F
-];
+export const MODE_NOTES = Object.values(NoteName);
 
 export enum ModeName {
-  Aeolian = "Aeolian",
   Locrian = "Locrian",
-  Ionian = "Ionian",
-  Dorian = "Dorian",
   Phrygian = "Phrygian",
-  Lydian = "Lydian",
-  Mixolydian = "Mixolydian"
+  Aeolian = "Aeolian",
+  Dorian = "Dorian",
+  Mixolydian = "Mixolydian",
+  Ionian = "Ionian",
+  Lydian = "Lydian"
 }
-
-export const MODE_NAMES = [
-  ModeName.Locrian,
-  ModeName.Phrygian,
-  ModeName.Aeolian,
-  ModeName.Dorian,
-  ModeName.Mixolydian,
-  ModeName.Ionian,
-  ModeName.Lydian
-];
+export const MODE_NAMES = Object.values(ModeName);
 
 export enum Motion {
   Still = "still",

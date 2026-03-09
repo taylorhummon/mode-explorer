@@ -3,7 +3,6 @@ import {
   Motion,
   SolfegeName,
   SOLFEGE_NAMES,
-  SOLFEGE_NAMES_IN_BEADGCF_ORDER,
   NoteName,
   MODE_NOTES
 } from "src/enumerations";
@@ -75,15 +74,13 @@ function derivedWhenAnimating({
 function getAdvanceableSolfegeName(
   modeIndex: number
 ): SolfegeName {
-  if (modeIndex === 6) return SolfegeName.Do;
-  return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex];
+  return SOLFEGE_NAMES[modeIndex];
 }
 
 function getRetreatableSolfegeName(
   modeIndex: number
 ): SolfegeName {
-  if (modeIndex === 0) return SolfegeName.Do;
-  return SOLFEGE_NAMES_IN_BEADGCF_ORDER[modeIndex - 1];
+  return SOLFEGE_NAMES[remainderFor(modeIndex - 1, 7)];
 }
 
 function getAdvanceableModeNote(
@@ -101,8 +98,8 @@ function getRetreatableModeNote(
 function getAdvanceableHour(
   modeIndex: number
 ): number {
-  if (modeIndex % 2 === 0) {
-    return (modeIndex + 6) % 12;
+  if (remainderFor(modeIndex, 2) === 0) {
+    return remainderFor(modeIndex + 6, 12);
   } else {
     return modeIndex;
   }
@@ -111,10 +108,10 @@ function getAdvanceableHour(
 function getRetreatableHour(
   modeIndex: number
 ): number {
-  if (modeIndex % 2 === 0) {
+  if (remainderFor(modeIndex, 2) === 0) {
     return modeIndex;
   } else {
-    return (modeIndex + 6) % 12;
+    return remainderFor(modeIndex + 6, 12);
   }
 }
 
@@ -158,7 +155,7 @@ function locationWhenStill(
   modeIndex: number
 ): Motion {
   if (solfegeName === SolfegeName.Do) return Motion.Still;
-  const index = SOLFEGE_NAMES_IN_BEADGCF_ORDER.indexOf(solfegeName);
+  const index = SOLFEGE_NAMES.indexOf(solfegeName);
   if (index === -1) throw new Error(`invalid solfege note: ${solfegeName}`);
   return (modeIndex <= index) ? Motion.StillEarly : Motion.StillLate;
 }
