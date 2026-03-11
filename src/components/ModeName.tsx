@@ -16,7 +16,7 @@ export default function ModeName({
   return (
     <p
       className={buildClassString(cssModule, ["mode-name"])}
-    >Mode:&nbsp;
+    >mode:&nbsp;
       <span
         className={className(isHidden)}
       >{MODE_NAMES[modeIndex]}</span>

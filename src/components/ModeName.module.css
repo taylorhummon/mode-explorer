@@ -1,7 +1,6 @@
 .mode-name {
   margin: 0;
   font-size: 16px;
-  font-style: italic;
 
   & .mode-name-span {
     opacity: 1;
