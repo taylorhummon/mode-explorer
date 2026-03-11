@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import ModeExplorer from "src/components/ModeExplorer";
+import SolfegeExplorer from "src/components/SolfegeExplorer";
 
 
-const container = document.getElementById("mode-explorer-mount-point") as HTMLElement;
+const container = document.getElementById("solfege-explorer-mount-point") as HTMLElement;
 const root = createRoot(container);
 root.render(
   <StrictMode>
-    <ModeExplorer />
+    <SolfegeExplorer />
   </StrictMode>
 );

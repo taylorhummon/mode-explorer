@@ -5,12 +5,12 @@ import Canvas from "src/components/Canvas";
 import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "src/components/ModeExplorer.module.css";
+import cssModule from "src/components/SolfegeExplorer.module.css";
 
 
 const INITIAL_MODE_INDEX = 5; // Major mode
 
-export default function ModeExplorer(): JSX.Element {
+export default function SolfegeExplorer(): JSX.Element {
   const domNodeRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState({
     motion: Motion.Still,
@@ -41,7 +41,7 @@ export default function ModeExplorer(): JSX.Element {
   return (
     <div
       ref={domNodeRef}
-      className={buildClassString(cssModule, ["mode-explorer"])}
+      className={buildClassString(cssModule, ["solfege-explorer"])}
     >
       <Canvas
         derived={derived}

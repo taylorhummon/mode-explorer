@@ -3,19 +3,19 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { SolfegeName } from "src/enumerations";
-import ModeExplorer from "src/components/ModeExplorer";
+import SolfegeExplorer from "src/components/SolfegeExplorer";
 
 
 function getSolfegeDot(name: SolfegeName) {
   return screen.getByTestId(`solfege-dot-${name}`);
 }
 
-test("<ModeExplorer /> renders without crashing", () => {
-  render(<ModeExplorer />);
+test("<SolfegeExplorer /> renders without crashing", () => {
+  render(<SolfegeExplorer />);
 });
 
-test("<ModeExplorer /> shows solfege notes at the correct positions for the major mode", () => {
-  render(<ModeExplorer />);
+test("<SolfegeExplorer /> shows solfege notes at the correct positions for the major mode", () => {
+  render(<SolfegeExplorer />);
   const domElementDo = getSolfegeDot(SolfegeName.Do);
   expect(
     domElementDo.getAttribute("class")
@@ -95,9 +95,9 @@ test("<ModeExplorer /> shows solfege notes at the correct positions for the majo
   );
 });
 
-test("<ModeExplorer /> solfege note animates after clicking", async () => {
+test("<SolfegeExplorer /> solfege note animates after clicking", async () => {
   const user = userEvent.setup();
-  render(<ModeExplorer />);
+  render(<SolfegeExplorer />);
   await user.click(getSolfegeDot(SolfegeName.Fa));
   expect(
     getSolfegeDot(SolfegeName.Fa).getAttribute("class")
