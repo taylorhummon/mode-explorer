@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+
 import { Motion } from "src/enumerations";
 import Canvas from "src/components/Canvas";
 import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./ModeExplorer.module.css";
+import cssModule from "src/components/ModeExplorer.module.css";
 
 
 const INITIAL_MODE_INDEX = 5; // Major mode
@@ -16,12 +17,14 @@ export default function ModeExplorer(): JSX.Element {
     modeIndex: INITIAL_MODE_INDEX
   });
   const derived = derivedFromState(state);
+
   function buildMove(
     motion: Motion | null
   ): (() => void) | undefined {
     if (motion === null) return undefined;
     return () => { setState({ ...state, motion }); };
   }
+
   useEffect(() => {
     function animationEndHandler(
       event: AnimationEvent
@@ -34,6 +37,7 @@ export default function ModeExplorer(): JSX.Element {
       if (domNode) domNode.removeEventListener("animationend", animationEndHandler);
     };
   }, []);
+
   return (
     <div
       ref={domNodeRef}

@@ -1,12 +1,12 @@
-import type { Derived, Move } from "../types";
-import { Motion } from "../enumerations";
-import Clock from "./Clock";
-import ModeNote from "./ModeNote";
-import ModeName from "./ModeName";
-import SolfegeDot from "./SolfegeDot";
-import SolfegeLabel from "./SolfegeLabel"
-import Arrow from "./Arrow";
-import { arrayFromMap } from "../utilities/map";
+import { Motion } from "src/enumerations";
+import type { Derived, Move } from "src/types";
+import Clock from "src/components/Clock";
+import ModeNote from "src/components/ModeNote";
+import ModeName from "src/components/ModeName";
+import SolfegeDot from "src/components/SolfegeDot";
+import SolfegeLabel from "src/components/SolfegeLabel"
+import Arrow from "src/components/Arrow";
+import { arrayFromMap } from "src/utilities/map";
 
 
 interface CanvasProps {

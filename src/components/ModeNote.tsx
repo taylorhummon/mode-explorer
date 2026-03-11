@@ -1,9 +1,9 @@
-import type { Derived } from "src/types";
 import { Motion, ModeNote as ModeNoteEnum } from "src/enumerations";
 import { DRAWING_BY_MODE_NOTE } from "src/textDrawings";
+import type { Derived } from "src/types";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./ModeNote.module.css";
+import cssModule from "src/components/ModeNote.module.css";
 
 
 interface ModeNoteProps {

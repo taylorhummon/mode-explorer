@@ -1,7 +1,7 @@
 import { MODE_NAMES } from "src/enumerations";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./ModeName.module.css";
+import cssModule from "src/components/ModeName.module.css";
 
 
 interface ModeNameProps {

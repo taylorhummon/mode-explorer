@@ -1,6 +1,7 @@
-import type { Move } from "../types";
-import { buildClassString } from "../utilities/css";
-import cssModule from "./Arrow.module.css";
+import type { Move } from "src/types";
+import { buildClassString } from "src/utilities/css";
+
+import cssModule from "src/components/Arrow.module.css";
 
 
 interface ArrowProps {

@@ -1,4 +1,3 @@
-import type { State, Derived } from "src/types";
 import {
   Motion,
   SolfegeName,
@@ -6,9 +5,11 @@ import {
   ModeNote,
   MODE_NOTES
 } from "src/enumerations";
+import type { State, Derived } from "src/types";
+import { isAnimationObserved } from "src/utilities/animation";
 import { buildMap } from "src/utilities/map";
 import { remainderFor } from "src/utilities/math";
-import { isAnimationObserved } from "src/utilities/animation";
+
 
 export function nextStateOnAnimationEnd(
   state: State,

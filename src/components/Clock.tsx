@@ -1,9 +1,9 @@
-import Tick from "./Tick";
-import { CLOCK_RADIUS } from "src/utilities/clock";
+import Tick from "src/components/Tick";
 import { buildIndicesArray } from "src/utilities/array";
+import { CLOCK_RADIUS } from "src/utilities/clock";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./Clock.module.css";
+import cssModule from "src/components/Clock.module.css";
 
 
 export default function Clock(): JSX.Element {

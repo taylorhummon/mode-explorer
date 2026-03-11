@@ -1,8 +1,8 @@
-import type { Move } from "src/types";
 import { SolfegeName, Motion } from "src/enumerations";
+import type { Move } from "src/types";
 import { buildClassString } from "src/utilities/css";
 
-import cssModule from "./SolfegeDot.module.css";
+import cssModule from "src/components/SolfegeDot.module.css";
 
 
 interface SolfegeDotProps {
