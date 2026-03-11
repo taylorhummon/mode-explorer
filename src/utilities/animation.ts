@@ -1,7 +1,7 @@
 import solfegeDotCssModule from "src/components/SolfegeDot.module.css";
 
 
-export function isAnimationObserved(
+export function isAnimationRunning(
   animationName: string
 ): boolean {
   return (

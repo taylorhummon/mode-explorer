@@ -6,7 +6,7 @@ import { derivedFromState, nextStateOnAnimationEnd } from "src/utilities/derived
 
 vi.mock('src/utilities/animation', () => {
   return {
-    isAnimationObserved(animationName: string) {
+    isAnimationRunning(animationName: string) {
       return ["advance-solfege-dot", "retreat-solfege-dot"].includes(animationName);
     }
   }

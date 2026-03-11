@@ -6,7 +6,7 @@ import {
   MODE_NOTES
 } from "src/enumerations";
 import type { State, Derived } from "src/types";
-import { isAnimationObserved } from "src/utilities/animation";
+import { isAnimationRunning } from "src/utilities/animation";
 import { buildMap } from "src/utilities/map";
 import { remainderFor } from "src/utilities/math";
 
@@ -15,7 +15,7 @@ export function nextStateOnAnimationEnd(
   state: State,
   event: AnimationEvent
 ): State {
-  if (! isAnimationObserved(event.animationName)) return state;
+  if (! isAnimationRunning(event.animationName)) return state;
   const derived = derivedFromState(state);
   if (! derived.isAnimating) return state;
   const doSolfege = derived.solfegeByName.get(SolfegeName.Do);
