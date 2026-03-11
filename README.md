@@ -1,7 +1,7 @@
 # Solfege Explorer
 
 This app is a companion to <emph>Taylor's Guide to Scales</emph>. You can find the guide and this 
-app running live at [https://scales.taylorhummon.com](https://scales.taylorhummon.com).
+app running live at [https://scales.taylorhummon.com/solfege-explorer](https://scales.taylorhummon.com/solfege-explorer).
 
 ## Installation
 
