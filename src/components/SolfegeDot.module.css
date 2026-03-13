@@ -48,119 +48,119 @@
 
   &.do {
     &.still {
-      offset-path: path("M 0,-120");
+      offset-path: path("M 0 -120");
     }
 
     &.advance-individual,
     &.retreat-all {
-      offset-path: path("M 0,-120 a 120 120 0 0 1 60 16.07695154586737");
+      offset-path: path("M 0 -120 a 120 120, 0, 0, 1, 60 16.07695154586737");
     }
 
     &.retreat-individual,
     &.advance-all {
-      offset-path: path("M -60,-103.92304845413263 a 120 120 0 0 1 60 -16.07695154586737");
+      offset-path: path("M -60 -103.92304845413263 a 120 120, 0, 0, 1, 60 -16.07695154586737");
     }
   }
 
   &.re {
     &.still-early {
-      offset-path: path("M 60,-103.92304845413263");
+      offset-path: path("M 60 -103.92304845413263");
     }
 
     &.still-late {
-      offset-path: path("M 103.92304845413263,-60");
+      offset-path: path("M 103.92304845413263 -60");
     }
 
     &.advance-individual,
     &.retreat-individual,
     &.advance-all,
     &.retreat-all {
-      offset-path: path("M 60,-103.92304845413263 a 120 120 0 0 1 43.923048454132626 43.923048454132626");
+      offset-path: path("M 60 -103.92304845413263 a 120 120, 0, 0, 1, 43.923048454132626 43.923048454132626");
     }
   }
 
   &.mi {
     &.still-early {
-      offset-path: path("M 120,0");
+      offset-path: path("M 120 0");
     }
 
     &.still-late {
-      offset-path: path("M 103.92304845413263,60");
+      offset-path: path("M 103.92304845413263 60");
     }
 
     &.advance-individual,
     &.retreat-individual,
     &.advance-all,
     &.retreat-all {
-      offset-path: path("M 120,0 a 120 120 0 0 1 -16.07695154586737 60");
+      offset-path: path("M 120 0 a 120 120, 0, 0, 1, -16.07695154586737 60");
     }
   }
 
   &.fa {
     &.still-early {
-      offset-path: path("M 60,103.92304845413263");
+      offset-path: path("M 60 103.92304845413263");
     }
 
     &.still-late {
-      offset-path: path("M 0,120");
+      offset-path: path("M 0 120");
     }
 
     &.advance-individual,
     &.retreat-individual,
     &.advance-all,
     &.retreat-all {
-      offset-path: path("M 60,103.92304845413263 a 120 120 0 0 1 -60 16.07695154586737");
+      offset-path: path("M 60 103.92304845413263 a 120 120, 0, 0, 1, -60 16.07695154586737");
     }
   }
 
   &.sol {
     &.still-early {
-      offset-path: path("M 0,120");
+      offset-path: path("M 0 120");
     }
 
     &.still-late {
-      offset-path: path("M -60,103.92304845413263");
+      offset-path: path("M -60 103.92304845413263");
     }
 
     &.advance-individual,
     &.retreat-individual,
     &.advance-all,
     &.retreat-all {
-      offset-path: path("M 0,120 a 120 120 0 0 1 -60 -16.07695154586737");
+      offset-path: path("M 0 120 a 120 120, 0, 0, 1, -60 -16.07695154586737");
     }
   }
 
   &.la {
     &.still-early {
-      offset-path: path("M -103.92304845413263,60");
+      offset-path: path("M -103.92304845413263 60");
     }
 
     &.still-late {
-      offset-path: path("M -120,0");
+      offset-path: path("M -120 0");
     }
 
     &.advance-individual,
     &.retreat-individual,
     &.advance-all,
     &.retreat-all {
-      offset-path: path("M -103.92304845413263,60 a 120 120 0 0 1 -16.07695154586737 -60");
+      offset-path: path("M -103.92304845413263 60 a 120 120, 0, 0, 1, -16.07695154586737 -60");
     }
   }
 
   &.ti {
     &.still-early {
-      offset-path: path("M -103.92304845413263,-60");
+      offset-path: path("M -103.92304845413263 -60");
     }
 
     &.still-late {
-      offset-path: path("M -60,-103.92304845413263");
+      offset-path: path("M -60 -103.92304845413263");
     }
 
     &.advance-individual,
     &.retreat-individual,
     &.advance-all,
     &.retreat-all {
-      offset-path: path("M -103.92304845413263,-60 a 120 120 0 0 1 43.923048454132626 -43.923048454132626");
+      offset-path: path("M -103.92304845413263 -60 a 120 120, 0, 0, 1, 43.923048454132626 -43.923048454132626");
     }
   }
 }
