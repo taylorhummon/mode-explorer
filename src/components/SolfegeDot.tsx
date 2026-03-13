@@ -35,5 +35,6 @@ function className(
 ): string {
   const classNames = ["solfege-dot", name, location];
   if (move) classNames.push("can-move");
+  if (name === SolfegeName.Do) classNames.push("root");
   return buildClassString(cssModule, classNames);
 }

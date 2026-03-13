@@ -1,4 +1,4 @@
-@value color-black, color-green, duration-motion from "../constants.css";
+@value color-black, color-blue, color-green, duration-motion from "../constants.css";
 
 @keyframes advance-solfege-dot {
   0% {
@@ -23,9 +23,17 @@
   cursor: default;
   fill: color-black;
 
+  &.root {
+    fill: color-blue;
+  }
+
   &.can-move {
     cursor: pointer;
     fill: color-green;
+
+    &.root {
+      fill: color-green;
+    }
   }
 
   &.advance-individual,
